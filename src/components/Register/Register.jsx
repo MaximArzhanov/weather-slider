@@ -4,7 +4,9 @@ import AuthPage from '../AuthPage/AuthPage';
 
 function Register() {
   return (
-    <AuthPage />
+    <div className="register">
+      <AuthPage />
+    </div>
   );
 }
 

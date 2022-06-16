@@ -1,20 +1,22 @@
 import React from 'react';
 import './AuthPage.css';
 import Form from '../Form/Form';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+
 
 function AuthPage() {
   return (
     <div className="auth-page">
-
-      <h2 className="auth-page__title">Заголовок</h2>
+      <nav className="auth-page__links">
+        <NavLink to="/signin" className={(navData) => navData.isActive ? "auth-page__link auth-page__link_active" : "auth-page__link" }>
+          Вход
+        </NavLink>
+        <NavLink to="/signup"className={(navData) => navData.isActive ? "auth-page__link auth-page__link_active" : "auth-page__link" }>
+          Регистрация
+        </NavLink>
+      </nav>
       <Form />
-      <div className="auth-page__container">
-        <span className="auth-page__question">Уже зарегистрированы?</span>
-        <Link to="/signin">
-          Войти
-        </Link>
-      </div>
 
     </div>
   );
