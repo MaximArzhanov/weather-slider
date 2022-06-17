@@ -1,11 +1,9 @@
 import React from 'react';
 import './AuthPage.css';
-import Form from '../Form/Form';
 import { NavLink } from 'react-router-dom';
 
+function AuthPage(props) {
 
-
-function AuthPage() {
   return (
     <div className="auth-page">
       <nav className="auth-page__links">
@@ -16,7 +14,7 @@ function AuthPage() {
           Регистрация
         </NavLink>
       </nav>
-      <Form />
+      {props.children}
 
     </div>
   );

@@ -1,3 +1,3 @@
-const initialState =  {
-    isLigined: false
+const initialState = {
+  isLigined: false
 }

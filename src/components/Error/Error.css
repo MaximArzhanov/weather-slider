@@ -1,0 +1,8 @@
+.error {
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+  padding-top: 50px;
+  color: #dc2a65;
+  visibility: hidden;
+}

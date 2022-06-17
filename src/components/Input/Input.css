@@ -1,0 +1,44 @@
+.input-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.input-container__title {
+  margin: 10px 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  color: #7f8291;
+  font-weight: bold;
+}
+
+.input-container__input {
+  margin: 10px 0 5px 0;
+  padding: 0;
+  padding-left: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  height: 35px;
+}
+
+.input-container__input:focus {
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.input-container__error-input {
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+  color: #dc2a65;
+  visibility: hidden;
+}

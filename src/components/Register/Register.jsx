@@ -1,11 +1,11 @@
 import React from 'react';
 import './Register.css';
-import AuthPage from '../AuthPage/AuthPage';
+import RegisterForm from '../RegisterForm/RegisterForm';
 
 function Register() {
   return (
     <div className="register">
-      <AuthPage />
+      <RegisterForm />
     </div>
   );
 }
