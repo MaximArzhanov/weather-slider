@@ -1,0 +1,3 @@
+const CLEAR_TEXT_INPUTS = 'CLEAR_TEXT_INPUTS';
+
+export default CLEAR_TEXT_INPUTS;

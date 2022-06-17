@@ -1,12 +1,12 @@
 import React from 'react';
 import './Login.css';
-import LoginForm from '../LoginForm/LoginForm';
+import LoginFormContainer from '../LoginForm/LoginFormContainer';
 
 function Login(props) {
 
   return (
     <div className="login">
-      <LoginForm />
+      <LoginFormContainer />
     </div>
   );
 }

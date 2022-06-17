@@ -1,14 +1,14 @@
-// import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import changeTextInputsReducer from './reducers/changeTextInputsReducer';
-// import postsReducer from './reducers/postsReducer';
-// // import setPostsReducer from './reducers/setPostsReducer'
-// import thunk from 'redux-thunk'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import authReducer from './reducers/authReducer';
+import thunk from 'redux-thunk'
 
-// let reducers = combineReducers({
-//     textInputs: changeTextInputsReducer,
-//     posts: postsReducer
-// });
+let reducers = combineReducers({
+    auth: authReducer,
+});
 
-// const store = createStore(reducers, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
-// export default store;
+// const store = createStore(reducers);
+
+export default store;

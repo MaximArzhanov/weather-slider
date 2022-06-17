@@ -1,5 +1,5 @@
 import CHANGE_TEXT_INPUT from '../actions/changeTextInputAction';
 
-const changeTextInputActionCreator = (fieldID, text) => ({ type: CHANGE_TEXT_INPUT, fieldID: fieldID, text: text });
+const changeTextInputActionCreator = (inputID, text) => ({ type: CHANGE_TEXT_INPUT, inputID: inputID, text: text });
 
 export default changeTextInputActionCreator;

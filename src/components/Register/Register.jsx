@@ -1,11 +1,11 @@
 import React from 'react';
 import './Register.css';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterFormContainer from '../RegisterForm/RegisterFormContainer';
 
 function Register() {
   return (
     <div className="register">
-      <RegisterForm />
+      <RegisterFormContainer />
     </div>
   );
 }
