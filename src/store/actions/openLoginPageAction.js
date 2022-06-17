@@ -1,3 +1,0 @@
-const OPEN_LOGIN_PAGE = 'OPEN_LOGIN_PAGE';
-
-export default OPEN_LOGIN_PAGE;

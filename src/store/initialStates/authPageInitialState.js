@@ -1,11 +1,7 @@
 const initialState = {
-  emailInputText: '',
-  passwordInputText: '',
-  emailErrorText: '',
-  passwordErrorText: '',
+  inputTexts: {},
+  inputValidationErrors: {},
   authErrorText: '',
-  isOpenRegisterPage: false,
-  isOpenLoginPage: false
 };
 
 export default initialState;
