@@ -1,0 +1,3 @@
+const OPEN_REGISTER_PAGE = 'OPEN_REGISTER_PAGE';
+
+export default OPEN_REGISTER_PAGE;

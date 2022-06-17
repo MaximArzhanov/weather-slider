@@ -1,0 +1,3 @@
+const CHANGE_EMAIL_INPUT = 'CHANGE_EMAIL_INPUT';
+
+export default CHANGE_EMAIL_INPUT;
