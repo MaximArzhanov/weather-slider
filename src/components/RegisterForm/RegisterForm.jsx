@@ -17,7 +17,7 @@ function RegisterForm(props) {
         id={EMAIL_INPUT}
         type={EMAIL_TYPE}
         name={EMAIL_INPUT}
-        errorText="ошибка"
+        errorText={props.errorValidationTextEmail}
         changeTextInput={props.changeTextInput}
         value={props.emailValue}
         validationField={props.validationField}
@@ -28,7 +28,7 @@ function RegisterForm(props) {
         id={PASSWORD_INPUT}
         type={PASSWORD_TYPE}
         name={PASSWORD_INPUT}
-        errorText="ошибка"
+        errorText={props.errorValidationTextPassword}
         changeTextInput={props.changeTextInput}
         value={props.passwordValue}
       />

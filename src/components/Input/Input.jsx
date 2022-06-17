@@ -3,9 +3,14 @@ import './Input.css';
 
 function Input(props) {
 
+  console.log(props.errorText);
+
+  const classListErrorInput = (props.errorText == undefined)
+    ? 'input-container__error-input'
+    : 'input-container__error-input input-container__error-input_visible';
+
   const handleChangeTextInput = (e) => {
-    props.validationField(e);
-    // props.changeTextInput(e);
+    props.changeTextInput(e);
   }
 
   return (
@@ -19,8 +24,9 @@ function Input(props) {
         autoComplete="off"
         onChange={handleChangeTextInput}
         value={props.value || ""}
+        required
       />
-      <span className="input-container__error-input">{props.errorText}</span>
+      <span className={classListErrorInput}>{props.errorText}</span>
     </div>
   );
 }

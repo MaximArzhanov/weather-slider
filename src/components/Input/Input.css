@@ -42,3 +42,7 @@
   color: #dc2a65;
   visibility: hidden;
 }
+
+.input-container__error-input_visible {
+  visibility: visible;
+}
