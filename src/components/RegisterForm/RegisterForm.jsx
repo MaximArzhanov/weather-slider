@@ -9,8 +9,12 @@ import {
 
 function RegisterForm(props) {
 
+  const handleSubmit = (e) => {
+    props.submitRegisterForm(e);
+  }
+
   return (
-    <form className="register-form">
+    <form className="register-form" onSubmit={handleSubmit}>
 
       <Input
         labelText={EMAIL}

@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
     clearErrors: () => {
       const action = clearErrorInputsActionCreator();
       dispatch(action);
+    },
+    submitRegisterForm: (e) => {
+      e.preventDefault();
     }
   }
 }
