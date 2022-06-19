@@ -1,5 +1,5 @@
 /* Валидация полей формы */
-const validationField = (e, dispatch, actionCreator) => {
+const validationInput = (e, dispatch, actionCreator) => {
   let inputID = '';
   let errorText = '';
   let action = {};
@@ -16,4 +16,14 @@ const validationField = (e, dispatch, actionCreator) => {
   }
 }
 
-export default validationField;
+/* Валидация формы */
+const validationForm = (e, dispatch, actionCreator) => {
+  const form = e.target.closest('form');
+  const actionTest = actionCreator(form.checkValidity());
+  dispatch(actionTest);
+}
+
+export {
+  validationInput,
+  validationForm
+}

@@ -1,6 +1,8 @@
 import CHANGE_TEXT_INPUT from '../actions/changeTextInputAction';
 import CLEAR_TEXT_INPUTS from '../actions/clearTextInputsAction';
+import CLEAR_ERROR_INPUTS from '../actions/clearErrorInputsAction';
 import CHANGE_ERROR_INPUT_TEXT from '../actions/changeErrorInputTextAction';
+import CHANGE_FORM_VALIDITY_STATE from '../actions/changeFormVilidityStateAction';
 import LOGIN_USER from '../actions/loginUserAction';
 import REGISTER_USER from '../actions/registerUserAction';
 import initialState from '../initialStates/authPageInitialState';
@@ -23,10 +25,23 @@ const authReducer = (state = initialState, action) => {
       return newState;
     }
 
+    case CLEAR_ERROR_INPUTS: {
+      const newState = { ...state };
+      newState.inputValidationErrors = { ...state.inputValidationErrors };
+      for (var key in newState.inputValidationErrors) { newState.inputValidationErrors[key] = '' }; // Перебор всех свойств в объекте newState.inputValidationErrors (Сброс ошибок валидации полей input)
+      return newState;
+    }
+
     case CHANGE_ERROR_INPUT_TEXT: {
       const newState = { ...state };
       newState.inputValidationErrors = { ...state.inputValidationErrors };
       newState.inputValidationErrors[action.inputID] = action.errorText; // Задаёт объекту inputTexts свойство с именем поля (Поле которое изменяется в данный момент)
+      return newState;
+    }
+
+    case CHANGE_FORM_VALIDITY_STATE: {
+      const newState = { ...state };
+      newState.isFormValid = action.state;
       return newState;
     }
 

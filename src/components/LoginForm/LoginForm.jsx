@@ -16,7 +16,7 @@ function LoginForm(props) {
         id={EMAIL_INPUT}
         type={EMAIL_TYPE}
         name={EMAIL_INPUT}
-        errorText="ошибка"
+        errorText={props.errorValidationTextEmail}
         changeTextInput={props.changeTextInput}
         value={props.emailValue}
       />
@@ -26,13 +26,13 @@ function LoginForm(props) {
         id={PASSWORD_INPUT}
         type={PASSWORD_TYPE}
         name={PASSWORD_INPUT}
-        errorText="ошибка"
+        errorText={props.errorValidationTextPassword}
         changeTextInput={props.changeTextInput}
         value={props.passwordValue}
       />
 
       <Error errorText="Ошибка от сервера" />
-      <Button buttonText={LOGIN_BUTTON_TEXT} />
+      <Button buttonText={LOGIN_BUTTON_TEXT} isFormValid={props.isFormValid} />
 
     </form>
   );

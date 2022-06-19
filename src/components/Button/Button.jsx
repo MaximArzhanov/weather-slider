@@ -2,8 +2,13 @@ import React from 'react';
 import './Button.css';
 
 function Button(props) {
+
+  const classListButton = (props.isFormValid)
+  ? 'button'
+  : 'button button_disabled';
+
   return (
-    <button className="button" type="submit">{props.buttonText}</button>
+    <button className={classListButton} type="submit">{props.buttonText}</button>
   );
 }
 

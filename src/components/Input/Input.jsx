@@ -3,9 +3,7 @@ import './Input.css';
 
 function Input(props) {
 
-  console.log(props.errorText);
-
-  const classListErrorInput = (props.errorText == undefined)
+  const classListErrorInput = (props.errorText === undefined)
     ? 'input-container__error-input'
     : 'input-container__error-input input-container__error-input_visible';
 

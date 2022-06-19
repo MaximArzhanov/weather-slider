@@ -20,7 +20,6 @@ function RegisterForm(props) {
         errorText={props.errorValidationTextEmail}
         changeTextInput={props.changeTextInput}
         value={props.emailValue}
-        validationField={props.validationField}
       />
 
       <Input
@@ -34,7 +33,7 @@ function RegisterForm(props) {
       />
 
       <Error errorText="Ошибка от сервера" />
-      <Button buttonText={REGISTER_BUTTON_TEXT} />
+      <Button buttonText={REGISTER_BUTTON_TEXT} isFormValid={props.isFormValid} />
 
     </form>
   );
