@@ -8,10 +8,15 @@ import {
 } from '../../utils/constants';
 
 function LoginForm(props) {
-  return (
-    <form className="login-form">
 
-<Input
+  const handleSubmit = (e) => {
+    props.submitLoginForm(e, props.emailValue, props.passwordValue);
+  }
+
+  return (
+    <form className="login-form" onSubmit={handleSubmit}>
+
+      <Input
         labelText={EMAIL}
         id={EMAIL_INPUT}
         type={EMAIL_TYPE}

@@ -46,7 +46,9 @@ const authReducer = (state = initialState, action) => {
     }
 
     case LOGIN_USER: {
-
+      const newState = { ...state };
+      newState.authResult = { ...action.result };
+      return newState;
     }
 
     case REGISTER_USER: {

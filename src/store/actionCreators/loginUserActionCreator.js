@@ -1,5 +1,8 @@
 import LOGIN_USER from '../actions/loginUserAction';
 
-const loginUserActionCreator = (user) => ({ type: LOGIN_USER, user: user });
+const loginUserActionCreator = (result) => ({
+  type: LOGIN_USER,
+  result: { ...result }
+});
 
 export default loginUserActionCreator;

@@ -6,6 +6,7 @@ import clearTextInputsActionCreator from '../../store/actionCreators/clearTextIn
 import clearErrorInputsActionCreator from '../../store/actionCreators/clearErrorInputsActionCreator';
 import changeErrorInputTextActionCreator from '../../store/actionCreators/changeErrorInputTextActionCreator';
 import changeFormValidityStateActionCreator from '../../store/actionCreators/changeFormValidityStateActionCreator';
+import loginUserThunkCreator from '../../store/thunkMiddlwares/loginUserThunkCreator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 
@@ -37,6 +38,10 @@ const mapDispatchToProps = (dispatch) => {
     clearErrors: () => {
       const action = clearErrorInputsActionCreator();
       dispatch(action);
+    },
+    submitLoginForm: (e, email, password) => {
+      e.preventDefault();
+      dispatch(loginUserThunkCreator(email, password));
     }
   }
 }

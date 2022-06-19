@@ -19,6 +19,31 @@ export const authAPI = {
         resolve(result);
       }
     });
+  },
+
+  /* Обеспечивает вход пользователя в систему */
+  loginUser(email, password) {
+    return new Promise(function (resolve, reject) {
+      const user = JSON.parse(localStorage.getItem(email));
+      const result = {};
+
+      if (user) { // Проверяет наличие пользователя
+        if (user.password === password) {
+          result.isErorr = false;
+          result.text = 'Успешный вход в систему';
+          resolve(result);
+        } else {
+          result.isErorr = true;
+          result.text = 'Неверно введены почта или пароль';
+          reject({ ...result });
+        }
+      } else {
+        result.isErorr = true;
+        result.text = 'Пользователя с такой почтой не существует';
+        reject({ ...result });
+
+      }
+    });
   }
 
 }
