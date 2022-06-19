@@ -22,7 +22,7 @@ export const authAPI = {
         localStorage.setItem(email, JSON.stringify(user));
         result.isErorr = false;
         result.text = USER_REGISTERED_SUCCESS_MESSAGE;
-        resolve(result);
+        resolve({ ...result });
       }
     });
   },
@@ -37,7 +37,8 @@ export const authAPI = {
         if (user.password === password) {
           result.isErorr = false;
           result.text = USER_LOGINED_SUCCESS_MESSAGE;
-          resolve(result);
+          result.user = user;
+          resolve({ ...result});
         } else {
           result.isErorr = true;
           result.text = WRONG_EMAIL_OR_PASSWORD_MESSAGE;
