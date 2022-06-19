@@ -1,4 +1,10 @@
-import { USER_ALREADY_EXIST_MESSAGE, USER_REGISTERED_SUCCESS_MESSAGE } from "../utils/constants";
+import {
+  USER_ALREADY_EXIST_MESSAGE,
+  USER_REGISTERED_SUCCESS_MESSAGE,
+  USER_LOGINED_SUCCESS_MESSAGE,
+  WRONG_EMAIL_OR_PASSWORD_MESSAGE,
+  USER_DOES_NOT_EXIST_MESSAGE
+} from "../utils/constants";
 
 export const authAPI = {
 
@@ -30,16 +36,16 @@ export const authAPI = {
       if (user) { // Проверяет наличие пользователя
         if (user.password === password) {
           result.isErorr = false;
-          result.text = 'Успешный вход в систему';
+          result.text = USER_LOGINED_SUCCESS_MESSAGE;
           resolve(result);
         } else {
           result.isErorr = true;
-          result.text = 'Неверно введены почта или пароль';
+          result.text = WRONG_EMAIL_OR_PASSWORD_MESSAGE;
           reject({ ...result });
         }
       } else {
         result.isErorr = true;
-        result.text = 'Пользователя с такой почтой не существует';
+        result.text = USER_DOES_NOT_EXIST_MESSAGE;
         reject({ ...result });
 
       }
