@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginForm.css';
 import Input from '../Input/Input';
-import Error from '../Error/Error';
+import AuthResult from '../AuthResult/AuthResult';
 import Button from '../Button/Button';
 import {
   EMAIL_INPUT, PASSWORD_INPUT, EMAIL, EMAIL_TYPE, PASSWORD, PASSWORD_TYPE, LOGIN_BUTTON_TEXT
@@ -31,7 +31,7 @@ function LoginForm(props) {
         value={props.passwordValue}
       />
 
-      <Error errorText="Ошибка от сервера" />
+      <AuthResult authResult={props.authResult} />
       <Button buttonText={LOGIN_BUTTON_TEXT} isFormValid={props.isFormValid} />
 
     </form>

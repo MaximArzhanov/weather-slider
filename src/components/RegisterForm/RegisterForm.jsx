@@ -1,7 +1,7 @@
 import React from 'react';
 import './RegisterForm.css';
 import Input from '../Input/Input';
-import Error from '../Error/Error';
+import AuthResult from '../AuthResult/AuthResult';
 import Button from '../Button/Button';
 import {
   EMAIL_INPUT, PASSWORD_INPUT, EMAIL, EMAIL_TYPE, PASSWORD, PASSWORD_TYPE, REGISTER_BUTTON_TEXT
@@ -10,7 +10,7 @@ import {
 function RegisterForm(props) {
 
   const handleSubmit = (e) => {
-    props.submitRegisterForm(e);
+    props.submitRegisterForm(e, props.emailValue, props.passwordValue);
   }
 
   return (
@@ -36,7 +36,7 @@ function RegisterForm(props) {
         value={props.passwordValue}
       />
 
-      <Error errorText="Ошибка от сервера" />
+      <AuthResult authResult={props.authResult} />
       <Button buttonText={REGISTER_BUTTON_TEXT} isFormValid={props.isFormValid} />
 
     </form>

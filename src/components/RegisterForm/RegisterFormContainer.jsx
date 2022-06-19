@@ -6,8 +6,10 @@ import clearTextInputsActionCreator from '../../store/actionCreators/clearTextIn
 import clearErrorInputsActionCreator from '../../store/actionCreators/clearErrorInputsActionCreator';
 import changeErrorInputTextActionCreator from '../../store/actionCreators/changeErrorInputTextActionCreator';
 import changeFormValidityStateActionCreator from '../../store/actionCreators/changeFormValidityStateActionCreator';
+import registerUserThunkCreator from '../../store/thunkMiddlwares/registerUserThunkCreator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
+import { useNavigate } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -15,7 +17,8 @@ const mapStateToProps = (state) => {
     passwordValue: state.auth.inputTexts[PASSWORD_INPUT],
     errorValidationTextEmail: state.auth.inputValidationErrors[EMAIL_INPUT],
     errorValidationTextPassword: state.auth.inputValidationErrors[PASSWORD_INPUT],
-    isFormValid: state.auth.isFormValid
+    isFormValid: state.auth.isFormValid,
+    authResult: state.auth.authResult
   }
 }
 
@@ -37,13 +40,16 @@ const mapDispatchToProps = (dispatch) => {
       const action = clearErrorInputsActionCreator();
       dispatch(action);
     },
-    submitRegisterForm: (e) => {
+    submitRegisterForm: (e, email, password) => {
       e.preventDefault();
+      dispatch(registerUserThunkCreator(email, password));
     }
   }
 }
 
 const RegisterFormContainer = ({ ...props }) => {
+
+  let navigate = useNavigate();
 
   React.useEffect(() => {
 
@@ -53,6 +59,16 @@ const RegisterFormContainer = ({ ...props }) => {
       props.clearErrors();
     }
   }, []);
+
+  React.useEffect(() => {
+    if (props.authResult.isErorr !== undefined) {
+      if (!props.authResult.isErorr) {
+        setInterval(() => {
+          navigate('/signin');
+        }, 1000);
+      }
+    }
+  }, props.authResult.isError);
 
   return (
     <RegisterForm {...props} />

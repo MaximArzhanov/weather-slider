@@ -45,15 +45,16 @@ const authReducer = (state = initialState, action) => {
       return newState;
     }
 
+    case LOGIN_USER: {
 
-    case LOGIN_USER:
-      return {
+    }
 
-      }
-    case REGISTER_USER:
-      return {
+    case REGISTER_USER: {
+      const newState = { ...state };
+      newState.authResult = { ...action.result };
+      return newState;
+    }
 
-      }
     default:
       return state;
   }

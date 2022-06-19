@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
     passwordValue: state.auth.inputTexts[PASSWORD_INPUT],
     errorValidationTextEmail: state.auth.inputValidationErrors[EMAIL_INPUT],
     errorValidationTextPassword: state.auth.inputValidationErrors[PASSWORD_INPUT],
-    isFormValid: state.auth.isFormValid
+    isFormValid: state.auth.isFormValid,
+    authResult: state.auth.authResult
   }
 }
 
