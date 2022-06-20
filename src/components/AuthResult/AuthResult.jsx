@@ -3,9 +3,9 @@ import './AuthResult.css';
 
 function AuthResult(props) {
 
-  const resultText = props.authResult.text;
+  const resultText = props.authResult.message;
 
-  const resultTextClassList = (props.authResult.isErorr)
+  const resultTextClassList = (props.authResult.isError)
     ? 'auth-result auth-result_type_error'
     : 'auth-result';
 

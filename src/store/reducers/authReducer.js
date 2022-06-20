@@ -7,6 +7,7 @@ import LOGIN_USER from '../actions/loginUserAction';
 import REGISTER_USER from '../actions/registerUserAction';
 import initialState from '../initialStates/authPageInitialState';
 import RESET_AUTH_RESULT from '../actions/resetAuthResultAction';
+import CLEAR_AUTH_ERROR_TEXT from '../actions/clearAuthErrorTextAction';
 
 const authReducer = (state = initialState, action) => {
 
@@ -60,7 +61,15 @@ const authReducer = (state = initialState, action) => {
 
     case RESET_AUTH_RESULT: {
       const newState = { ...state };
-      newState.authResult = {};
+      newState.authResult = { ...state.authResult };
+      newState.authResult.isAuthSuccess = false;
+      return newState;
+    }
+
+    case CLEAR_AUTH_ERROR_TEXT: {
+      const newState = { ...state };
+      newState.authResult = { ...state.authResult };
+      newState.authResult.message = '';
       return newState;
     }
 

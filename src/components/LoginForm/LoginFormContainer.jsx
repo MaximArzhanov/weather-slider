@@ -7,6 +7,7 @@ import clearErrorInputsActionCreator from '../../store/actionCreators/clearError
 import changeErrorInputTextActionCreator from '../../store/actionCreators/changeErrorInputTextActionCreator';
 import changeFormValidityStateActionCreator from '../../store/actionCreators/changeFormValidityStateActionCreator';
 import loginUserThunkCreator from '../../store/thunkMiddlwares/loginUserThunkCreator';
+import resetAuthResultActionCreator from '../../store/actionCreators/resetAuthResultActionCreator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import { useNavigate } from "react-router-dom";
@@ -53,6 +54,7 @@ const LoginFormContainer = ({ ...props }) => {
   let navigate = useNavigate();
 
   React.useEffect(() => {
+
     return () => {
       props.clearField();
       props.clearErrors();

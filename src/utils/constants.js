@@ -11,7 +11,7 @@ const REGISTER_BUTTON_TEXT = 'Зарегистрироваться';
 const LOGIN_BUTTON_TEXT = 'Войти';
 
 const USER_ALREADY_EXIST_MESSAGE = 'Пользователь с такой почтой уже существует';
-const USER_REGISTERED_SUCCESS_MESSAGE = 'Пользователь успешно зарегистрирован';
+const USER_REGISTERED_SUCCESS_MESSAGE = 'Пользователь успешно зарегистрирован. Теперь нужно выполнить вход';
 
 const USER_LOGINED_SUCCESS_MESSAGE = 'Успешный вход в систему';
 const WRONG_EMAIL_OR_PASSWORD_MESSAGE = 'Неверно введены почта или пароль';
