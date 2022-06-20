@@ -17,8 +17,8 @@ const validationInput = (e, dispatch, actionCreator) => {
 /* Валидация формы */
 const validationForm = (e, dispatch, actionCreator) => {
   const form = e.target.closest('form');
-  const actionTest = actionCreator(form.checkValidity());
-  dispatch(actionTest);
+  const action = actionCreator(form.checkValidity());
+  dispatch(action);
 }
 
 export {

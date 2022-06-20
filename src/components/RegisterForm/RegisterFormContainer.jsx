@@ -51,7 +51,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(resetAuthResultActionCreator());
     },
     clearAuthErrorText: () => { // Очистка текста ошибки при авторизации
-      dispatch(clearAuthErrorTextActionCreator())
+      dispatch(clearAuthErrorTextActionCreator());
+    },
+    resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
+      dispatch(changeFormValidityStateActionCreator(false));
     }
   }
 }
@@ -64,6 +67,7 @@ const RegisterFormContainer = ({ ...props }) => {
     props.clearInput();
     props.clearErrors();
     props.clearAuthErrorText();
+    props.resetValidationForm();
 
     return () => {
       props.resetAuthResult();

@@ -13,8 +13,6 @@ import { validationInput, validationForm } from '../../utils/validation';
 import { useNavigate } from "react-router-dom";
 
 const mapStateToProps = (state) => {
-
-  console.log(state);
   return {
     emailValue: state.auth.inputTexts[EMAIL_INPUT],
     passwordValue: state.auth.inputTexts[PASSWORD_INPUT],
@@ -50,6 +48,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     clearAuthErrorText: () => { // Очистка текста ошибки при авторизации
       dispatch(clearAuthErrorTextActionCreator())
+    },
+    resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
+      dispatch(changeFormValidityStateActionCreator(false));
     }
   }
 }
@@ -62,6 +63,7 @@ const LoginFormContainer = ({ ...props }) => {
       props.clearField();
       props.clearErrors();
       props.clearAuthErrorText();
+      props.resetValidationForm();
     }
   }, []);
 
