@@ -1,13 +1,18 @@
 import { authAPI } from '../../api/authAPI';
 import loginUserActionCreator from '../actionCreators/loginUserActionCreator';
 import setCurrentUserActionCreator from '../actionCreators/setCurrentUserActionCreator';
+import setUserLoginStatusActionCreator from '../actionCreators/setUserLoginStatusActionCreator';
+import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
 
 const loginUserThunkCreator = (email, password) => {
   return (dispatch) => {
     authAPI.loginUser(email, password)
       .then((result) => {
         dispatch(loginUserActionCreator(result));
-        dispatch(setCurrentUserActionCreator(result.user))
+        dispatch(setCurrentUserActionCreator(result.user));
+        dispatch(setUserLoginStatusActionCreator(true));
+        localStorage.setItem(CURRENT_USER, JSON.stringify(result.user));
+        localStorage.setItem(IS_LOGINED, true);
       })
       .catch((result) => {
         dispatch(loginUserActionCreator(result));

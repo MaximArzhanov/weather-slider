@@ -1,3 +1,3 @@
 const initialState = {
-  isUserLigined: false
+  isUserLogined: false
 }

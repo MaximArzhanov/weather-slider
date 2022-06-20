@@ -18,7 +18,8 @@ const mapStateToProps = (state) => {
     errorValidationTextEmail: state.auth.inputValidationErrors[EMAIL_INPUT],
     errorValidationTextPassword: state.auth.inputValidationErrors[PASSWORD_INPUT],
     isFormValid: state.auth.isFormValid,
-    authResult: state.auth.authResult
+    authResult: state.auth.authResult,
+    userloginStatus: state.userloginStatus.isUserLogined
   }
 }
 
@@ -52,8 +53,6 @@ const RegisterFormContainer = ({ ...props }) => {
   let navigate = useNavigate();
 
   React.useEffect(() => {
-
-    // При размонтировании компонента происходит сброс полей
     return () => {
       props.clearInput();
       props.clearErrors();
@@ -61,7 +60,11 @@ const RegisterFormContainer = ({ ...props }) => {
   }, []);
 
   React.useEffect(() => {
-    if (props.authResult.isErorr !== undefined) {
+    if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
+  }, [props.userloginStatus]);
+
+  React.useEffect(() => {
+    if (props.authResult.isErorr !== undefined) { // Если регистрация прошла успешно, то редирект на страницу авторизации
       if (!props.authResult.isErorr) {
         setInterval(() => {
           navigate('/signin');

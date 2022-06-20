@@ -9,6 +9,9 @@ import changeFormValidityStateActionCreator from '../../store/actionCreators/cha
 import loginUserThunkCreator from '../../store/thunkMiddlwares/loginUserThunkCreator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useHistory, } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,7 +20,8 @@ const mapStateToProps = (state) => {
     errorValidationTextEmail: state.auth.inputValidationErrors[EMAIL_INPUT],
     errorValidationTextPassword: state.auth.inputValidationErrors[PASSWORD_INPUT],
     isFormValid: state.auth.isFormValid,
-    authResult: state.auth.authResult
+    authResult: state.auth.authResult,
+    userloginStatus: state.userloginStatus.isUserLogined
   }
 }
 
@@ -48,13 +52,18 @@ const mapDispatchToProps = (dispatch) => {
 
 const LoginFormContainer = ({ ...props }) => {
 
-  // При размонтировании компонента происходит сброс полей
+  let navigate = useNavigate();
+
   React.useEffect(() => {
     return () => {
       props.clearField();
       props.clearErrors();
     }
   }, []);
+
+  React.useEffect(() => {
+    if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
+  }, [props.userloginStatus]);
 
   return (
     <LoginForm {...props} />

@@ -17,6 +17,9 @@ const USER_LOGINED_SUCCESS_MESSAGE = 'Успешный вход в систем�
 const WRONG_EMAIL_OR_PASSWORD_MESSAGE = 'Неверно введены почта или пароль';
 const USER_DOES_NOT_EXIST_MESSAGE = 'Пользователя с такой почтой не существует';
 
+const IS_LOGINED = 'isLogined';
+const CURRENT_USER = 'currentUser';
+
 export {
   EMAIL_INPUT,
   PASSWORD_INPUT,
@@ -30,5 +33,7 @@ export {
   USER_REGISTERED_SUCCESS_MESSAGE,
   USER_LOGINED_SUCCESS_MESSAGE,
   WRONG_EMAIL_OR_PASSWORD_MESSAGE,
-  USER_DOES_NOT_EXIST_MESSAGE
+  USER_DOES_NOT_EXIST_MESSAGE,
+  IS_LOGINED,
+  CURRENT_USER
 }

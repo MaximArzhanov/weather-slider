@@ -6,7 +6,7 @@ function WeatherPage(props) {
 
   return (
     <div className='weather-page'>
-        {props.isLogined && <Navigate to="/signup" />}
+        Hello World
     </div>
   );
 }
