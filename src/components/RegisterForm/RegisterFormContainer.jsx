@@ -50,8 +50,8 @@ const mapDispatchToProps = (dispatch) => {
     resetAuthResult: () => {
       dispatch(resetAuthResultActionCreator());
     },
-    clearAuthResult: () => {
-      dispatch(clearAuthErrorTextActionCreator());
+    clearAuthErrorText: () => {
+      dispatch(clearAuthErrorTextActionCreator())
     }
   }
 }
@@ -63,7 +63,7 @@ const RegisterFormContainer = ({ ...props }) => {
   React.useEffect(() => {
     props.clearInput();
     props.clearErrors();
-    props.clearAuthResult();
+    props.clearAuthErrorText();
 
     return () => {
       props.resetAuthResult();
@@ -75,7 +75,6 @@ const RegisterFormContainer = ({ ...props }) => {
   }, [props.userloginStatus]);
 
   React.useEffect(() => {
-    console.log(props.authResult.isAuthSuccess);
     if (props.authResult.isAuthSuccess) {
       navigate('/signin');
     }

@@ -1,7 +1,11 @@
 const initialState = {
   inputTexts: {},
   inputValidationErrors: {},
-  authResult: {},
+  authResult: {
+    isError: false,
+    isAuthSuccess: false,
+    message: ''
+  },
   isFormValid: false
 };
 

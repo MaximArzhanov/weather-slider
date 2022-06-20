@@ -7,12 +7,14 @@ import clearErrorInputsActionCreator from '../../store/actionCreators/clearError
 import changeErrorInputTextActionCreator from '../../store/actionCreators/changeErrorInputTextActionCreator';
 import changeFormValidityStateActionCreator from '../../store/actionCreators/changeFormValidityStateActionCreator';
 import loginUserThunkCreator from '../../store/thunkMiddlwares/loginUserThunkCreator';
-import resetAuthResultActionCreator from '../../store/actionCreators/resetAuthResultActionCreator';
+import clearAuthErrorTextActionCreator from '../../store/actionCreators/clearAuthErrorTextActionCrator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import { useNavigate } from "react-router-dom";
 
 const mapStateToProps = (state) => {
+
+  console.log(state);
   return {
     emailValue: state.auth.inputTexts[EMAIL_INPUT],
     passwordValue: state.auth.inputTexts[PASSWORD_INPUT],
@@ -45,6 +47,9 @@ const mapDispatchToProps = (dispatch) => {
     submitLoginForm: (e, email, password) => {
       e.preventDefault();
       dispatch(loginUserThunkCreator(email, password));
+    },
+    clearAuthErrorText: () => {
+      dispatch(clearAuthErrorTextActionCreator())
     }
   }
 }
@@ -58,6 +63,7 @@ const LoginFormContainer = ({ ...props }) => {
     return () => {
       props.clearField();
       props.clearErrors();
+      props.clearAuthErrorText();
     }
   }, []);
 

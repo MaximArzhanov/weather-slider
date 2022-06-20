@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginForm.css';
 import Input from '../Input/Input';
-import AuthResult from '../AuthResult/AuthResult';
+import AuthError from '../AuthError/AuthError';
 import Button from '../Button/Button';
 import {
   EMAIL_INPUT, PASSWORD_INPUT, EMAIL, EMAIL_TYPE, PASSWORD, PASSWORD_TYPE, LOGIN_BUTTON_TEXT
@@ -36,7 +36,7 @@ function LoginForm(props) {
         value={props.passwordValue}
       />
 
-      <AuthResult authResult={props.authResult} />
+      <AuthError authResult={props.authResult} />
       <Button buttonText={LOGIN_BUTTON_TEXT} isFormValid={props.isFormValid} />
 
     </form>
