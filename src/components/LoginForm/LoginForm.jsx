@@ -34,6 +34,7 @@ function LoginForm(props) {
         errorText={props.errorValidationTextPassword}
         changeTextInput={props.changeTextInput}
         value={props.passwordValue}
+        minLength={8}
       />
 
       <AuthError authResult={props.authResult} />

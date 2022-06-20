@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeTextInput: (e) => {
+    changeTextInput: (e) => { // При изменении текста происходит изменения стейт-переменных
       validationInput(e, dispatch, changeErrorInputTextActionCreator); // Валидация поля
       validationForm(e, dispatch, changeFormValidityStateActionCreator); // Валидация формы
       const inputID = e.target.id;
@@ -36,19 +36,19 @@ const mapDispatchToProps = (dispatch) => {
       const action = changeTextInputActionCreator(inputID, text);
       dispatch(action);
     },
-    clearField: () => {
+    clearField: () => { // Очистка полей ввода
       const action = clearTextInputsActionCreator();
       dispatch(action);
     },
-    clearErrors: () => {
+    clearErrors: () => { // Очистка полей с текстом ошибок валидации
       const action = clearErrorInputsActionCreator();
       dispatch(action);
     },
-    submitLoginForm: (e, email, password) => {
+    submitLoginForm: (e, email, password) => { // Отправка формы авторизации
       e.preventDefault();
       dispatch(loginUserThunkCreator(email, password));
     },
-    clearAuthErrorText: () => {
+    clearAuthErrorText: () => { // Очистка текста ошибки при авторизации
       dispatch(clearAuthErrorTextActionCreator())
     }
   }
@@ -57,9 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 const LoginFormContainer = ({ ...props }) => {
 
   let navigate = useNavigate();
-
   React.useEffect(() => {
-
     return () => {
       props.clearField();
       props.clearErrors();

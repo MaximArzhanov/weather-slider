@@ -23,6 +23,7 @@ function Input(props) {
         onChange={handleChangeTextInput}
         value={props.value || ""}
         required
+        minLength={props.minLength}
       />
       <span className={classListErrorInput}>{props.errorText}</span>
     </div>

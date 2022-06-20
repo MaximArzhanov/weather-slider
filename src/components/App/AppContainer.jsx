@@ -14,11 +14,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setInitialStates: () => {
-      if (localStorage.getItem(IS_LOGINED)) {
+      if (localStorage.getItem(IS_LOGINED)) { // Проверка на наличие текущего авторизованного пользователя
         dispatch(setUserLoginStatusActionCreator(true));
         const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
         dispatch(setCurrentUserActionCreator(currentUser));
-      } else {
+      } else { // Если пользователь не авторизован
         dispatch(setUserLoginStatusActionCreator(false));
       }
     },

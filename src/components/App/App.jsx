@@ -6,26 +6,20 @@ import AuthPage from '../AuthPage/AuthPage';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import Header from '../Header/Header';
 
 function App(props) {
 
   return (
     <div className="app">
       <Routes>
-        <Route
-          exact path="/"
-          element={
-            <ProtectedRoute
-              isLogined={props.isLogined}
-              component={WeatherPage}
-            />}
-        />
-        <Route
-          path="signin"
-          element={<AuthPage> <Login /> </AuthPage>} />
-        <Route
-          path="signup"
-          element={<AuthPage> <Register /> </AuthPage>} />
+
+        <Route exact path="/" element={<ProtectedRoute isLogined={props.isLogined} component={WeatherPage}/>}/>
+
+        <Route path="signin" element={<AuthPage> <Login /> </AuthPage>}/>
+
+        <Route path="signup" element={<AuthPage> <Register /> </AuthPage>} />
+
       </Routes>
     </div>
   );

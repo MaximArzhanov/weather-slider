@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeTextInput: (e) => {
+    changeTextInput: (e) => { // При изменении текста происходит изменения стейт-переменных
       validationInput(e, dispatch, changeErrorInputTextActionCreator); // Валидация поля
       validationForm(e, dispatch, changeFormValidityStateActionCreator); // Валидация формы
       const inputID = e.target.id;
@@ -35,22 +35,22 @@ const mapDispatchToProps = (dispatch) => {
       const action = changeTextInputActionCreator(inputID, text);
       dispatch(action);
     },
-    clearInput: () => {
+    clearInput: () => { // Очистка полей ввода
       const action = clearTextInputsActionCreator();
       dispatch(action);
     },
-    clearErrors: () => {
+    clearErrors: () => { // Очистка полей с текстом ошибок валидации
       const action = clearErrorInputsActionCreator();
       dispatch(action);
     },
-    submitRegisterForm: (e, email, password) => {
+    submitRegisterForm: (e, email, password) => { // Отправка формы авторизации
       e.preventDefault();
       dispatch(registerUserThunkCreator(email, password));
     },
-    resetAuthResult: () => {
+    resetAuthResult: () => { // Сброс статуса регистрации (isAuthSuccess)
       dispatch(resetAuthResultActionCreator());
     },
-    clearAuthErrorText: () => {
+    clearAuthErrorText: () => { // Очистка текста ошибки при авторизации
       dispatch(clearAuthErrorTextActionCreator())
     }
   }
@@ -75,7 +75,7 @@ const RegisterFormContainer = ({ ...props }) => {
   }, [props.userloginStatus]);
 
   React.useEffect(() => {
-    if (props.authResult.isAuthSuccess) {
+    if (props.authResult.isAuthSuccess) { // При успешной регистрации происходит редирект на страницу авторизации
       navigate('/signin');
     }
   }, [props.authResult.isAuthSuccess]);

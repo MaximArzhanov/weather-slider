@@ -4,8 +4,8 @@ import './Button.css';
 function Button(props) {
 
   const classListButton = (props.isFormValid)
-  ? 'button'
-  : 'button button_disabled';
+    ? 'button'
+    : 'button button_disabled';
 
   return (
     <button className={classListButton} type="submit">{props.buttonText}</button>
