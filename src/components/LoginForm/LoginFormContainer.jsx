@@ -10,8 +10,6 @@ import loginUserThunkCreator from '../../store/thunkMiddlwares/loginUserThunkCre
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { useHistory, } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {

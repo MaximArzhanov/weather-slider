@@ -6,6 +6,7 @@ import CHANGE_FORM_VALIDITY_STATE from '../actions/changeFormVilidityStateAction
 import LOGIN_USER from '../actions/loginUserAction';
 import REGISTER_USER from '../actions/registerUserAction';
 import initialState from '../initialStates/authPageInitialState';
+import RESET_AUTH_RESULT from '../actions/resetAuthResultAction';
 
 const authReducer = (state = initialState, action) => {
 
@@ -54,6 +55,12 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_USER: {
       const newState = { ...state };
       newState.authResult = { ...action.result };
+      return newState;
+    }
+
+    case RESET_AUTH_RESULT: {
+      const newState = { ...state };
+      newState.authResult = {};
       return newState;
     }
 

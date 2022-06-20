@@ -12,7 +12,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App store={store} dispatch={store.dispatch} />
+        {/* <App store={store} dispatch={store.dispatch} /> */}
+        <AppContainer  />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

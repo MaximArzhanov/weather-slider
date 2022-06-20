@@ -7,6 +7,7 @@ import clearErrorInputsActionCreator from '../../store/actionCreators/clearError
 import changeErrorInputTextActionCreator from '../../store/actionCreators/changeErrorInputTextActionCreator';
 import changeFormValidityStateActionCreator from '../../store/actionCreators/changeFormValidityStateActionCreator';
 import registerUserThunkCreator from '../../store/thunkMiddlwares/registerUserThunkCreator';
+import resetAuthResultActionCreator from '../../store/actionCreators/resetAuthResultActionCreator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import { useNavigate } from "react-router-dom";
@@ -44,6 +45,9 @@ const mapDispatchToProps = (dispatch) => {
     submitRegisterForm: (e, email, password) => {
       e.preventDefault();
       dispatch(registerUserThunkCreator(email, password));
+    },
+    resetAuthResult: () => {
+      dispatch(resetAuthResultActionCreator());
     }
   }
 }
@@ -53,25 +57,26 @@ const RegisterFormContainer = ({ ...props }) => {
   let navigate = useNavigate();
 
   React.useEffect(() => {
-    return () => {
-      props.clearInput();
-      props.clearErrors();
-    }
+    props.clearInput();
+    props.clearErrors();
+    props.resetAuthResult();
   }, []);
 
   React.useEffect(() => {
     if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
   }, [props.userloginStatus]);
 
-  React.useEffect(() => {
-    if (props.authResult.isErorr !== undefined) { // Если регистрация прошла успешно, то редирект на страницу авторизации
-      if (!props.authResult.isErorr) {
-        setInterval(() => {
-          navigate('/signin');
-        }, 1000);
-      }
-    }
-  }, props.authResult.isError);
+  // React.useEffect(() => {
+  //   console.log(props.authResult.isErorr);
+  //   if (props.authResult.isErorr !== undefined) { // Если регистрация прошла успешно, то редирект на страницу авторизации
+  //     if (!props.authResult.isErorr) {
+  //       console.log('122222');
+  //       setInterval(() => {
+  //         navigate('/signin');
+  //       }, 1000);
+  //     }
+  //   }
+  // }, props.authResult.isError);
 
   return (
     <RegisterForm {...props} />
