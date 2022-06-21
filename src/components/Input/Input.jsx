@@ -13,7 +13,7 @@ function Input(props) {
 
   return (
     <div className="input-container">
-      <label className="input-container__title" htmlFor={props.id}>{props.labelText}</label>
+      <label className="input-container__title input-container__title_hidden" htmlFor={props.id}>{props.labelText}</label>
       <input
         id={props.id}
         className="input-container__input"
@@ -24,6 +24,7 @@ function Input(props) {
         value={props.value || ""}
         // required
         // minLength={props.minLength}
+        placeholder={props.placeholder}
       />
       <span className={classListErrorInput}>{props.errorText}</span>
     </div>

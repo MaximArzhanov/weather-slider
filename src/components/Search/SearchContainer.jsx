@@ -8,11 +8,12 @@ const mapStateToProps = (state) => {
   return {
     searchText: state.weatherPage.search.inputTexts['search-text-input'],
     // passwordValue: state.auth.inputTexts[PASSWORD_INPUT],
-    // errorValidationTextEmail: state.auth.inputValidationErrors[EMAIL_INPUT],
+    errorValidationSearchText: state.weatherPage.search.inputValidationErrors['search-text-input'],
     // errorValidationTextPassword: state.auth.inputValidationErrors[PASSWORD_INPUT],
     isFormValid: true,
     // authResult: state.auth.authResult,
     // userloginStatus: state.userloginStatus.isUserLogined
+    placeholder: 'Название города'
   }
 }
 
