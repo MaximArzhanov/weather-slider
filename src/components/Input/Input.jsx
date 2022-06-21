@@ -3,31 +3,23 @@ import './Input.css';
 
 function Input(props) {
 
-  const classListErrorInput = (props.errorText === undefined)
-    ? 'input-container__error-input'
-    : 'input-container__error-input input-container__error-input_visible';
-
   const handleChangeTextInput = (e) => {
     props.changeTextInput(e);
   }
 
   return (
-    <div className="input-container">
-      <label className="input-container__title input-container__title_hidden" htmlFor={props.id}>{props.labelText}</label>
       <input
         id={props.id}
-        className="input-container__input"
+        className="input"
         type={props.type}
         name={props.name}
         autoComplete="off"
         onChange={handleChangeTextInput}
         value={props.value || ""}
-        // required
-        // minLength={props.minLength}
+        required
+        minLength={props.minLength}
         placeholder={props.placeholder}
       />
-      <span className={classListErrorInput}>{props.errorText}</span>
-    </div>
   );
 }
 

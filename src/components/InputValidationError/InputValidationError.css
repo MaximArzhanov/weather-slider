@@ -1,0 +1,12 @@
+.input-valid-err {
+  margin: 0;
+  margin-bottom: 50px;
+  padding: 0;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #dc2a65;
+}
+
+.input-valid-err:first-of-type {
+  margin-bottom: 0;
+}

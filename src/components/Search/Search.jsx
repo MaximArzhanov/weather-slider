@@ -1,6 +1,8 @@
 import React from 'react';
 import './Search.css';
 import Input from '../Input/Input';
+import InputValidationError from '../InputValidationError/InputValidationError';
+import Label from '../Label/Label';
 
 function Search(props) {
 
@@ -11,6 +13,7 @@ function Search(props) {
   return (
     <div className='search'>
       <form className='search-form'>
+        <Label />
         <Input
           labelText=''
           placeholder={props.placeholder}
@@ -21,16 +24,8 @@ function Search(props) {
           changeTextInput={props.changeTextInput}
           value={props.searchText}
         />
-        {/* <input
-          type='text'
-          className='search-form__input'
-          placeholder='Название города'
-          onChange={handleChange}
-          value={props.searchText}
-        />
-        <button className='search-form__button'></button> */}
+        <InputValidationError />
       </form>
-      <p className="search__error">Ошибка</p>
     </div>
   );
 }

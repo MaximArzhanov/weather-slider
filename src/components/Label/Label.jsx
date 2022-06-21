@@ -3,10 +3,12 @@ import './Label.css';
 
 function Label(props) {
 
+  const labelClassList = props.labelText ? 'label' : 'label label_disabled';
+
   return (
     <label
-      className={props.labelClassList}
-      htmlFor={props.forElementID}
+      className={labelClassList}
+      htmlFor={props.inputID}
     >
       {props.labelText}
     </label>

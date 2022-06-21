@@ -1,6 +1,8 @@
 import React from 'react';
 import './LoginForm.css';
+import Label from '../Label/Label';
 import Input from '../Input/Input';
+import InputValidationError from '../InputValidationError/InputValidationError';
 import AuthError from '../AuthError/AuthError';
 import Button from '../Button/Button';
 import {
@@ -14,18 +16,20 @@ function LoginForm(props) {
   }
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className='login-form' onSubmit={handleSubmit}>
 
+      <Label inputID={EMAIL_INPUT} labelText='Электронная почта' />
       <Input
         labelText={EMAIL}
         id={EMAIL_INPUT}
-        // type={EMAIL_TYPE}
         name={EMAIL_INPUT}
         errorText={props.errorValidationTextEmail}
         changeTextInput={props.changeTextInput}
         value={props.emailValue}
       />
+      <InputValidationError errorText={props.errorValidationTextEmail} />
 
+      <Label inputID={EMAIL_INPUT} labelText='Пароль' />
       <Input
         labelText={PASSWORD}
         id={PASSWORD_INPUT}
@@ -34,8 +38,8 @@ function LoginForm(props) {
         errorText={props.errorValidationTextPassword}
         changeTextInput={props.changeTextInput}
         value={props.passwordValue}
-        // minLength={8}
       />
+      <InputValidationError errorText={props.errorValidationTextPassword} />
 
       <AuthError authResult={props.authResult} />
       <Button buttonText={LOGIN_BUTTON_TEXT} isFormValid={props.isFormValid} />
