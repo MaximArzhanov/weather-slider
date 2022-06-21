@@ -1,5 +1,6 @@
 const EMAIL_INPUT = 'email-input';
 const PASSWORD_INPUT = 'password-input';
+const SEARCH_INPUT = 'search-input';
 
 const EMAIL = 'Почта';
 const EMAIL_TYPE = 'email';
@@ -23,6 +24,7 @@ const CURRENT_USER = 'currentUser';
 export {
   EMAIL_INPUT,
   PASSWORD_INPUT,
+  SEARCH_INPUT,
   EMAIL,
   EMAIL_TYPE,
   PASSWORD,

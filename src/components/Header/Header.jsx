@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import SearchContainer from '../Search/SearchContainer';
+import SearchFormContainer from '../SearchForm/SearchFormContainer';
 
 function Header(props) {
 
@@ -10,7 +10,7 @@ function Header(props) {
 
   return (
     <header className='header'>
-      <SearchContainer />
+      <SearchFormContainer />
       <button className='header__button' onClick={handleClick}>Выйти</button>
     </header>
   );

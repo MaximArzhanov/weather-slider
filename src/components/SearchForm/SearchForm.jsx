@@ -1,8 +1,9 @@
 import React from 'react';
-import './Search.css';
+import './SearchForm.css';
 import Input from '../Input/Input';
 import InputValidationError from '../InputValidationError/InputValidationError';
-import Label from '../Label/Label';
+import Button from '../Button/Button';
+import { SEARCH_INPUT } from '../../utils/constants';
 
 function Search(props) {
 
@@ -11,22 +12,22 @@ function Search(props) {
   // }
 
   return (
-    <div className='search'>
-      <form className='search-form'>
-        <Label />
+    <form className='search-form'>
+      <div className="search-form__container">
         <Input
           labelText=''
           placeholder={props.placeholder}
-          id='search-text-input'
-          // type={EMAIL_TYPE}
-          name='search-text-input'
+          id={SEARCH_INPUT}
+          name={SEARCH_INPUT}
           errorText={props.errorValidationSearchText}
           changeTextInput={props.changeTextInput}
           value={props.searchText}
         />
-        <InputValidationError />
-      </form>
-    </div>
+        <InputValidationError errorText={props.errorValidationSearchText} classList="input-valid-err_type_absolute" />
+      </div>
+
+      <Button buttonText='' isFormValid={props.isFormValid} classList='button_type_icon' />
+    </form>
   );
 }
 

@@ -1,4 +1,4 @@
-import { EMAIL_INPUT, PASSWORD_INPUT } from "./constants";
+import { EMAIL_INPUT, PASSWORD_INPUT, SEARCH_INPUT } from "./constants";
 
 /* Валидация полей формы */
 const validationInput = (inputID, value) => {
@@ -9,6 +9,10 @@ const validationInput = (inputID, value) => {
     }
     case PASSWORD_INPUT: {
       const validationResult = validatePassword(value);
+      return { ...validationResult }
+    }
+    case SEARCH_INPUT: {
+      const validationResult = validateSearch(value);
       return { ...validationResult }
     }
     default: {
@@ -115,6 +119,40 @@ const validatePassword = (value) => {
     }
     case (value.length < 8): {
       validationResult.errorText = 'Пароль должен содержать минимум 8 символов';
+      validationResult.isValid = false;
+      return validationResult;
+    }
+    default: {
+      validationResult.errorText = '';
+      validationResult.isValid = true;
+      return validationResult;
+    }
+  }
+}
+
+/* Валидация для поля search */
+const validateSearch = (value) => {
+  const validationResult = {
+    errorText: '',
+    isValid: false
+  }
+
+  let charList = value.match(/[^(а-я)^(\sA-Z)]/gi); // Регулярное выражение для проверки на содержание ненужных символов
+  if (charList === null) {
+    charList = [];
+  } else {
+    charList = charList.map((item) => { return item = '\"' + item + '\"'});
+  }
+
+  switch (true) {
+    case (value.length === 0): {
+      validationResult.errorText = 'Поле не должно быть пустым';
+      validationResult.isValid = false;
+      return validationResult;
+    }
+    case (charList.length !== 0): {
+      const chatListJoined = charList.join(' ');
+      validationResult.errorText = `Введены недопустимые символы: ${chatListJoined}`;
       validationResult.isValid = false;
       return validationResult;
     }

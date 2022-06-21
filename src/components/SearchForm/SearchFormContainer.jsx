@@ -1,19 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Search from './Search';
+import SearchForm from './SearchForm';
 import changeSearchTextActionCreator from '../../store/actionCreators/changeSearchTextActionCreator';
+import { SEARCH_INPUT } from '../../utils/constants';
+import { validationInput, validationForm } from '../../utils/validation';
+import changeSearchErrorInputTextActionCreator from '../../store/actionCreators/changeSearchErrorInputTextActionCreator';
 
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    searchText: state.weatherPage.search.inputTexts['search-text-input'],
-    // passwordValue: state.auth.inputTexts[PASSWORD_INPUT],
-    errorValidationSearchText: state.weatherPage.search.inputValidationErrors['search-text-input'],
-    // errorValidationTextPassword: state.auth.inputValidationErrors[PASSWORD_INPUT],
+    searchText: state.weatherPage.search.inputTexts[SEARCH_INPUT],
+    errorValidationSearchText: state.weatherPage.search.inputValidationErrors[SEARCH_INPUT],
     isFormValid: true,
-    // authResult: state.auth.authResult,
-    // userloginStatus: state.userloginStatus.isUserLogined
-    placeholder: 'Название города'
+    placeholder: 'Название города',
   }
 }
 
@@ -27,10 +26,10 @@ const mapDispatchToProps = (dispatch) => {
       const actionChangeSearchText = changeSearchTextActionCreator(inputID, value);
       dispatch(actionChangeSearchText);
       // // Диспатч ошибки валидации инпута
-      // const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
-      // const actionErrorInput = changeErrorInputTextActionCreator(inputID, validationInputResult.errorText);
-      // dispatch(actionErrorInput);
-      // // Диспатч ошибки валидации формы
+      const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
+      const actionSearchErrorInput = changeSearchErrorInputTextActionCreator(inputID, validationInputResult.errorText);
+      dispatch(actionSearchErrorInput);
+      // Диспатч ошибки валидации формы
       // const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
       // const actionFormValidation = changeFormValidityStateActionCreator(validationFormResult);
       // dispatch(actionFormValidation);
@@ -41,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 const SearchContainer = ({ ...props }) => {
 
   return (
-    <Search {...props} />
+    <SearchForm {...props} />
   )
 }
 

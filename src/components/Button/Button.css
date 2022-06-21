@@ -13,3 +13,17 @@
   background-color: rgb(238, 193, 17, .6);
   color: #c2c2c2;
 }
+
+.button_type_icon {
+  background-image: url(../../images/search-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  width: 60px;
+  transition: all 0.1s linear;
+}
+
+.button_type_icon:hover {
+  cursor: pointer;
+  background-size: 23px 23px;
+}

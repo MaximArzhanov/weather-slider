@@ -4,5 +4,16 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  gap: 5px;
+}
+
+.login-form__container {
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__container:last-of-type {
+  margin-bottom: 60px;
 }
