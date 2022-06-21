@@ -22,8 +22,8 @@ function Input(props) {
         autoComplete="off"
         onChange={handleChangeTextInput}
         value={props.value || ""}
-        required
-        minLength={props.minLength}
+        // required
+        // minLength={props.minLength}
       />
       <span className={classListErrorInput}>{props.errorText}</span>
     </div>

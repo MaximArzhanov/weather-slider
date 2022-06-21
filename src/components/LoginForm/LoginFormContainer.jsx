@@ -27,12 +27,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changeTextInput: (e) => { // При изменении текста происходит изменения стейт-переменных
-      validationInput(e, dispatch, changeErrorInputTextActionCreator); // Валидация поля
-      validationForm(e, dispatch, changeFormValidityStateActionCreator); // Валидация формы
       const inputID = e.target.id;
-      const text = e.target.value;
-      const action = changeTextInputActionCreator(inputID, text);
-      dispatch(action);
+      const value = e.target.value;
+      const form = e.target.closest('form');
+      // Диспатч изменения текста в инпуте
+      const actionChangeText = changeTextInputActionCreator(inputID, value);
+      dispatch(actionChangeText);
+      // Диспатч ошибки валидации инпута
+      const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
+      const actionErrorInput = changeErrorInputTextActionCreator(inputID, validationInputResult.errorText);
+      dispatch(actionErrorInput);
+      // Диспатч ошибки валидации формы
+      const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
+      const actionFormValidation = changeFormValidityStateActionCreator(validationFormResult);
+      dispatch(actionFormValidation);
     },
     clearField: () => { // Очистка полей ввода
       const action = clearTextInputsActionCreator();

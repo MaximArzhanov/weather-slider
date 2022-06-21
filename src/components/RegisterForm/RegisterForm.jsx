@@ -19,7 +19,7 @@ function RegisterForm(props) {
       <Input
         labelText={EMAIL}
         id={EMAIL_INPUT}
-        type={EMAIL_TYPE}
+        // type={EMAIL_TYPE}
         name={EMAIL_INPUT}
         errorText={props.errorValidationTextEmail}
         changeTextInput={props.changeTextInput}
@@ -34,7 +34,7 @@ function RegisterForm(props) {
         errorText={props.errorValidationTextPassword}
         changeTextInput={props.changeTextInput}
         value={props.passwordValue}
-        minLength={8}
+        // minLength={8}
       />
 
       <AuthError authResult={props.authResult} />
