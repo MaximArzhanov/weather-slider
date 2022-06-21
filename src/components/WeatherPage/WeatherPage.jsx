@@ -8,7 +8,7 @@ function WeatherPage(props) {
   return (
     <div className='weather-page'>
       <HeaderContainer />
-      <SearchContainer />
+      {/* <SearchContainer /> */}
     </div>
   );
 }
