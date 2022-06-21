@@ -3,8 +3,9 @@
   padding: 0;
   height: 60px;
   align-self: stretch;
-  background: #fff;
-  color: rgba(255, 255, 255, 1);
+  background: #3700b3;
+  box-shadow: 0 0 5px 2px #555;
+  color: #fff;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -15,12 +16,10 @@
 .header__button {
   margin: 0;
   margin-right: 20px;
-  padding: 10px 15px;
-  border-radius: 20px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+  padding: 5px 10px;
   border: none;
-  font-size: 20px;
-  background-color: rgb(238, 193, 17, 1);
+  font-size: 16px;
+  background-color: #3700b3;
   color: #fff;
   transition: all .1s linear;
 }
