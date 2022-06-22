@@ -10,6 +10,11 @@ import clearSearchErrorInputsActionCreator from '../../store/actionCreators/clea
 import clearSearchTextInputsActionCreator from '../../store/actionCreators/clearSearchTextInputsActionCreator';
 import searchCityWeatherThunkCreator from '../../store/thunkMiddlwares/searchCityWeatherThunkCreator';
 import resetSearchErrorTextAction from '../../store/actionCreators/resetSearchErrorTextActionCreator';
+import searchCurrentCityWeatherActionCreator from '../../store/actionCreators/searchCurrentCityWeatherActionCreator';
+
+const checkCityAlreadyAdded = (cityName ,cardWeatherList) => {
+  return cardWeatherList.some((card) => card.location.name === cityName);
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -17,6 +22,7 @@ const mapStateToProps = (state) => {
     errorValidationSearchText: state.weatherPage.search.inputValidationErrors[SEARCH_INPUT],
     isFormValid: state.weatherPage.search.isFormValid,
     placeholder: 'Название города',
+    cardWeatherList: state.weatherPage.weatherCards
     // searchResult: state.weatherPage.search.searchResult
   }
 }
@@ -51,10 +57,14 @@ const mapDispatchToProps = (dispatch) => {
     resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
       dispatch(changeSearchFormValidityStateActionCreator(false));
     },
-    submitSearchForm: (e, cityName) => { // Отправка формы авторизации
+    submitSearchForm: (e, cityName, cardWeatherList) => { // Отправка формы авторизации
       e.preventDefault();
       dispatch(resetSearchErrorTextAction()); // Сброс ошибки запроса
-      dispatch(searchCityWeatherThunkCreator(cityName));
+      if (checkCityAlreadyAdded(cityName, cardWeatherList)) {
+        dispatch(searchCurrentCityWeatherActionCreator({ isError: true, isSearchSuccess: false, message: 'Город уже добавлен'}));
+      } else {
+        dispatch(searchCityWeatherThunkCreator(cityName));
+      }
     },
     resetSearchErrorText: () => { // Сброс ошибки запроса
       dispatch(resetSearchErrorTextAction());
