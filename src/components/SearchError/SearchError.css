@@ -8,8 +8,6 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, .8);
   font-size: 16px;
   color: #fff;
-  /* background: #2e3a6a;
-  color: #dc2a65; */
   text-align: center;
   vertical-align: bottom;
   display: inline-block;
@@ -17,19 +15,19 @@
 
 .search-error_state_error {
   background: #dc2a65;
-  animation: move .1s 3 ease-in;
+  animation: tremble .1s 3 ease-in;
 }
 
 .search-error_state_success {
   background: #0abb65;
-  animation: show .6s 1 linear;
+  animation: smooth-appearance .6s 1 linear;
 }
 
 .search-error_state_disable {
   display: none;
 }
 
-@keyframes move {
+@keyframes tremble {
   13% {
     transform: translate(2px, 0);
   }
@@ -63,7 +61,7 @@
   }
 }
 
-@keyframes show {
+@keyframes smooth-appearance {
   0% {
     opacity: 0;
   }
