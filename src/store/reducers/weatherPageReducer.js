@@ -2,6 +2,7 @@ import initialState from '../initialStates/weatherPageInitialState';
 import CHANGE_SEARCH_TEXT from '../actions/changeSearchTextAction';
 import CHANGE_SEARCH_ERROR_INPUT_TEXT from '../actions/changeSearchErrorInputTextAction';
 import CHANGE_SEARCH_FORM_VALIDITY_STATE from '../actions/changeSearchFormValidityStateAction';
+import CLEAR_SEARCH_ERROR_INPUTS from '../actions/clearSearchErrorInputsAction';
 
 const weatherPageReducer = (state = initialState, action) => {
 
@@ -27,6 +28,13 @@ const weatherPageReducer = (state = initialState, action) => {
       const newState = { ...state };
       newState.search = { ...state.search };
       newState.search.isFormValid = action.state;
+      return newState;
+    }
+
+    case CLEAR_SEARCH_ERROR_INPUTS: {
+      const newState = { ...state };
+      newState.search.inputValidationErrors = { ...state.search.inputValidationErrors };
+      for (var key in newState.search.inputValidationErrors) { newState.search.inputValidationErrors[key] = '' }; // Перебор всех свойств в объекте newState.inputValidationErrors (Сброс ошибок валидации полей input)
       return newState;
     }
 

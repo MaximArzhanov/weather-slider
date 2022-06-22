@@ -6,6 +6,7 @@ import { SEARCH_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import changeSearchErrorInputTextActionCreator from '../../store/actionCreators/changeSearchErrorInputTextActionCreator';
 import changeSearchFormValidityStateActionCreator from '../../store/actionCreators/changeSearchFormValidityStateActionCreator';
+import clearSearchErrorInputsActionCreator from '../../store/actionCreators/clearSearchErrorInputsActionCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -33,11 +34,32 @@ const mapDispatchToProps = (dispatch) => {
       const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
       const actionFormValidation = changeSearchFormValidityStateActionCreator(validationFormResult);
       dispatch(actionFormValidation);
-    }
+    },
+    clearValidationErrors: () => { // Очистка полей с текстом ошибок валидации
+      const action = clearSearchErrorInputsActionCreator();
+      dispatch(action);
+    },
   }
 }
 
 const SearchContainer = ({ ...props }) => {
+
+  React.useEffect(() => {
+
+    // Скрытие поля с текстом ошибки при клике на любое место страницы, кроме самого поля ошибки
+    const handleClick = (e) => {
+      if (!e.target.classList.contains('input-valid-err')) {
+        props.clearValidationErrors();
+      }
+    }
+
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('click', handleClick);
+      props.clearValidationErrors();
+    }
+  }, []);
 
   return (
     <SearchForm {...props} />
