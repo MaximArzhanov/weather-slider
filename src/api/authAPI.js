@@ -11,21 +11,44 @@ export const authAPI = {
   /* Регистрирует пользователя (записывает в localStorage) */
   registerUser(email, password) {
     return new Promise(function (resolve, reject) {
+
+      let users = [];
+
+      if (localStorage.getItem('users')) {
+        users = JSON.parse(localStorage.getItem('users'));
+      } else {
+        localStorage.setItem('users', []);
+      }
+
       const user = { email: email, password: password };
       const result = {};
 
-      if (JSON.parse(localStorage.getItem(email))) { // Проверяет существует ли уже пользователь с такой почтой
+      if (users.some((user) => (user.email === email))) {
         result.isError = true;
         result.isAuthSuccess = false;
         result.message = USER_ALREADY_EXIST_MESSAGE;
         reject({ ...result });
       } else {
-        localStorage.setItem(email, JSON.stringify(user));
+        users.push({...user});
+        localStorage.setItem('users', JSON.stringify(users));
         result.isError = false;
         result.isAuthSuccess = true;
         result.message = USER_REGISTERED_SUCCESS_MESSAGE;
         resolve({ ...result });
       }
+
+      // if (JSON.parse(localStorage.getItem(email))) { // Проверяет существует ли уже пользователь с такой почтой
+      //   result.isError = true;
+      //   result.isAuthSuccess = false;
+      //   result.message = USER_ALREADY_EXIST_MESSAGE;
+      //   reject({ ...result });
+      // } else {
+      //   localStorage.setItem(email, JSON.stringify(user));
+      //   result.isError = false;
+      //   result.isAuthSuccess = true;
+      //   result.message = USER_REGISTERED_SUCCESS_MESSAGE;
+      //   resolve({ ...result });
+      // }
     });
   },
 
