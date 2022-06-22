@@ -44,6 +44,9 @@ const mapDispatchToProps = (dispatch) => {
       const action = clearSearchErrorInputsActionCreator();
       dispatch(action);
     },
+    resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
+      dispatch(changeSearchFormValidityStateActionCreator(false));
+    }
   }
 }
 
@@ -64,6 +67,7 @@ const SearchContainer = ({ ...props }) => {
       document.removeEventListener('click', handleClick);
       props.clearValidationErrors();
       props.clearTextInputs();
+      props.resetValidationForm();
     }
   }, []);
 
