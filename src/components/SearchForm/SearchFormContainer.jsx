@@ -5,13 +5,13 @@ import changeSearchTextActionCreator from '../../store/actionCreators/changeSear
 import { SEARCH_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import changeSearchErrorInputTextActionCreator from '../../store/actionCreators/changeSearchErrorInputTextActionCreator';
+import changeSearchFormValidityStateActionCreator from '../../store/actionCreators/changeSearchFormValidityStateActionCreator';
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     searchText: state.weatherPage.search.inputTexts[SEARCH_INPUT],
     errorValidationSearchText: state.weatherPage.search.inputValidationErrors[SEARCH_INPUT],
-    isFormValid: true,
+    isFormValid: state.weatherPage.search.isFormValid,
     placeholder: 'Название города',
   }
 }
@@ -30,9 +30,9 @@ const mapDispatchToProps = (dispatch) => {
       const actionSearchErrorInput = changeSearchErrorInputTextActionCreator(inputID, validationInputResult.errorText);
       dispatch(actionSearchErrorInput);
       // Диспатч ошибки валидации формы
-      // const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
-      // const actionFormValidation = changeFormValidityStateActionCreator(validationFormResult);
-      // dispatch(actionFormValidation);
+      const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
+      const actionFormValidation = changeSearchFormValidityStateActionCreator(validationFormResult);
+      dispatch(actionFormValidation);
     }
   }
 }
