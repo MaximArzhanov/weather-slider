@@ -7,6 +7,7 @@ import { validationInput, validationForm } from '../../utils/validation';
 import changeSearchErrorInputTextActionCreator from '../../store/actionCreators/changeSearchErrorInputTextActionCreator';
 import changeSearchFormValidityStateActionCreator from '../../store/actionCreators/changeSearchFormValidityStateActionCreator';
 import clearSearchErrorInputsActionCreator from '../../store/actionCreators/clearSearchErrorInputsActionCreator';
+import clearSearchTextInputsActionCreator from '../../store/actionCreators/clearSearchTextInputsActionCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -26,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
       // Диспатч изменения текста в инпуте
       const actionChangeSearchText = changeSearchTextActionCreator(inputID, value);
       dispatch(actionChangeSearchText);
-      // // Диспатч ошибки валидации инпута
+      // Диспатч ошибки валидации инпута
       const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
       const actionSearchErrorInput = changeSearchErrorInputTextActionCreator(inputID, validationInputResult.errorText);
       dispatch(actionSearchErrorInput);
@@ -34,6 +35,10 @@ const mapDispatchToProps = (dispatch) => {
       const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
       const actionFormValidation = changeSearchFormValidityStateActionCreator(validationFormResult);
       dispatch(actionFormValidation);
+    },
+    clearTextInputs: () => { // Очистка полей с текстом ошибок валидации
+      const action = clearSearchTextInputsActionCreator();
+      dispatch(action);
     },
     clearValidationErrors: () => { // Очистка полей с текстом ошибок валидации
       const action = clearSearchErrorInputsActionCreator();
@@ -58,6 +63,7 @@ const SearchContainer = ({ ...props }) => {
     return () => {
       document.removeEventListener('click', handleClick);
       props.clearValidationErrors();
+      props.clearTextInputs();
     }
   }, []);
 
