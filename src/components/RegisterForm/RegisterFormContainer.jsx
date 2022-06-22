@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
       const form = e.target.closest('form');
       // Диспатч изменения текста в инпуте
       const actionChangeText = changeTextInputActionCreator(inputID, value);
-      dispatch(actionChangeText);
+      dispatch(actionChangeText); // (1.1) можно в dispatch отправлять сразу dispatch(changeTextInputActionCreator(inputID, value))
       // Диспатч ошибки валидации инпута
       const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
       const actionErrorInput = changeErrorInputTextActionCreator(inputID, validationInputResult.errorText);
@@ -69,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const RegisterFormContainer = ({ ...props }) => {
 
-  let navigate = useNavigate();
+  let navigate = useNavigate(); // (3) если переменная не перезаписывается, то ее стоит объявить через const
 
   React.useEffect(() => {
     props.clearInput();
@@ -80,7 +80,7 @@ const RegisterFormContainer = ({ ...props }) => {
     return () => {
       props.resetAuthResult();
     }
-  }, []);
+  }, []); // (2) тут по аналогии с AppContainer
 
   React.useEffect(() => {
     if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
