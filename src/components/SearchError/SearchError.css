@@ -7,18 +7,26 @@
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, .8);
   font-size: 16px;
-  background: #dc2a65;
   color: #fff;
   /* background: #2e3a6a;
   color: #dc2a65; */
   text-align: center;
   vertical-align: bottom;
-  display: none;
+  display: inline-block;
 }
 
-.search-error_state_show {
-  display: inline-flex;
-  animation: move  .1s 3 ease-in;
+.search-error_state_error {
+  background: #dc2a65;
+  animation: move .1s 3 ease-in;
+}
+
+.search-error_state_success {
+  background: #0abb65;
+  animation: show .6s 1 linear;
+}
+
+.search-error_state_disable {
+  display: none;
 }
 
 @keyframes move {
@@ -52,5 +60,15 @@
 
   100% {
     transform: translate(0, 0);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

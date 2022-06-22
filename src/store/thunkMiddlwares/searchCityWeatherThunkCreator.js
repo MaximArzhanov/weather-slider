@@ -10,7 +10,7 @@ const searchCityWeatherThunkCreator = (cityName) => {
         const newResult = {
           isError: false,
           isSearchSuccess: true,
-          message: ''
+          message: 'Добавлен новый слайд'
         }
         dispatch(searchCurrentCityWeatherActionCreator(newResult));
       })

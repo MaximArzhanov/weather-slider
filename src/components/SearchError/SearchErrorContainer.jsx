@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchError from './SearchError';
+import resetSearchErrorTextAction from '../../store/actionCreators/resetSearchErrorTextActionCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +11,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    resetSearchErrorText: () => {
+      dispatch(resetSearchErrorTextAction());
+    }
   }
 }
 

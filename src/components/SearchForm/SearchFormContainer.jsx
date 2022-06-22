@@ -9,6 +9,7 @@ import changeSearchFormValidityStateActionCreator from '../../store/actionCreato
 import clearSearchErrorInputsActionCreator from '../../store/actionCreators/clearSearchErrorInputsActionCreator';
 import clearSearchTextInputsActionCreator from '../../store/actionCreators/clearSearchTextInputsActionCreator';
 import searchCityWeatherThunkCreator from '../../store/thunkMiddlwares/searchCityWeatherThunkCreator';
+import resetSearchErrorTextAction from '../../store/actionCreators/resetSearchErrorTextActionCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
       const inputID = e.target.id;
       const value = e.target.value;
       const form = e.target.closest('form');
+      dispatch(resetSearchErrorTextAction()); // Сброс ошибки запроса
       // Диспатч изменения текста в инпуте
       const actionChangeSearchText = changeSearchTextActionCreator(inputID, value);
       dispatch(actionChangeSearchText);
@@ -51,7 +53,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     submitSearchForm: (e, cityName) => { // Отправка формы авторизации
       e.preventDefault();
+      dispatch(resetSearchErrorTextAction()); // Сброс ошибки запроса
       dispatch(searchCityWeatherThunkCreator(cityName));
+    },
+    resetSearchErrorText: () => { // Сброс ошибки запроса
+      dispatch(resetSearchErrorTextAction());
     },
   }
 }
@@ -64,6 +70,9 @@ const SearchContainer = ({ ...props }) => {
     const handleClick = (e) => {
       if (!e.target.classList.contains('input-valid-err')) {
         props.clearValidationErrors();
+      }
+      if (!e.target.classList.contains('search-error')) {
+        props.resetSearchErrorText();
       }
     }
 

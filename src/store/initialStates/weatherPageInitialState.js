@@ -7,9 +7,9 @@ const initialState = {
       isError: false,
       isSearchSuccess: false,
       message: ''
-    },
-    weatherCards: []
-  }
+    }
+  },
+  weatherCards: []
 }
 
 export default initialState;
