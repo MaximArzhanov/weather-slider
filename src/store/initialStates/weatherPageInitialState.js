@@ -7,7 +7,8 @@ const initialState = {
       isError: false,
       isSearchSuccess: false,
       message: ''
-    }
+    },
+    weatherCards: []
   }
 }
 

@@ -12,10 +12,13 @@ const instance = axios.create({
 
 export const weatherAPI = {
 
-    getCurrentWeather(city) {
+    getCurrentWeather(cityName) {
         return instance.get('/current.json', {
-          key: API_KEY,
-          q: city
+          params: {
+            key: API_KEY,
+            q: cityName,
+            lang: 'ru'
+          }
         })
           .then((response) => { return response.data });
     },

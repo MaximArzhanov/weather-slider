@@ -1,0 +1,56 @@
+.search-error {
+  margin: 0;
+  margin-top: 10px;
+  padding: 10px;
+  max-width: 200px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .8);
+  font-size: 16px;
+  background: #dc2a65;
+  color: #fff;
+  /* background: #2e3a6a;
+  color: #dc2a65; */
+  text-align: center;
+  vertical-align: bottom;
+  display: none;
+}
+
+.search-error_state_show {
+  display: inline-flex;
+  animation: move  .1s 3 ease-in;
+}
+
+@keyframes move {
+  13% {
+    transform: translate(2px, 0);
+  }
+
+  26% {
+    transform: translate(4px, 0);
+  }
+
+  39% {
+    transform: translate(2px, 0);
+  }
+
+  52% {
+    transform: translate(0, 0);
+  }
+
+  65% {
+    transform: translate(-2px, 0);
+  }
+
+  76% {
+    transform: translate(-4px, 0);
+  }
+
+  88% {
+    transform: translate(-2px, 0);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

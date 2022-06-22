@@ -11,8 +11,12 @@ function Search(props) {
   //   props.changeTextInput(e);
   // }
 
+  const handleSubmit = (e) => {
+    props.submitSearchForm(e, props.searchText);
+  }
+
   return (
-    <form className='search-form'>
+    <form className='search-form' onSubmit={handleSubmit}>
       <div className="search-form__container">
         <Input
           labelText=''

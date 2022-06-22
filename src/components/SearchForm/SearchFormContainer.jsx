@@ -8,6 +8,7 @@ import changeSearchErrorInputTextActionCreator from '../../store/actionCreators/
 import changeSearchFormValidityStateActionCreator from '../../store/actionCreators/changeSearchFormValidityStateActionCreator';
 import clearSearchErrorInputsActionCreator from '../../store/actionCreators/clearSearchErrorInputsActionCreator';
 import clearSearchTextInputsActionCreator from '../../store/actionCreators/clearSearchTextInputsActionCreator';
+import searchCityWeatherThunkCreator from '../../store/thunkMiddlwares/searchCityWeatherThunkCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => {
     errorValidationSearchText: state.weatherPage.search.inputValidationErrors[SEARCH_INPUT],
     isFormValid: state.weatherPage.search.isFormValid,
     placeholder: 'Название города',
+    // searchResult: state.weatherPage.search.searchResult
   }
 }
 
@@ -46,7 +48,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
       dispatch(changeSearchFormValidityStateActionCreator(false));
-    }
+    },
+    submitSearchForm: (e, cityName) => { // Отправка формы авторизации
+      e.preventDefault();
+      dispatch(searchCityWeatherThunkCreator(cityName));
+    },
   }
 }
 
