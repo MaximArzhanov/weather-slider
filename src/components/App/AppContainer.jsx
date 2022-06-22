@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // (1.1) импортировать хуки можно так: import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import App from './App';
 import setUserLoginStatusActionCreator from '../../store/actionCreators/setUserLoginStatusActionCreator';
@@ -25,11 +25,11 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const AppContainer = ({ ...props }) => {
+const AppContainer = ({ ...props }) => { // (2.2) тогда пропсы можно объявить как { setInitialStates } (обычная деструктуризация)
 
-  React.useEffect(() => {
+  React.useEffect(() => { // (1.2) и использовать просто useEffect (без React.useEffect) ;
     props.setInitialStates();
-  }, []);
+  }, []); // (2.1) у useEffect должны быть зависимости, напимер [setInitialStates])
 
   return (
     <App {...props} />

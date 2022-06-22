@@ -14,6 +14,16 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case CHANGE_TEXT_INPUT: {
+      // (1) обычно принято писать через деструктуризацию:
+
+      // return {
+      //   ...state,
+      //   inputTexts: {
+      //     ...state.inputTexts,
+      //     [action.inputID]: action.text
+      //   }
+      // }
+
       const newState = { ...state };
       newState.inputTexts = { ...state.inputTexts };
       newState.inputTexts[action.inputID] = action.text; // Задаёт объекту inputTexts свойство с именем поля (Поле которое изменяется в данный момент)
