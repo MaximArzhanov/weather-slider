@@ -65,7 +65,7 @@ export const userAPI = {
   },
 
 
-  /* Обеспечивает вход пользователя в систему */
+  /* Добавляет новый город к данным текущего авторизованного пользователя */
   addCity(city, currentUser) {
     return new Promise(function (resolve, reject) {
 
@@ -79,10 +79,16 @@ export const userAPI = {
           const cities = [ ...user.cities ];              // Копирование сохранённого списка городов
 
           // Проверка: если пользователь уже добавил город
-          if (cities.includes(city)) { reject(createResultObject(true, false, USER_ALREADY_ADDED_CITY_MESSAGE)); }
+          if (cities.includes(city)) {
+            reject(createResultObject(true, false, USER_ALREADY_ADDED_CITY_MESSAGE));
+          }
           else {
             cities.push(city);    // Добавление названия города в массив названий городов
             user.cities = cities; // Запись массива названий городов к текущему пользователю
+
+            // Перезапись данных (Обновлённый список городов) текущего пользователя в localStorage
+            localStorage.removeItem(CURRENT_USER);
+            localStorage.setItem(CURRENT_USER, JSON.stringify(user));
           }
 
           return user;            // Возвращается изменённый объект user
@@ -91,7 +97,7 @@ export const userAPI = {
 
       // Запись обновлённого списка пользователей (Обновлён список городов у текущего пользователя) в localStorage
       localStorage.setItem(USERS, JSON.stringify(users));
-      resolve(createResultObject(true, false, NEW_CITY_ADDED_MESSAGE));
+      resolve(createResultObject(false, true, NEW_CITY_ADDED_MESSAGE));
     });
   }
 
