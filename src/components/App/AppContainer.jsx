@@ -9,7 +9,8 @@ import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
 
 const mapStateToProps = (state) => {
   return {
-    isLogined: state.userloginStatus.isUserLogined
+    isLogined: state.userloginStatus.isUserLogined,
+    weatherCards: state.weatherPage.weatherCards
   }
 }
 
@@ -19,8 +20,6 @@ const mapDispatchToProps = (dispatch) => {
       if (localStorage.getItem(IS_LOGINED)) { // Проверка на наличие текущего авторизованного пользователя
         dispatch(setUserLoginStatusActionCreator(true));
         dispatch(initialCityWeatherCardsThunkCreator());
-        // const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
-        // dispatch(setCurrentUserActionCreator(currentUser));
       } else { // Если пользователь не авторизован
         dispatch(setUserLoginStatusActionCreator(false));
       }
@@ -30,9 +29,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const AppContainer = ({ ...props }) => {
 
-  // React.useEffect(() => {
-  //   props.setInitialStates();
-  // }, [props.isLogined]);
+  React.useEffect(() => {
+    props.setInitialStates();
+  }, [props.isLogined]);
 
   return (
     <App {...props} />

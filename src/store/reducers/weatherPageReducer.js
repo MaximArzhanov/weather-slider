@@ -7,6 +7,7 @@ import CLEAR_SEARCH_TEXT_INPUTS from '../actions/clearSearchTextInputsAction';
 import ADD_NEW_CARD_CITY_WEATHER from '../actions/addNewCardCityWeatherAction';
 import UPDATE_SEARCH_WEATHER_ERROR from '../actions/updateSearchWeatherErrorAction';
 import RESET_SEARCH_ERROR_TEXT from '../actions/resetSearchErrorTextAction';
+import INITIAL_CITY_WEATHER_CARDS from '../actions/initialCityWeatherCardsAction';
 
 const weatherPageReducer = (state = initialState, action) => {
 
@@ -72,6 +73,12 @@ const weatherPageReducer = (state = initialState, action) => {
       newState.search.searchResult.isError = false;
       newState.search.searchResult.isRequestSuccessful = true;
       newState.search.searchResult.message = '';
+      return newState;
+    }
+
+    case INITIAL_CITY_WEATHER_CARDS: {
+      const newState = { ...state };
+      newState.weatherCards = [ ...action.weatherCards ];
       return newState;
     }
 

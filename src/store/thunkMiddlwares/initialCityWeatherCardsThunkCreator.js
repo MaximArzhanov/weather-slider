@@ -1,8 +1,9 @@
 import { weatherAPI } from '../../api/weatherAPI';
 import { userAPI } from '../../api/userAPI';
-import { IS_LOGINED } from '../../utils/constants';
+import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
 import setCurrentUserActionCreator from '../actionCreators/setCurrentUserActionCreator';
 import setUserLoginStatusActionCreator from '../actionCreators/setUserLoginStatusActionCreator';
+import initialCityWeatherCardsActionCreator from '../actionCreators/initialCityWeatherCardsActionCreator';
 
 const initialCityWeatherCardsThunkCreator = () => {
   return (dispatch) => {
@@ -10,40 +11,21 @@ const initialCityWeatherCardsThunkCreator = () => {
 
       .then((result) => {
         dispatch(setCurrentUserActionCreator(result.currentUser));
-
-        Promise.all(
-          result.currentUser.cities.map((cityName) => {    // Нужно дождаться когда придут ответы по всем запросам
-            return weatherAPI.getCurrentWeather(cityName); // Создаёт запрос к weatherAPI для каждого города из списка (города, которые пользователь добавил в слайдер)
-          })
-        )
-
-          .then((currentCityWeather) => {
-            // Если запрос к weatherAPI прошёл успешно, то отправляется запрос на обновление списка городов для текущего пользователя
-            // dispatch(addNewCardCityWeatherActionCreator(currentCityWeather));
-            // dispatch(updateSearchWeatherErrorActionCreator(result.isError, result.isRequestSuccessful, result.message));
-
-
-
-          })
-          // Если ответ от weatherAPI пришёл с ошибкой
+        // Нужно дождаться когда придут ответы по всем запросам
+        // Создаёт запрос к weatherAPI для каждого города из списка (города, которые пользователь добавил в слайдер)
+        Promise.all(result.currentUser.cities.map(cityName => weatherAPI.getCurrentWeather(cityName)))
+          // Диспатчится весь массив с информацией о текущей погоде в городах
+          .then(currentCityWeatherList => dispatch(initialCityWeatherCardsActionCreator(currentCityWeatherList)))
           .catch((result) => {
-            // try {
-            //   if (result.response.data.error.code === CITY_WAS_NOT_FOUND_CODE) {
-            //     dispatch(updateSearchWeatherErrorActionCreator(true, false, CITY_WAS_NOT_FOUND_MESSAGE));
-            //   }
-            // }
-            // catch (error) {
-            //   dispatch(updateSearchWeatherErrorActionCreator(true, false, UNKNOWN_ERROR_MESSAGE));
-            // }
-
-
-
+            // TODO: сюда нужно будет дописать логику обработки ошибки при запросе текущей погоды в списке городов
+            console.log(result);
           });
 
       })
-
       .catch((result) => {
+        // Если текущий пользователь не установлен, то снимается флаг isLogined
         localStorage.removeItem(IS_LOGINED);
+        localStorage.removeItem(CURRENT_USER);
         dispatch(setUserLoginStatusActionCreator(false));
       });
 

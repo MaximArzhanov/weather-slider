@@ -93,18 +93,14 @@ export const userAPI = {
   /* Добавляет новый город к данным текущего авторизованного пользователя */
   getCurrentUser() {
     return new Promise(function (resolve, reject) {
-
       const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
-
       if (currentUser) {
-        currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
         const result = createResultObject(false, true, 'Текущий пользователь найден');
         result.currentUser = currentUser;
         resolve(result);
       } else {
         resolve(createResultObject(true, false, 'Текущий пользователь не найден'));
       }
-
     });
   }
 
