@@ -49,7 +49,8 @@ export const userAPI = {
       const user = users.find((user) => user.email === email);              // Поиск пользователя по email
       if (user) {                                                           // Если пользователь найден
         if (user.password === password) {
-          localStorage.setItem(CURRENT_USER, JSON.stringify(result.user));  // Записывает текщего пользователя в localStorage
+
+          localStorage.setItem(CURRENT_USER, JSON.stringify(user));  // Записывает текщего пользователя в localStorage
           localStorage.setItem(IS_LOGINED, true);                           // Записывает в localStorage флаг о том, что пользователь авторизовался
 
           const result = createResultObject(false, true, USER_LOGINED_SUCCESS_MESSAGE);
@@ -59,7 +60,6 @@ export const userAPI = {
       } else {  reject(createResultObject(true, false, USER_DOES_NOT_EXIST_MESSAGE));  }
     });
   },
-
 
   /* Добавляет новый город к данным текущего авторизованного пользователя */
   addCity(city, currentUser) {
@@ -88,8 +88,24 @@ export const userAPI = {
       localStorage.setItem(USERS, JSON.stringify(users));
       resolve(createResultObject(false, true, NEW_CITY_ADDED_MESSAGE));
     });
+  },
+
+  /* Добавляет новый город к данным текущего авторизованного пользователя */
+  getCurrentUser() {
+    return new Promise(function (resolve, reject) {
+
+      const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
+
+      if (currentUser) {
+        currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
+        const result = createResultObject(false, true, 'Текущий пользователь найден');
+        result.currentUser = currentUser;
+        resolve(result);
+      } else {
+        resolve(createResultObject(true, false, 'Текущий пользователь не найден'));
+      }
+
+    });
   }
-
-
 
 }
