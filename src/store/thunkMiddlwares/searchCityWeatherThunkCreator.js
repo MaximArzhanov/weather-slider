@@ -2,6 +2,11 @@ import { weatherAPI } from '../../api/weatherAPI';
 import { userAPI } from '../../api/userAPI';
 import updateSearchWeatherErrorActionCreator from '../actionCreators/updateSearchWeatherErrorActionCreator';
 import addNewCardCityWeatherActionCreator from '../actionCreators/addNewCardCityWeatherActionCreator';
+import {
+  CITY_WAS_NOT_FOUND_MESSAGE,
+  UNKNOWN_ERROR_MESSAGE,
+  CITY_WAS_NOT_FOUND_CODE
+} from '../../utils/constants'
 
 const searchCityWeatherThunkCreator = (cityName, currentUser) => {
   return (dispatch) => {
@@ -15,21 +20,19 @@ const searchCityWeatherThunkCreator = (cityName, currentUser) => {
             dispatch(updateSearchWeatherErrorActionCreator(result.isError, result.isRequestSuccessful, result.message));
           })
           .catch((result) => {
-            console.log(result);
             dispatch(updateSearchWeatherErrorActionCreator(result));
           })
-
       })
 
       // Если ответ от weatherAPI пришёл с ошибкой
       .catch((result) => {
         try {
-          if (result.response.data.error.code === 1006) {
-            dispatch(updateSearchWeatherErrorActionCreator(true, false, 'Город не найден'));
+          if (result.response.data.error.code === CITY_WAS_NOT_FOUND_CODE) {
+            dispatch(updateSearchWeatherErrorActionCreator(true, false, CITY_WAS_NOT_FOUND_MESSAGE));
           }
         }
         catch (error) {
-          dispatch(updateSearchWeatherErrorActionCreator(true, false, 'Неизвестная ошибка'));
+          dispatch(updateSearchWeatherErrorActionCreator(true, false, UNKNOWN_ERROR_MESSAGE));
         }
       });
 
