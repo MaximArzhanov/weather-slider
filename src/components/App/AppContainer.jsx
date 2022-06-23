@@ -29,7 +29,7 @@ const AppContainer = ({ ...props }) => {
 
   React.useEffect(() => {
     props.setInitialStates();
-  }, []);
+  }, [props.isLogined]);
 
   return (
     <App {...props} />

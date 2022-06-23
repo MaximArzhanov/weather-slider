@@ -3,8 +3,18 @@ import {
   USER_REGISTERED_SUCCESS_MESSAGE,
   USER_LOGINED_SUCCESS_MESSAGE,
   WRONG_EMAIL_OR_PASSWORD_MESSAGE,
-  USER_DOES_NOT_EXIST_MESSAGE
+  USER_DOES_NOT_EXIST_MESSAGE,
+  IS_LOGINED,
+  CURRENT_USER,
+  USERS,
+  NEW_CITY_ADDED_MESSAGE,
+  USER_ALREADY_ADDED_CITY_MESSAGE
 } from "../utils/constants";
+
+const createResultObject = (isError, isRequestSuccessful, message) => {
+  const result = { isError: isError, isRequestSuccessful: isRequestSuccessful, message: message }
+  return { ...result };
+}
 
 export const userAPI = {
 
@@ -13,28 +23,19 @@ export const userAPI = {
     return new Promise(function (resolve, reject) {
 
       let users = [];
-      const result = {};
 
-      if (localStorage.getItem('users')) {  // Если в localStorage есть массив пользователей то массив сохраняется в переменную
-        users = JSON.parse(localStorage.getItem('users'));
-      } else {
-        localStorage.setItem('users', []);  // Если в localStorage нет массива пользователей то записывается пустой массив
-      }
+      // Если в localStorage есть массив пользователей то массив сохраняется в переменную, иначе в переменную записывается пустой массив
+      if (localStorage.getItem(USERS)) { users = JSON.parse(localStorage.getItem(USERS)); }
+      else { localStorage.setItem(USERS, []); }
 
       const user = { email: email, password: password };
 
-      if (users.some((user) => (user.email === email))) {
-        result.isError = true;
-        result.isRequestSuccessful = false;
-        result.message = USER_ALREADY_EXIST_MESSAGE;
-        reject({ ...result });
+      if (users.some((user) => (user.email === email))) {       // Поиск уже существующего пользователя с таким email
+        reject(createResultObject(true, false, USER_ALREADY_EXIST_MESSAGE));
       } else {
         users.push({...user});
-        localStorage.setItem('users', JSON.stringify(users));
-        result.isError = false;
-        result.isRequestSuccessful = true;
-        result.message = USER_REGISTERED_SUCCESS_MESSAGE;
-        resolve({ ...result });
+        localStorage.setItem(USERS, JSON.stringify(users));   // Запись обновлённого списка пользователей в localStorage
+        resolve(createResultObject(false, true, USER_REGISTERED_SUCCESS_MESSAGE));
       }
     });
   },
@@ -44,33 +45,22 @@ export const userAPI = {
     return new Promise(function (resolve, reject) {
 
       let users = [];
-      const result = {};
 
-      if (localStorage.getItem('users')) {  // Если в localStorage есть массив пользователей то массив сохраняется в переменную
-        users = JSON.parse(localStorage.getItem('users'));
-      }
+      // Если в localStorage есть массив пользователей то массив сохраняется в переменную
+      if (localStorage.getItem(USERS)) { users = JSON.parse(localStorage.getItem(USERS)); }
 
-      const user = users.find((user) => user.email === email);
+      const user = users.find((user) => user.email === email);              // Поиск пользователя по email
 
       if (user) {
         if (user.password === password) {
-          result.isError = false;
-          result.isRequestSuccessful = true;
-          result.message = USER_LOGINED_SUCCESS_MESSAGE;
+          localStorage.setItem(CURRENT_USER, JSON.stringify(result.user));  // Записывает текщего пользователя в localStorage
+          localStorage.setItem(IS_LOGINED, true);                           // Записывает в localStorage флаг о том, что пользователь авторизовался
+
+          const result = createResultObject(false, true, USER_LOGINED_SUCCESS_MESSAGE);
           result.user = user;
-          resolve({ ...result });
-        } else {
-          result.isError = true;
-          result.isRequestSuccessful = false;
-          result.message = WRONG_EMAIL_OR_PASSWORD_MESSAGE;
-          reject({ ...result });
-        }
-      } else {
-        result.isError = true;
-        result.isRequestSuccessful = false;
-        result.message = USER_DOES_NOT_EXIST_MESSAGE;
-        reject({ ...result });
-      }
+          resolve(result);
+        } else { reject(createResultObject(true, false, WRONG_EMAIL_OR_PASSWORD_MESSAGE));  }
+      } else {  reject(createResultObject(true, false, USER_DOES_NOT_EXIST_MESSAGE));  }
     });
   },
 
@@ -79,56 +69,29 @@ export const userAPI = {
   addCity(city, currentUser) {
     return new Promise(function (resolve, reject) {
 
-      const result = {};
-      const usersInLocalStorage = JSON.parse(localStorage.getItem('users'));
+      const usersInLocalStorage = JSON.parse(localStorage.getItem(USERS));
 
       const users = usersInLocalStorage.map((user) => {   // Проход по всем пользователям в localStorage
         if (user.email === currentUser.email) {           // Поиск текущего авторизованного пользователя
 
-          if (!user.cities) {
-            user.cities = [];
-          }
+          if (!user.cities) {  user.cities = [];  }       // Если пользователь не сохранил ни одного города, то создаётся пустой массив
 
           const cities = [ ...user.cities ];              // Копирование сохранённого списка городов
-          if (cities.includes(city)) {                    // Проверка: если пользователь уже добавил город
-            result.isError = true;
-            result.isRequestSuccessful = false;
-            result.message = 'Пользователь уже добавил этот город';
-            reject({ ...result });
-          } else {
+
+          // Проверка: если пользователь уже добавил город
+          if (cities.includes(city)) { reject(createResultObject(true, false, USER_ALREADY_ADDED_CITY_MESSAGE)); }
+          else {
             cities.push(city);    // Добавление названия города в массив названий городов
             user.cities = cities; // Запись массива названий городов к текущему пользователю
           }
 
-          // user.cities = [ ...user.cities, city]
           return user;            // Возвращается изменённый объект user
         }
       })
 
-      localStorage.setItem('users', JSON.stringify(users));
-      result.isError = false;
-      result.isRequestSuccessful = true;
-      result.message = 'Добавлен новый слайд';
-      resolve({ ...result });
-
-
-      // try {
-      //   const cityList = props.cardWeatherList.map((card) => {
-      //     return card.location.name;
-      //   })
-      //   const usersInLocalStorage = JSON.parse(localStorage.getItem('users'));
-      //   const users = usersInLocalStorage.map((user) => {
-      //     if (user.email === props.currentUser.email) {
-      //       user.cities = cityList;
-      //       return user;
-      //     }
-      //   })
-      //   localStorage.setItem('users', JSON.stringify(users));
-
-      // } catch (error) {
-      //   console.log(error);
-      // }
-
+      // Запись обновлённого списка пользователей (Обновлён список городов у текущего пользователя) в localStorage
+      localStorage.setItem(USERS, JSON.stringify(users));
+      resolve(createResultObject(true, false, NEW_CITY_ADDED_MESSAGE));
     });
   }
 

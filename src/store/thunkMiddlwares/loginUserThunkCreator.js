@@ -11,8 +11,8 @@ const loginUserThunkCreator = (email, password) => {
         dispatch(loginUserActionCreator(result));
         dispatch(setCurrentUserActionCreator(result.user));
         dispatch(setUserLoginStatusActionCreator(true));
-        localStorage.setItem(CURRENT_USER, JSON.stringify(result.user));
-        localStorage.setItem(IS_LOGINED, true);
+        // localStorage.setItem(CURRENT_USER, JSON.stringify(result.user));
+        // localStorage.setItem(IS_LOGINED, true);
       })
       .catch((result) => {
         dispatch(loginUserActionCreator(result));
