@@ -3,7 +3,7 @@ const initialState = {
   inputValidationErrors: {},
   authResult: {
     isError: false,
-    isAuthSuccess: false,
+    isRequestSuccessful: false,
     message: ''
   },
   isFormValid: false

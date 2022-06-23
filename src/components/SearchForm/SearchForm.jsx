@@ -12,7 +12,7 @@ function Search(props) {
   // }
 
   const handleSubmit = (e) => {
-    props.submitSearchForm(e, props.searchText, props.cardWeatherList);
+    props.submitSearchForm(e, props.searchText, props.cardWeatherList, props.currentUser);
   }
 
   return (

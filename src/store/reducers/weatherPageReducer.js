@@ -5,7 +5,7 @@ import CHANGE_SEARCH_FORM_VALIDITY_STATE from '../actions/changeSearchFormValidi
 import CLEAR_SEARCH_ERROR_INPUTS from '../actions/clearSearchErrorInputsAction';
 import CLEAR_SEARCH_TEXT_INPUTS from '../actions/clearSearchTextInputsAction';
 import ADD_NEW_CARD_CITY_WEATHER from '../actions/addNewCardCityWeatherAction';
-import SEARCH_CURRENT_CITY_WEATHER from '../actions/searchCurrentCityWeatherAction';
+import UPDATE_SEARCH_WEATHER_ERROR from '../actions/updateSearchWeatherErrorAction';
 import RESET_SEARCH_ERROR_TEXT from '../actions/resetSearchErrorTextAction';
 
 const weatherPageReducer = (state = initialState, action) => {
@@ -51,7 +51,7 @@ const weatherPageReducer = (state = initialState, action) => {
       return newState;
     }
 
-    case SEARCH_CURRENT_CITY_WEATHER: {
+    case UPDATE_SEARCH_WEATHER_ERROR: {
       const newState = { ...state };
       newState.search = { ...state.search };
       newState.search.searchResult = { ...action.result };
@@ -70,9 +70,8 @@ const weatherPageReducer = (state = initialState, action) => {
       newState.search = { ...state.search };
       newState.search.searchResult = { ...state.search.searchResult };
       newState.search.searchResult.isError = false;
-      newState.search.searchResult.isSearchSuccess = true;
+      newState.search.searchResult.isRequestSuccessful = true;
       newState.search.searchResult.message = '';
-      console.log(newState);
       return newState;
     }
 

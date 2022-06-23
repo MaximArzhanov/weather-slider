@@ -1,9 +1,9 @@
-import { authAPI } from '../../api/authAPI';
+import { userAPI } from '../../api/userAPI';
 import registerUserActionCreator from '../actionCreators/registerUserActionCreator';
 
 const registerUserThunkCreator = (email, password) => {
   return (dispatch) => {
-    authAPI.registerUser(email, password)
+    userAPI.registerUser(email, password)
       .then((result) => {
         dispatch(registerUserActionCreator(result));
       })

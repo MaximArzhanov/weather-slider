@@ -11,7 +11,7 @@ function SearchError(props) {
     ? `${classList} search-error_state_error`
     : classList;
 
-  classList = props.searchResult.isSearchSuccess
+  classList = props.searchResult.isRequestSuccessful
     ? `${classList} search-error_state_success`
     : classList;
 

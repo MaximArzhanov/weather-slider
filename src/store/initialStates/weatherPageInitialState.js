@@ -5,7 +5,7 @@ const initialState = {
     isFormValid: false,
     searchResult: {
       isError: false,
-      isSearchSuccess: false,
+      isRequestSuccessful: false,
       message: ''
     }
   },
