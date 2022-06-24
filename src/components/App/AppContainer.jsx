@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import App from './App';
 import { IS_LOGINED } from '../../utils/constants';
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const AppContainer = ({ ...props }) => {
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.setInitialStates();
   }, [props.isLogined]);
 

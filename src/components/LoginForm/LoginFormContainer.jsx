@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import LoginForm from './LoginForm';
@@ -68,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
 const LoginFormContainer = ({ ...props }) => {
 
   let navigate = useNavigate();
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       props.clearField();
       props.clearErrors();
@@ -77,7 +77,7 @@ const LoginFormContainer = ({ ...props }) => {
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
   }, [props.userloginStatus]);
 

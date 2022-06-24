@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import SearchForm from './SearchForm';
 import { SEARCH_INPUT } from '../../utils/constants';
@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const SearchContainer = ({ ...props }) => {
 
-  React.useEffect(() => {
+  useEffect(() => {
 
     // Скрытие поля с текстом ошибки при клике на любое место страницы, кроме самого поля ошибки
     const handleClick = (e) => {

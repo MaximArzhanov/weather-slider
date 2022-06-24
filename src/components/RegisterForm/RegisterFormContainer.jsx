@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import RegisterForm from './RegisterForm';
 import registerUserThunkCreator from '../../store/thunkMiddlwares/registerUserThunkCreator';
@@ -73,7 +73,7 @@ const RegisterFormContainer = ({ ...props }) => {
 
   let navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.clearInput();
     props.clearErrors();
     props.clearAuthErrorText();
@@ -84,11 +84,11 @@ const RegisterFormContainer = ({ ...props }) => {
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
   }, [props.userloginStatus]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.authResult.isAuthSuccess) { // При успешной регистрации происходит редирект на страницу авторизации
       navigate('/signin');
     }

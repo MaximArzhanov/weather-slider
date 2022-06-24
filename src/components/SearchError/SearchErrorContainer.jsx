@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import SearchError from './SearchError';
 import { resetSearchErrorTextAction } from '../../store/actionCreators/actionCreators';
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const SearchErrorContainer = ({ ...props }) => {
 
-  React.useEffect(() => {
+  useEffect(() => {
 
   }, [])
 
