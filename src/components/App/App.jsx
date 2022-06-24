@@ -3,8 +3,8 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import WeatherPage from '../WeatherPage/WeatherPage';
 import AuthPage from '../AuthPage/AuthPage';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
+import LoginFormContainer from '../LoginForm/LoginFormContainer';
+import RegisterFormContainer from '../RegisterForm/RegisterFormContainer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 function App(props) {
@@ -15,9 +15,9 @@ function App(props) {
 
         <Route exact path="/" element={<ProtectedRoute isLogined={props.isLogined} component={WeatherPage}/>}/>
 
-        <Route path="signin" element={<AuthPage> <Login /> </AuthPage>}/>
+        <Route path="signin" element={<AuthPage> <LoginFormContainer /> </AuthPage>}/>
 
-        <Route path="signup" element={<AuthPage> <Register /> </AuthPage>} />
+        <Route path="signup" element={<AuthPage> <RegisterFormContainer /> </AuthPage>} />
 
       </Routes>
     </div>
