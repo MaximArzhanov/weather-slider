@@ -36,7 +36,7 @@ const validateEmail = (value) => {
   if (charList === null) {
     charList = [];
   } else {
-    charList = charList.map((item) => { return item = '\"' + item + '\"'});
+    charList = charList.map((item) => { return item = '"' + item + '"'});
   }
 
   let atCharList = value.match(/[@]/gi); // Регулярное выражение для проверки на содержание количества символов @
@@ -46,7 +46,7 @@ const validateEmail = (value) => {
 
   switch (true) {
     case (value.length === 0): {
-      validationResult.errorText = 'Поле \"Почта\" не должно быть пустым';
+      validationResult.errorText = 'Поле "Почта" не должно быть пустым';
       validationResult.isValid = false;
       return validationResult;
     }
@@ -71,7 +71,7 @@ const validateEmail = (value) => {
       return validationResult;
     }
     case (atCharList.length > 1): {
-      validationResult.errorText = 'В email должен быть только один символ \"@\"';
+      validationResult.errorText = 'В email должен быть только один символ "@"';
       validationResult.isValid = false;
       return validationResult;
     }
@@ -108,7 +108,7 @@ const validatePassword = (value) => {
 
   switch (true) {
     case (value.length === 0): {
-      validationResult.errorText = 'Поле \"Пароль\" не должно быть пустым';
+      validationResult.errorText = 'Поле "Пароль" не должно быть пустым';
       validationResult.isValid = false;
       return validationResult;
     }
@@ -141,7 +141,7 @@ const validateSearch = (value) => {
   if (charList === null) {
     charList = [];
   } else {
-    charList = charList.map((item) => { return item = '\"' + item + '\"'});
+    charList = charList.map((item) => { return item = '"' + item + '"'});
   }
 
   switch (true) {

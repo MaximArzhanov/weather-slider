@@ -60,7 +60,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         authResult: {
           ...state.authResult,
-          isAuthSuccess: false
+          isRequestSuccessful: false
         }
       }
     }

@@ -52,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
       e.preventDefault();
       dispatch(registerUserThunkCreator(email, password));
     },
-    resetAuthResult: () => { // Сброс статуса регистрации (isAuthSuccess)
+    resetAuthResult: () => { // Сброс статуса регистрации (isRequestSuccessful)
       dispatch(resetAuthResultActionCreator());
     },
     clearAuthErrorText: () => { // Очистка текста ошибки при авторизации
@@ -65,6 +65,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const RegisterFormContainer = ({ ...props }) => {
+
   const navigate = useNavigate();
 
   const {
@@ -77,7 +78,7 @@ const RegisterFormContainer = ({ ...props }) => {
     resetAuthResult
   } = props;
 
-  const { isAuthSuccess } = authResult;
+  const { isRequestSuccessful } = authResult;
 
   useEffect(() => {
     clearInput();
@@ -95,10 +96,11 @@ const RegisterFormContainer = ({ ...props }) => {
   }, [userloginStatus, navigate]);
 
   useEffect(() => {
-    if (isAuthSuccess) { // При успешной регистрации происходит редирект на страницу авторизации
+    if (isRequestSuccessful) { // При успешной регистрации происходит редирект на страницу авторизации
+      console.log(isRequestSuccessful);
       navigate('/signin');
     }
-  }, [isAuthSuccess, navigate]);
+  }, [isRequestSuccessful, navigate]);
 
   return (
     <RegisterForm {...props} />

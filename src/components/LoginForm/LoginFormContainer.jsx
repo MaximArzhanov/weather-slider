@@ -11,7 +11,8 @@ import {
   clearErrorInputsActionCreator,
   changeErrorInputTextActionCreator,
   changeFormValidityStateActionCreator,
-  clearAuthErrorTextActionCreator
+  clearAuthErrorTextActionCreator,
+  resetAuthResultActionCreator,
 } from '../../store/actionCreators/actionCreators';
 
 const mapStateToProps = (state) => {
@@ -56,17 +57,24 @@ const mapDispatchToProps = (dispatch) => {
     },
     resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
       dispatch(changeFormValidityStateActionCreator(false));
-    }
+    },
+    resetAuthResult: () => { // Сброс статуса регистрации (isRequestSuccessful)
+      dispatch(resetAuthResultActionCreator());
+    },
   }
 }
 
 const LoginFormContainer = ({ ...props }) => {
-  const { userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm } = props;
+  const { userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
 
-    if (userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
+    resetAuthResult();
+
+    if (userloginStatus) {
+      navigate('/')
+    }; // Если вход в систему выполнен, то редирект на главную страницу
 
     return () => { // При размонтировании компонента Login сбрасываются поля и ошибки
       clearField();
@@ -74,7 +82,7 @@ const LoginFormContainer = ({ ...props }) => {
       clearAuthErrorText();
       resetValidationForm();
     }
-  }, [userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, navigate]);
+  }, [userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult, navigate]);
 
   return (
     <LoginForm {...props} />
