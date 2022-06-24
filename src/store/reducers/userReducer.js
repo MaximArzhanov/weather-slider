@@ -10,21 +10,15 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case SET_CURRENT_USER: {
-      const newState = { ...state };
-      newState.currentUser = { ...action.user };
-      return newState;
+      return { ...state, currentUser: { ...action.user } }
     }
 
     case UPDATE_CURRENT_USER: {
-      const newState = { ...state };
-      newState.currentUser = { ...action.currentUser };
-      return newState;
+      return { ...state, currentUser: { ...action.currentUser } }
     }
 
     case RESET_CURRENT_USER: {
-      const newState = { ...state };
-      newState.currentUser = {};
-      return newState;
+      return { ...state, currentUser: {} }
     }
 
     default:
