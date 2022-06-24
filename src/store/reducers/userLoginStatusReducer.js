@@ -8,9 +8,7 @@ const userLoginStatusReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case SET_USER_LOGIN_STATUS: {
-      const newState = { ...state };
-      newState.isUserLogined = action.userLoginStatus
-      return newState;
+      return { ...state, isUserLogined: action.userLoginStatus }
     }
 
     default:
