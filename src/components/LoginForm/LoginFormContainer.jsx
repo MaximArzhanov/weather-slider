@@ -61,21 +61,20 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const LoginFormContainer = ({ ...props }) => {
-
+  const { userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
-    return () => {
-      props.clearField();
-      props.clearErrors();
-      props.clearAuthErrorText();
-      props.resetValidationForm();
-    }
-  }, []);
 
-  useEffect(() => {
-    if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
-  }, [props.userloginStatus]);
+    if (userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
+
+    return () => { // При размонтировании компонента Login сбрасываются поля и ошибки
+      clearField();
+      clearErrors();
+      clearAuthErrorText();
+      resetValidationForm();
+    }
+  }, [userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, navigate]);
 
   return (
     <LoginForm {...props} />

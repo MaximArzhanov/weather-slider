@@ -65,29 +65,40 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const RegisterFormContainer = ({ ...props }) => {
-
   const navigate = useNavigate();
 
+  const {
+    userloginStatus,
+    authResult,
+    clearInput,
+    clearErrors,
+    clearAuthErrorText,
+    resetValidationForm,
+    resetAuthResult
+  } = props;
+
+  const { isAuthSuccess } = authResult;
+
   useEffect(() => {
-    props.clearInput();
-    props.clearErrors();
-    props.clearAuthErrorText();
-    props.resetValidationForm();
+    clearInput();
+    clearErrors();
+    clearAuthErrorText();
+    resetValidationForm();
 
     return () => {
-      props.resetAuthResult();
+      resetAuthResult();
     }
-  }, []);
+  }, [clearInput, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult]);
 
   useEffect(() => {
-    if (props.userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
-  }, [props.userloginStatus]);
+    if (userloginStatus) { navigate('/') }; // Если вход в систему выполнен, то редирект на главную страницу
+  }, [userloginStatus, navigate]);
 
   useEffect(() => {
-    if (props.authResult.isAuthSuccess) { // При успешной регистрации происходит редирект на страницу авторизации
+    if (isAuthSuccess) { // При успешной регистрации происходит редирект на страницу авторизации
       navigate('/signin');
     }
-  }, [props.authResult.isAuthSuccess]);
+  }, [isAuthSuccess, navigate]);
 
   return (
     <RegisterForm {...props} />

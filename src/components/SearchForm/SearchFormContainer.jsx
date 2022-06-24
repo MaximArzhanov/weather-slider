@@ -72,15 +72,22 @@ const mapDispatchToProps = (dispatch) => {
 
 const SearchContainer = ({ ...props }) => {
 
+  const {
+    clearValidationErrors,
+    resetSearchErrorText,
+    clearTextInputs,
+    resetValidationForm
+  } = props;
+
   useEffect(() => {
 
     // Скрытие поля с текстом ошибки при клике на любое место страницы, кроме самого поля ошибки
     const handleClick = (e) => {
       if (!e.target.classList.contains('input-valid-err')) {
-        props.clearValidationErrors();
+        clearValidationErrors();
       }
       if (!e.target.classList.contains('search-error')) {
-        props.resetSearchErrorText();
+        resetSearchErrorText();
       }
     }
 
@@ -88,11 +95,11 @@ const SearchContainer = ({ ...props }) => {
 
     return () => {
       document.removeEventListener('click', handleClick);
-      props.clearValidationErrors();
-      props.clearTextInputs();
-      props.resetValidationForm();
+      clearValidationErrors();
+      clearTextInputs();
+      resetValidationForm();
     }
-  }, []);
+  }, [clearValidationErrors, resetSearchErrorText, clearTextInputs, resetValidationForm]);
 
   return (
     <SearchForm {...props} />
