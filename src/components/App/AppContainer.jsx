@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import App from './App';
-import setUserLoginStatusActionCreator from '../../store/actionCreators/setUserLoginStatusActionCreator';
-// import setCurrentUserActionCreator from '../../store/actionCreators/setCurrentUserActionCreator';
+import { IS_LOGINED } from '../../utils/constants';
 import initialCityWeatherCardsThunkCreator from '../../store/thunkMiddlwares/initialCityWeatherCardsThunkCreator';
-
-import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
+import { setUserLoginStatusActionCreator } from '../../store/actionCreators/actionCreators';
 
 const mapStateToProps = (state) => {
   return {

@@ -1,16 +1,20 @@
 import { weatherAPI } from '../../api/weatherAPI';
 import { userAPI } from '../../api/userAPI';
-import updateSearchWeatherErrorActionCreator from '../actionCreators/updateSearchWeatherErrorActionCreator';
-import updateCurrentUserActionCreator from '../actionCreators/updateCurrentUserActionCreator';
-import addNewCardCityWeatherActionCreator from '../actionCreators/addNewCardCityWeatherActionCreator';
-import setUserLoginStatusActionCreator from '../actionCreators/setUserLoginStatusActionCreator';
+
+import {
+  updateSearchWeatherErrorActionCreator,
+  updateCurrentUserActionCreator,
+  addNewCardCityWeatherActionCreator,
+  setUserLoginStatusActionCreator
+} from '../actionCreators/actionCreators';
+
 import {
   CITY_WAS_NOT_FOUND_MESSAGE,
   UNKNOWN_ERROR_MESSAGE,
   CITY_WAS_NOT_FOUND_CODE,
   IS_LOGINED,
   CURRENT_USER
-} from '../../utils/constants'
+} from '../../utils/constants';
 
 // Если текущий пользователь не установлен, то снимается флаг isLogined
 const logoutUser = (dispatch) => {

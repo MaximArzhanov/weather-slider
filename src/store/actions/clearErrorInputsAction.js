@@ -1,3 +1,0 @@
-const CLEAR_ERROR_INPUTS = 'CLEAR_ERROR_INPUTS';
-
-export default CLEAR_ERROR_INPUTS;

@@ -1,14 +1,16 @@
 import initialState from '../initialStates/weatherPageInitialState';
-import CHANGE_SEARCH_TEXT from '../actions/changeSearchTextAction';
-import CHANGE_SEARCH_ERROR_INPUT_TEXT from '../actions/changeSearchErrorInputTextAction';
-import CHANGE_SEARCH_FORM_VALIDITY_STATE from '../actions/changeSearchFormValidityStateAction';
-import CLEAR_SEARCH_ERROR_INPUTS from '../actions/clearSearchErrorInputsAction';
-import CLEAR_SEARCH_TEXT_INPUTS from '../actions/clearSearchTextInputsAction';
-import ADD_NEW_CARD_CITY_WEATHER from '../actions/addNewCardCityWeatherAction';
-import UPDATE_SEARCH_WEATHER_ERROR from '../actions/updateSearchWeatherErrorAction';
-import RESET_SEARCH_ERROR_TEXT from '../actions/resetSearchErrorTextAction';
-import INITIAL_CITY_WEATHER_CARDS from '../actions/initialCityWeatherCardsAction';
-import RESET_WEATHER_CARDS from '../actions/resetWeatherCardsAction';
+import {
+  CHANGE_SEARCH_TEXT,
+  CHANGE_SEARCH_ERROR_INPUT_TEXT,
+  CHANGE_SEARCH_FORM_VALIDITY_STATE,
+  CLEAR_SEARCH_ERROR_INPUTS,
+  CLEAR_SEARCH_TEXT_INPUTS,
+  ADD_NEW_CARD_CITY_WEATHER,
+  UPDATE_SEARCH_WEATHER_ERROR,
+  RESET_SEARCH_ERROR_TEXT,
+  INITIAL_CITY_WEATHER_CARDS,
+  RESET_WEATHER_CARDS
+} from '../actions/actions';
 
 const weatherPageReducer = (state = initialState, action) => {
 
@@ -49,7 +51,7 @@ const weatherPageReducer = (state = initialState, action) => {
       const newState = { ...state };
       newState.search = { ...state.search };
       newState.search.inputValidationErrors = { ...state.search.inputValidationErrors };
-      for (var key in newState.search.inputValidationErrors) { newState.search.inputValidationErrors[key] = '' }; // Перебор всех свойств в объекте newState.inputValidationErrors (Сброс ошибок валидации полей input)
+      for (let key in newState.search.inputValidationErrors) { newState.search.inputValidationErrors[key] = '' }; // Перебор всех свойств в объекте newState.inputValidationErrors (Сброс ошибок валидации полей input)
       return newState;
     }
 

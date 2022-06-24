@@ -7,10 +7,6 @@ import { SEARCH_INPUT } from '../../utils/constants';
 
 function Search(props) {
 
-  // const handleChange = (e) => {
-  //   props.changeTextInput(e);
-  // }
-
   const handleSubmit = (e) => {
     props.submitSearchForm(e, props.searchText, props.cardWeatherList, props.currentUser);
   }

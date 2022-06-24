@@ -1,3 +1,0 @@
-const CHANGE_TEXT_INPUT = 'CHANGE_TEXT_INPUT';
-
-export default CHANGE_TEXT_INPUT;

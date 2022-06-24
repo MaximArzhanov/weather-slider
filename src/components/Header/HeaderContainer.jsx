@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
-import setUserLoginStatusActionCreator from '../../store/actionCreators/setUserLoginStatusActionCreator';
-import resetCurrentUserActionCreator from '../../store/actionCreators/resetCurrentUserActionCreator';
-import resetWeatherCardsActionCreator from '../../store/actionCreators/resetWeatherCardsActionCreator';
+import {
+  setUserLoginStatusActionCreator,
+  resetCurrentUserActionCreator,
+  resetWeatherCardsActionCreator
+} from '../../store/actionCreators/actionCreators';
 
 const mapStateToProps = (state) => {
   return {

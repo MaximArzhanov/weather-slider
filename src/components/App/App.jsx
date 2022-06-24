@@ -6,7 +6,6 @@ import AuthPage from '../AuthPage/AuthPage';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-import Header from '../Header/Header';
 
 function App(props) {
 

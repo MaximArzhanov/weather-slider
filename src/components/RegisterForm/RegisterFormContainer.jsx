@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RegisterForm from './RegisterForm';
-import changeTextInputActionCreator from '../../store/actionCreators/changeTextInputActionCreator';
-import clearTextInputsActionCreator from '../../store/actionCreators/clearTextInputsActionCreator';
-import clearErrorInputsActionCreator from '../../store/actionCreators/clearErrorInputsActionCreator';
-import changeErrorInputTextActionCreator from '../../store/actionCreators/changeErrorInputTextActionCreator';
-import changeFormValidityStateActionCreator from '../../store/actionCreators/changeFormValidityStateActionCreator';
 import registerUserThunkCreator from '../../store/thunkMiddlwares/registerUserThunkCreator';
-import resetAuthResultActionCreator from '../../store/actionCreators/resetAuthResultActionCreator';
-import clearAuthErrorTextActionCreator from '../../store/actionCreators/clearAuthErrorTextActionCrator';
 import { EMAIL_INPUT, PASSWORD_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
 import { useNavigate } from "react-router-dom";
+import {
+  changeTextInputActionCreator,
+  clearTextInputsActionCreator,
+  clearErrorInputsActionCreator,
+  changeErrorInputTextActionCreator,
+  changeFormValidityStateActionCreator,
+  resetAuthResultActionCreator,
+  clearAuthErrorTextActionCreator
+} from '../../store/actionCreators/actionCreators';
 
 const mapStateToProps = (state) => {
   return {

@@ -1,5 +1,7 @@
 import { userAPI } from '../../api/userAPI';
-import registerUserActionCreator from '../actionCreators/registerUserActionCreator';
+import {
+  registerUserActionCreator
+} from '../actionCreators/actionCreators';
 
 const registerUserThunkCreator = (email, password) => {
   return (dispatch) => {

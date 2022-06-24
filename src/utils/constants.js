@@ -18,7 +18,7 @@ const WRONG_EMAIL_OR_PASSWORD_MESSAGE = 'Неверно введены почт�
 const USER_DOES_NOT_EXIST_MESSAGE = 'Пользователя с такой почтой не существует';
 const NEW_CITY_ADDED_MESSAGE = 'Добавлен новый город';
 const USER_ALREADY_ADDED_CITY_MESSAGE = 'Пользователь уже добавил этот город';
-const CITY_WAS_NOT_FOUND_MESSAGE = 'Город не найден';
+const CITY_WAS_NOT_FOUND_MESSAGE = 'Город не найден.';
 const UNKNOWN_ERROR_MESSAGE = 'Неизвестная ошибка';
 
 const IS_LOGINED = 'isLogined';

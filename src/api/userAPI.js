@@ -11,6 +11,7 @@ import {
   USER_ALREADY_ADDED_CITY_MESSAGE
 } from "../utils/constants";
 
+/* Создаёт объект с результатами запроса */
 const createResultObject = (isError, isRequestSuccessful, message) => {
   const result = { isError: isError, isRequestSuccessful: isRequestSuccessful, message: message }
   return { ...result };
@@ -80,8 +81,9 @@ export const userAPI = {
             localStorage.removeItem(CURRENT_USER);
             localStorage.setItem(CURRENT_USER, JSON.stringify(user));
           }
-          return user;            // Возвращается изменённый объект user
+          // return user;            // Возвращается изменённый объект user
         }
+        return user;            // Возвращается изменённый объект user
       })
 
       // Запись обновлённого списка пользователей (Обновлён список городов у текущего пользователя) в localStorage

@@ -1,7 +1,9 @@
-import SET_CURRENT_USER from "../actions/setCurrentUserAction";
-import UPDATE_CURRENT_USER from '../actions/updateCurrentUserAction';
-import RESET_CURRENT_USER from '../actions/resetCurrentUserAction';
 import initialState from '../initialStates/currentUserInitialState';
+import {
+  SET_CURRENT_USER,
+  UPDATE_CURRENT_USER,
+  RESET_CURRENT_USER
+} from '../actions/actions';
 
 const userReducer = (state = initialState, action) => {
 

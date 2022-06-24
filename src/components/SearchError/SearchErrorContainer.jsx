@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchError from './SearchError';
-import resetSearchErrorTextAction from '../../store/actionCreators/resetSearchErrorTextActionCreator';
+import { resetSearchErrorTextAction } from '../../store/actionCreators/actionCreators';
 
 const mapStateToProps = (state) => {
   return {

@@ -1,3 +1,0 @@
-const RESET_CURRENT_USER = 'RESET_CURRENT_USER';
-
-export default RESET_CURRENT_USER;

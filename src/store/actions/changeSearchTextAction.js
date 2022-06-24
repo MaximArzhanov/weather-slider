@@ -1,3 +1,0 @@
-const CHANGE_SEARCH_TEXT = 'CHANGE_SEARCH_TEXT';
-
-export default CHANGE_SEARCH_TEXT;

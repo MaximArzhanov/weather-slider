@@ -1,3 +1,0 @@
-const RESET_AUTH_RESULT = 'RESET_AUTH_RESULT';
-
-export default RESET_AUTH_RESULT;

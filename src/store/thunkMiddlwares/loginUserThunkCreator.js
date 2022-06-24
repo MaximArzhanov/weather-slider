@@ -1,8 +1,10 @@
 import { userAPI } from '../../api/userAPI';
-import loginUserActionCreator from '../actionCreators/loginUserActionCreator';
-import setCurrentUserActionCreator from '../actionCreators/setCurrentUserActionCreator';
-import setUserLoginStatusActionCreator from '../actionCreators/setUserLoginStatusActionCreator';
-import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
+
+import {
+  loginUserActionCreator,
+  setCurrentUserActionCreator,
+  setUserLoginStatusActionCreator
+} from '../actionCreators/actionCreators';
 
 const loginUserThunkCreator = (email, password) => {
   return (dispatch) => {

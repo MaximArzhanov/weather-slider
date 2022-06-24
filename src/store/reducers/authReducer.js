@@ -1,13 +1,15 @@
-import CHANGE_TEXT_INPUT from '../actions/changeTextInputAction';
-import CLEAR_TEXT_INPUTS from '../actions/clearTextInputsAction';
-import CLEAR_ERROR_INPUTS from '../actions/clearErrorInputsAction';
-import CHANGE_ERROR_INPUT_TEXT from '../actions/changeErrorInputTextAction';
-import CHANGE_FORM_VALIDITY_STATE from '../actions/changeFormVilidityStateAction';
-import LOGIN_USER from '../actions/loginUserAction';
-import REGISTER_USER from '../actions/registerUserAction';
 import initialState from '../initialStates/authPageInitialState';
-import RESET_AUTH_RESULT from '../actions/resetAuthResultAction';
-import CLEAR_AUTH_ERROR_TEXT from '../actions/clearAuthErrorTextAction';
+import {
+  CHANGE_TEXT_INPUT,
+  CLEAR_TEXT_INPUTS,
+  CLEAR_ERROR_INPUTS,
+  CHANGE_ERROR_INPUT_TEXT,
+  CHANGE_FORM_VALIDITY_STATE,
+  LOGIN_USER,
+  REGISTER_USER,
+  RESET_AUTH_RESULT,
+  CLEAR_AUTH_ERROR_TEXT
+} from '../actions/actions';
 
 const authReducer = (state = initialState, action) => {
 
@@ -30,7 +32,7 @@ const authReducer = (state = initialState, action) => {
     case CLEAR_ERROR_INPUTS: {
       const newState = { ...state };
       newState.inputValidationErrors = { ...state.inputValidationErrors };
-      for (var key in newState.inputValidationErrors) { newState.inputValidationErrors[key] = '' }; // Перебор всех свойств в объекте newState.inputValidationErrors (Сброс ошибок валидации полей input)
+      for (let key in newState.inputValidationErrors) { newState.inputValidationErrors[key] = '' }; // Перебор всех свойств в объекте newState.inputValidationErrors (Сброс ошибок валидации полей input)
       return newState;
     }
 

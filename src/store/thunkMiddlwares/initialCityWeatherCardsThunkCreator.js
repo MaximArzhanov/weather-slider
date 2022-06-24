@@ -1,9 +1,16 @@
 import { weatherAPI } from '../../api/weatherAPI';
 import { userAPI } from '../../api/userAPI';
-import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
-import setCurrentUserActionCreator from '../actionCreators/setCurrentUserActionCreator';
-import setUserLoginStatusActionCreator from '../actionCreators/setUserLoginStatusActionCreator';
-import initialCityWeatherCardsActionCreator from '../actionCreators/initialCityWeatherCardsActionCreator';
+
+import {
+  IS_LOGINED,
+  CURRENT_USER
+} from '../../utils/constants';
+
+import {
+  setCurrentUserActionCreator,
+  setUserLoginStatusActionCreator,
+  initialCityWeatherCardsActionCreator
+} from '../actionCreators/actionCreators';
 
 const initialCityWeatherCardsThunkCreator = () => {
   return (dispatch) => {

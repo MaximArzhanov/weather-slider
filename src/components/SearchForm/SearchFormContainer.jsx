@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchForm from './SearchForm';
-import changeSearchTextActionCreator from '../../store/actionCreators/changeSearchTextActionCreator';
 import { SEARCH_INPUT } from '../../utils/constants';
 import { validationInput, validationForm } from '../../utils/validation';
-import changeSearchErrorInputTextActionCreator from '../../store/actionCreators/changeSearchErrorInputTextActionCreator';
-import changeSearchFormValidityStateActionCreator from '../../store/actionCreators/changeSearchFormValidityStateActionCreator';
-import clearSearchErrorInputsActionCreator from '../../store/actionCreators/clearSearchErrorInputsActionCreator';
-import clearSearchTextInputsActionCreator from '../../store/actionCreators/clearSearchTextInputsActionCreator';
 import searchCityWeatherThunkCreator from '../../store/thunkMiddlwares/searchCityWeatherThunkCreator';
-import resetSearchErrorTextAction from '../../store/actionCreators/resetSearchErrorTextActionCreator';
-import updateSearchWeatherErrorActionCreator from '../../store/actionCreators/updateSearchWeatherErrorActionCreator';
+import {
+  changeSearchTextActionCreator,
+  changeSearchErrorInputTextActionCreator,
+  changeSearchFormValidityStateActionCreator,
+  clearSearchErrorInputsActionCreator,
+  clearSearchTextInputsActionCreator,
+  resetSearchErrorTextAction,
+  updateSearchWeatherErrorActionCreator
+} from '../../store/actionCreators/actionCreators';
 
 const checkCityAlreadyAdded = (cityName ,cardWeatherList) => {
   return cardWeatherList.some((card) => card.location.name === cityName);
