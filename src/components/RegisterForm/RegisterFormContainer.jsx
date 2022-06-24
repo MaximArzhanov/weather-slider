@@ -34,24 +34,19 @@ const mapDispatchToProps = (dispatch) => {
       const value = e.target.value;
       const form = e.target.closest('form');
       // Диспатч изменения текста в инпуте
-      const actionChangeText = changeTextInputActionCreator(inputID, value);
-      dispatch(actionChangeText);
+      dispatch(changeTextInputActionCreator(inputID, value));
       // Диспатч ошибки валидации инпута
       const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
-      const actionErrorInput = changeErrorInputTextActionCreator(inputID, validationInputResult.errorText);
-      dispatch(actionErrorInput);
+      dispatch(changeErrorInputTextActionCreator(inputID, validationInputResult.errorText));
       // Диспатч ошибки валидации формы
       const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
-      const actionFormValidation = changeFormValidityStateActionCreator(validationFormResult);
-      dispatch(actionFormValidation);
+      dispatch(changeFormValidityStateActionCreator(validationFormResult));
     },
     clearInput: () => { // Очистка полей ввода
-      const action = clearTextInputsActionCreator();
-      dispatch(action);
+      dispatch(clearTextInputsActionCreator());
     },
     clearErrors: () => { // Очистка полей с текстом ошибок валидации
-      const action = clearErrorInputsActionCreator();
-      dispatch(action);
+      dispatch(clearErrorInputsActionCreator());
     },
     submitRegisterForm: (e, email, password) => { // Отправка формы авторизации
       e.preventDefault();

@@ -38,24 +38,19 @@ const mapDispatchToProps = (dispatch) => {
       const form = e.target.closest('form');
       dispatch(resetSearchErrorTextAction()); // Сброс ошибки запроса
       // Диспатч изменения текста в инпуте
-      const actionChangeSearchText = changeSearchTextActionCreator(inputID, value);
-      dispatch(actionChangeSearchText);
+      dispatch(changeSearchTextActionCreator(inputID, value));
       // Диспатч ошибки валидации инпута
       const validationInputResult = validationInput(inputID, value); // Валидация поля (Возвращается объект с результатами)
-      const actionSearchErrorInput = changeSearchErrorInputTextActionCreator(inputID, validationInputResult.errorText);
-      dispatch(actionSearchErrorInput);
+      dispatch(changeSearchErrorInputTextActionCreator(inputID, validationInputResult.errorText));
       // Диспатч ошибки валидации формы
       const validationFormResult = validationForm(form); // Валидация формы (Возвращается значение типа bool)
-      const actionFormValidation = changeSearchFormValidityStateActionCreator(validationFormResult);
-      dispatch(actionFormValidation);
+      dispatch(changeSearchFormValidityStateActionCreator(validationFormResult));
     },
     clearTextInputs: () => { // Очистка полей с текстом ошибок валидации
-      const action = clearSearchTextInputsActionCreator();
-      dispatch(action);
+      dispatch(clearSearchTextInputsActionCreator());
     },
     clearValidationErrors: () => { // Очистка полей с текстом ошибок валидации
-      const action = clearSearchErrorInputsActionCreator();
-      dispatch(action);
+      dispatch(clearSearchErrorInputsActionCreator());
     },
     resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
       dispatch(changeSearchFormValidityStateActionCreator(false));
@@ -98,17 +93,6 @@ const SearchContainer = ({ ...props }) => {
       props.resetValidationForm();
     }
   }, []);
-
-  // React.useEffect(() => {
-  //   try {
-  //     const users = JSON.parse(localStorage.getItem('users'));
-  //     const user = users.find((user) => user.email === props.)
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-
-  // }, [props.cardWeatherList]);
 
   return (
     <SearchForm {...props} />
