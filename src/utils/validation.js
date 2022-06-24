@@ -137,7 +137,7 @@ const validateSearch = (value) => {
     isValid: false
   }
 
-  let charList = value.match(/[^(а-я)^(\sA-Z)]/gi); // Регулярное выражение для проверки на содержание ненужных символов
+  let charList = value.match(/[^(а-я)^(\sA-Z)^-]/gi); // Регулярное выражение для проверки на содержание ненужных символов
   if (charList === null) {
     charList = [];
   } else {
