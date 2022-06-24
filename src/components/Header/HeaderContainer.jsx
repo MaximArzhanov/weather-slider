@@ -4,6 +4,7 @@ import Header from './Header';
 import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
 import setUserLoginStatusActionCreator from '../../store/actionCreators/setUserLoginStatusActionCreator';
 import resetCurrentUserActionCreator from '../../store/actionCreators/resetCurrentUserActionCreator';
+import resetWeatherCardsActionCreator from '../../store/actionCreators/resetWeatherCardsActionCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
       localStorage.removeItem(IS_LOGINED);
       localStorage.removeItem(CURRENT_USER);
       dispatch(resetCurrentUserActionCreator());
+      dispatch(resetWeatherCardsActionCreator());
       dispatch(setUserLoginStatusActionCreator(false));
     }
   }
