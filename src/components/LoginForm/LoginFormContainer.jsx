@@ -67,7 +67,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const LoginFormContainer = ({ ...props }) => {
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
   useEffect(() => {
     return () => {
       props.clearField();

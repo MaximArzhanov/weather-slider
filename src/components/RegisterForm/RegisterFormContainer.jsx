@@ -71,7 +71,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const RegisterFormContainer = ({ ...props }) => {
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     props.clearInput();
