@@ -1,5 +1,6 @@
 import SET_CURRENT_USER from "../actions/setCurrentUserAction";
-import UPDATE_CURRENT_USER from '../actions/updateCurrentUserAction'
+import UPDATE_CURRENT_USER from '../actions/updateCurrentUserAction';
+import RESET_CURRENT_USER from '../actions/resetCurrentUserAction';
 import initialState from '../initialStates/currentUserInitialState';
 
 const userReducer = (state = initialState, action) => {
@@ -15,6 +16,12 @@ const userReducer = (state = initialState, action) => {
     case UPDATE_CURRENT_USER: {
       const newState = { ...state };
       newState.currentUser = { ...action.currentUser };
+      return newState;
+    }
+
+    case RESET_CURRENT_USER: {
+      const newState = { ...state };
+      newState.currentUser = {};
       return newState;
     }
 

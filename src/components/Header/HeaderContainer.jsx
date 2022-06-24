@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
 import setUserLoginStatusActionCreator from '../../store/actionCreators/setUserLoginStatusActionCreator';
+import resetCurrentUserActionCreator from '../../store/actionCreators/resetCurrentUserActionCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     logoutUser: () => { // Выход пользователя из системы
       localStorage.removeItem(IS_LOGINED);
       localStorage.removeItem(CURRENT_USER);
+      dispatch(resetCurrentUserActionCreator());
       dispatch(setUserLoginStatusActionCreator(false));
     }
   }
