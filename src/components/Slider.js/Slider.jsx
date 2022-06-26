@@ -13,10 +13,6 @@ function Slider(props) {
     props.updateIndex(activeIndex + 1, children);
   }
 
-  const handleDelete = () => {
-    props.deleteSlide();
-  }
-
   let startTouchPosition = null;
 
   // Устанавливает координаты нажатия нажатия на экран
@@ -71,7 +67,7 @@ function Slider(props) {
         })}
       </div>
 
-      <button className='slider__delete'></button>
+      {/* <button className='slider__delete'></button> */}
 
     </div>
   );

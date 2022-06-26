@@ -7,8 +7,6 @@ import SliderContainer from '../Slider.js/SliderContainer';
 
 function WeatherPage(props) {
 
-  console.log(props.cardWeatherList);
-
   return (
     <div className='weather-page'>
       <HeaderContainer />

@@ -103,7 +103,7 @@ export const userAPI = {
           if (!cities.includes(cityName)) {
             reject(createResultObject(true, false, 'Город не был добавлен пользователем'));
           }
-          const newCities = cities.filter((city) => city.location.name !== cityName)
+          const newCities = cities.filter((city) => city !== cityName);
           user.cities = newCities;                        // Запись массива названий городов к текущему пользователю
           // Перезапись данных (Обновлённый список городов) текущего пользователя в localStorage
           localStorage.removeItem(CURRENT_USER);
