@@ -7,17 +7,24 @@ import SliderContainer from '../Slider.js/SliderContainer';
 
 function WeatherPage(props) {
 
+  console.log(props.cardWeatherList);
+
   return (
     <div className='weather-page'>
       <HeaderContainer />
       <SearchErrorContainer />
       <SliderContainer>
-        <SliderItem>Item 1</SliderItem>
-        <SliderItem>Item 2</SliderItem>
-        <SliderItem>Item 3</SliderItem>
-        <SliderItem>Item 4</SliderItem>
-        <SliderItem>Item 5</SliderItem>
-        <SliderItem>Item 6</SliderItem>
+        {props.cardWeatherList.map((index) => {
+          return (
+            <SliderItem
+              key={index.location.name}
+              icon={index.current.condition.icon}
+              temp={index.current.temp_c}
+              time={index.location.localtime}
+              text={index.current.condition.text}
+              cityName={index.location.name}
+            />);
+        })}
       </SliderContainer>
     </div>
   );

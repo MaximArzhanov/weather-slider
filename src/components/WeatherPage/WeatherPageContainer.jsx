@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const WeatherPageContainer = ({ ...props }) => {
-
   return (
     <WeatherPage {...props} />
   )

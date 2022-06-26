@@ -33,26 +33,33 @@ function Slider(props) {
   return (
     <div className='slider'>
 
-      <div
-        className='slider__inner'
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}>
+
+      <button className='indicators__button' onClick={handlePrevClick}></button>
+
+
+      <div className="slider__container">
+        <div
+          className='slider__inner'
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}>
           {React.Children.map(children, (child, index) => {
             return React.cloneElement(child);
           })}
-      </div>
+        </div>
 
-      <div className='indicators'>
+        {/* <div className='indicators'>
         <button className='indicators__button' onClick={handlePrevClick}>Prev</button>
         <button className='indicators__button' onClick={handleNextClick}>Next</button>
+        </div> */}
       </div>
+
+      <button className='indicators__button' onClick={handleNextClick}></button>
 
       <div className='slider__pagination'>
         {React.Children.map(children, (child, index) => {
           return (
             <button className={`${index === activeIndex ? 'slider__pagination-item slider__pagination-item_active' : 'slider__pagination-item'}`} onClick={() => props.updateIndex(index, children)}>
-              {index + 1}
             </button>
           )
         })}

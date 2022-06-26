@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import WeatherPage from '../WeatherPage/WeatherPage';
+import WeatherPageContainer from '../WeatherPage/WeatherPageContainer';
 import AuthPage from '../AuthPage/AuthPage';
 import LoginFormContainer from '../LoginForm/LoginFormContainer';
 import RegisterFormContainer from '../RegisterForm/RegisterFormContainer';
@@ -13,7 +13,7 @@ function App(props) {
     <div className="app">
       <Routes>
 
-        <Route exact path="/" element={<ProtectedRoute isLogined={props.isLogined} component={WeatherPage}/>}/>
+        <Route exact path="/" element={<ProtectedRoute isLogined={props.isLogined} component={WeatherPageContainer}/>}/>
 
         <Route path="signin" element={<AuthPage> <LoginFormContainer /> </AuthPage>}/>
 
