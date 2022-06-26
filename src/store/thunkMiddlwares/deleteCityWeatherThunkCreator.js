@@ -4,7 +4,8 @@ import {
   deletCardCityWeatherActionCreator,
   updateSearchWeatherErrorActionCreator,
   updateCurrentUserActionCreator,
-  setUserLoginStatusActionCreator
+  setUserLoginStatusActionCreator,
+  updateActiveIndexActionCreator
 } from '../actionCreators/actionCreators';
 
 import { IS_LOGINED, CURRENT_USER } from '../../utils/constants';
@@ -16,11 +17,12 @@ const logoutUser = (dispatch) => {
   dispatch(setUserLoginStatusActionCreator(false));
 }
 
-const deleteCityWeatherThunkCreator = (cityName, currentUser) => {
+const deleteCityWeatherThunkCreator = (cityName, currentUser, activeIndex) => {
   return (dispatch) => {
     userAPI.deleteCity(cityName, currentUser)
       .then((result) => {
         dispatch(deletCardCityWeatherActionCreator(cityName));
+        dispatch(updateActiveIndexActionCreator(activeIndex - 1));
         dispatch(updateSearchWeatherErrorActionCreator(result.isError, result.isRequestSuccessful, result.message));
         // После удаления города необходимо обновить информацию в стейте для текущего пользователя
         userAPI.getCurrentUser()

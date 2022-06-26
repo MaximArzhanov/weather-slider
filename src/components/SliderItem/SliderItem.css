@@ -77,6 +77,11 @@
   background-size: contain;
 }
 
+.slider-item__delete_hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .slider-item__title {
   margin: 0;
   margin-top: 50px;

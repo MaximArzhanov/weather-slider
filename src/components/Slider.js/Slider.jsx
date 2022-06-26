@@ -44,7 +44,7 @@ function Slider(props) {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}>
           {React.Children.map(children, (child, index) => {
-            return React.cloneElement(child, props);
+            return React.cloneElement(child, props, ...children);
           })}
         </div>
 

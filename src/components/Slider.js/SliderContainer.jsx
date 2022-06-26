@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
       }
       dispatch(updateActiveIndexActionCreator(newIndex));
     },
-    deleteSlide: (cityName, currentUser) => {
-      dispatch(deleteCityWeatherThunkCreator(cityName, currentUser));
+    deleteSlide: (cityName, currentUser, activeIndex) => {
+      dispatch(deleteCityWeatherThunkCreator(cityName, currentUser, activeIndex));
     }
   }
 }
