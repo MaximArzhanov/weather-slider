@@ -100,6 +100,11 @@
   background-color: #eec111;
 }
 
+.slider__pagination-item_active:hover {
+  background-color: #eec111;
+  cursor: default;
+}
+
 .slider__delete {
   margin: 10px 10px 0 0;
   padding: 0;
