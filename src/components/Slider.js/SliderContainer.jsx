@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Slider from './Slider';
 import { updateActiveIndexActionCreator } from '../../store/actionCreators/actionCreators';
+import deleteCityWeatherThunkCreator from '../../store/thunkMiddlwares/deleteCityWeatherThunkCreator';
 
 const mapStateToProps = (state) => {
   return {
-    activeIndex: state.slider.activeIndex
+    activeIndex: state.slider.activeIndex,
+    currentUser: state.currentUser.currentUser
   }
 }
 
@@ -18,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
         newIndex = 0;
       }
       dispatch(updateActiveIndexActionCreator(newIndex));
+    },
+    deleteSlide: (cityName, currentUser) => {
+      dispatch(deleteCityWeatherThunkCreator(cityName, currentUser));
     }
   }
 }

@@ -11,6 +11,7 @@ import {
   CLEAR_SEARCH_ERROR_INPUTS,
   CLEAR_SEARCH_TEXT_INPUTS,
   CLEAR_TEXT_INPUTS,
+  DELETE_CARD_CITY_WEATHER,
   INITIAL_CITY_WEATHER_CARDS,
   LOGIN_USER,
   REGISTER_USER,
@@ -149,6 +150,11 @@ const resetWeatherCardsActionCreator = () => ({
   type: RESET_WEATHER_CARDS
 });
 
+const deletCardCityWeatherActionCreator = (city) => ({
+  type: DELETE_CARD_CITY_WEATHER,
+  city: city
+});
+
 
 /* Действия для слайдера */
 const updateActiveIndexActionCreator = (activeIndex) => ({
@@ -169,6 +175,7 @@ export {
   clearSearchErrorInputsActionCreator,
   clearSearchTextInputsActionCreator,
   clearTextInputsActionCreator,
+  deletCardCityWeatherActionCreator,
   initialCityWeatherCardsActionCreator,
   loginUserActionCreator,
   registerUserActionCreator,

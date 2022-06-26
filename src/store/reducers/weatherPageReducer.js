@@ -6,6 +6,7 @@ import {
   CLEAR_SEARCH_ERROR_INPUTS,
   CLEAR_SEARCH_TEXT_INPUTS,
   ADD_NEW_CARD_CITY_WEATHER,
+  DELETE_CARD_CITY_WEATHER,
   UPDATE_SEARCH_WEATHER_ERROR,
   RESET_SEARCH_ERROR_TEXT,
   INITIAL_CITY_WEATHER_CARDS,
@@ -82,6 +83,13 @@ const weatherPageReducer = (state = initialState, action) => {
             message: ''
           }
         }
+      }
+    }
+
+    case DELETE_CARD_CITY_WEATHER: {
+      return {
+        ...state,
+        weatherCards: state.weatherCards.filter((index) => action.city !== index.location.name)
       }
     }
 

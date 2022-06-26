@@ -34,7 +34,7 @@ export const userAPI = {
         reject(createResultObject(true, false, USER_ALREADY_EXIST_MESSAGE));
       } else {
         users.push({...user});
-        localStorage.setItem(USERS, JSON.stringify(users));   // Запись обновлённого списка пользователей в localStorage
+        localStorage.setItem(USERS, JSON.stringify(users));     // Запись обновлённого списка пользователей в localStorage
         resolve(createResultObject(false, true, USER_REGISTERED_SUCCESS_MESSAGE));
       }
     });
@@ -51,7 +51,7 @@ export const userAPI = {
       if (user) {                                                           // Если пользователь найден
         if (user.password === password) {
 
-          localStorage.setItem(CURRENT_USER, JSON.stringify(user));  // Записывает текщего пользователя в localStorage
+          localStorage.setItem(CURRENT_USER, JSON.stringify(user));         // Записывает текщего пользователя в localStorage
           localStorage.setItem(IS_LOGINED, true);                           // Записывает в localStorage флаг о том, что пользователь авторизовался
 
           const result = createResultObject(false, true, USER_LOGINED_SUCCESS_MESSAGE);
@@ -75,20 +75,47 @@ export const userAPI = {
             reject(createResultObject(true, false, USER_ALREADY_ADDED_CITY_MESSAGE));
           }
           else {
-            cities.push(city);    // Добавление названия города в массив названий городов
-            user.cities = cities; // Запись массива названий городов к текущему пользователю
+            cities.push(city);        // Добавление названия города в массив названий городов
+            user.cities = cities;     // Запись массива названий городов к текущему пользователю
             // Перезапись данных (Обновлённый список городов) текущего пользователя в localStorage
             localStorage.removeItem(CURRENT_USER);
             localStorage.setItem(CURRENT_USER, JSON.stringify(user));
           }
           // return user;            // Возвращается изменённый объект user
         }
-        return user;            // Возвращается изменённый объект user
+        return user;                 // Возвращается изменённый объект user
       })
 
       // Запись обновлённого списка пользователей (Обновлён список городов у текущего пользователя) в localStorage
       localStorage.setItem(USERS, JSON.stringify(users));
       resolve(createResultObject(false, true, NEW_CITY_ADDED_MESSAGE));
+    });
+  },
+
+  /* Добавляет новый город к данным текущего авторизованного пользователя */
+  deleteCity(cityName, currentUser) {
+    return new Promise(function (resolve, reject) {
+      const usersInLocalStorage = JSON.parse(localStorage.getItem(USERS));
+      const users = usersInLocalStorage.map((user) => {   // Проход по всем пользователям в localStorage
+        if (user.email === currentUser.email) {           // Поиск текущего авторизованного пользователя
+          const cities = [...user.cities];                // Копирование сохранённого списка городов
+          // Проверка: если названия города нет в списке
+          if (!cities.includes(cityName)) {
+            reject(createResultObject(true, false, 'Город не был добавлен пользователем'));
+          }
+          const newCities = cities.filter((city) => city.location.name !== cityName)
+          user.cities = newCities;                        // Запись массива названий городов к текущему пользователю
+          // Перезапись данных (Обновлённый список городов) текущего пользователя в localStorage
+          localStorage.removeItem(CURRENT_USER);
+          localStorage.setItem(CURRENT_USER, JSON.stringify(user));
+
+        }
+        return user;            // Возвращается изменённый объект user
+      })
+
+      // Запись обновлённого списка пользователей (Обновлён список городов у текущего пользователя) в localStorage
+      localStorage.setItem(USERS, JSON.stringify(users));
+      resolve(createResultObject(false, true, 'Слайд успешно удалён'));
     });
   },
 

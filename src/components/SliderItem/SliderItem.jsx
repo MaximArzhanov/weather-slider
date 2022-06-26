@@ -3,12 +3,6 @@ import './SliderItem.css';
 
 function SliderItem(props) {
 
-  const { children } = props;
-
-  const time = props.time.slice(11);
-
-  console.log(props.cityName);
-
   return (
     <div className='slider-item'>
 
@@ -22,8 +16,6 @@ function SliderItem(props) {
 
 
 
-
-      {children}
     </div>
   );
 }

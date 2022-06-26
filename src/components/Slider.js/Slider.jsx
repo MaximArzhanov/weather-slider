@@ -13,6 +13,10 @@ function Slider(props) {
     props.updateIndex(activeIndex + 1, children);
   }
 
+  const handleDelete = () => {
+    props.deleteSlide();
+  }
+
   let startTouchPosition = null;
 
   // Устанавливает координаты нажатия нажатия на экран
@@ -34,7 +38,7 @@ function Slider(props) {
     <div className='slider'>
 
 
-      <button className='indicators__button' onClick={handlePrevClick}></button>
+      <button className='slider__arrow slider__arrow_type_left' onClick={handlePrevClick}></button>
 
 
       <div className="slider__container">
@@ -44,7 +48,7 @@ function Slider(props) {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}>
           {React.Children.map(children, (child, index) => {
-            return React.cloneElement(child);
+            return React.cloneElement(child, props);
           })}
         </div>
 
@@ -54,16 +58,20 @@ function Slider(props) {
         </div> */}
       </div>
 
-      <button className='indicators__button' onClick={handleNextClick}></button>
+      <button className='slider__arrow slider__arrow_type_right' onClick={handleNextClick}></button>
 
       <div className='slider__pagination'>
         {React.Children.map(children, (child, index) => {
           return (
-            <button className={`${index === activeIndex ? 'slider__pagination-item slider__pagination-item_active' : 'slider__pagination-item'}`} onClick={() => props.updateIndex(index, children)}>
+            <button
+              className={`${index === activeIndex ? 'slider__pagination-item slider__pagination-item_active' : 'slider__pagination-item'}`}
+              onClick={() => props.updateIndex(index, children)}>
             </button>
           )
         })}
       </div>
+
+      <button className='slider__delete'></button>
 
     </div>
   );
