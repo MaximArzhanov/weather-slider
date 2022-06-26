@@ -21,7 +21,8 @@ import {
   SET_CURRENT_USER,
   SET_USER_LOGIN_STATUS,
   UPDATE_CURRENT_USER,
-  UPDATE_SEARCH_WEATHER_ERROR
+  UPDATE_SEARCH_WEATHER_ERROR,
+  UPDATE_ACTIVE_INDEX
 } from '../actions/actions';
 
 
@@ -149,6 +150,12 @@ const resetWeatherCardsActionCreator = () => ({
 });
 
 
+/* Действия для слайдера */
+const updateActiveIndexActionCreator = (activeIndex) => ({
+  type: UPDATE_ACTIVE_INDEX,
+  activeIndex: activeIndex
+})
+
 export {
   addNewCardCityWeatherActionCreator,
   changeErrorInputTextActionCreator,
@@ -172,5 +179,6 @@ export {
   setCurrentUserActionCreator,
   setUserLoginStatusActionCreator,
   updateCurrentUserActionCreator,
-  updateSearchWeatherErrorActionCreator
+  updateSearchWeatherErrorActionCreator,
+  updateActiveIndexActionCreator
 }

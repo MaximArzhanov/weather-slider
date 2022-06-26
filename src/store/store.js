@@ -3,13 +3,15 @@ import authReducer from './reducers/authReducer';
 import userReducer from './reducers/userReducer';
 import userLoginStatusReducer from './reducers/userLoginStatusReducer';
 import weatherPageReducer from './reducers/weatherPageReducer';
+import sliderReducer from './reducers/sliderReducer';
 import thunk from 'redux-thunk'
 
 let reducers = combineReducers({
     auth: authReducer,
     currentUser: userReducer,
     userloginStatus: userLoginStatusReducer,
-    weatherPage: weatherPageReducer
+    weatherPage: weatherPageReducer,
+    slider: sliderReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

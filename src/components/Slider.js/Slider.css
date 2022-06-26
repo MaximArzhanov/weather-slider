@@ -1,0 +1,27 @@
+.slider {
+  overflow: hidden;
+  width: 300px;
+}
+
+.slider__inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+}
+
+.indicators__button {
+  margin: 5px;
+}
+
+.slider__pagination-item {
+
+}
+
+.slider__pagination-item_active {
+  background-color: green;
+  color: #fff;
+}
