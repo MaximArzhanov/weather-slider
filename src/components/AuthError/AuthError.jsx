@@ -3,8 +3,12 @@ import './AuthError.css';
 
 function AuthError(props) {
 
+  const classList = props.authResult.isRequestSuccessful
+    ? 'auth-error auth-error_type_successful'
+    : 'auth-error';
+
   return (
-    <p className='auth-error'>{props.authResult.message || ''}</p>
+    <p className={classList}>{props.authResult.message || ''}</p>
   );
 }
 

@@ -65,12 +65,25 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const LoginFormContainer = ({ ...props }) => {
-  const { userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult } = props;
+  const {
+    userloginStatus,
+    clearField,
+    clearErrors,
+    clearAuthErrorText,
+    resetValidationForm,
+    resetAuthResult,
+    authResult
+  } = props;
+
   const navigate = useNavigate();
 
   useEffect(() => {
 
-    resetAuthResult();
+    if (!authResult.isRequestSuccessful) {
+      clearAuthErrorText();
+    }
+
+    // resetAuthResult();
 
     if (userloginStatus) {
       navigate('/')
@@ -79,7 +92,8 @@ const LoginFormContainer = ({ ...props }) => {
     return () => { // При размонтировании компонента Login сбрасываются поля и ошибки
       clearField();
       clearErrors();
-      clearAuthErrorText();
+      // resetAuthResult();
+      // clearAuthErrorText();
       resetValidationForm();
     }
   }, [userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult, navigate]);

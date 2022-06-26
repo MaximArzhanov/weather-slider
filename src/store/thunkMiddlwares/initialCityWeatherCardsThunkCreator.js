@@ -22,7 +22,9 @@ const initialCityWeatherCardsThunkCreator = () => {
         // Создаёт запрос к weatherAPI для каждого города из списка (города, которые пользователь добавил в слайдер)
         Promise.all(result.currentUser.cities.map(cityName => weatherAPI.getCurrentWeather(cityName)))
           // Диспатчится весь массив с информацией о текущей погоде в городах
-          .then(currentCityWeatherList => dispatch(initialCityWeatherCardsActionCreator(currentCityWeatherList)))
+          .then(currentCityWeatherList => {
+            dispatch(initialCityWeatherCardsActionCreator(currentCityWeatherList))
+          })
           .catch((result) => {
             // TODO: сюда нужно будет дописать логику обработки ошибки при запросе текущей погоды в списке городов
             console.log(result);

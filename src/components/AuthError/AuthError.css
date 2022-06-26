@@ -6,3 +6,7 @@
   align-self: center;
   color: #dc2a65;
 }
+
+.auth-error_type_successful {
+  color: #0abb65;
+}

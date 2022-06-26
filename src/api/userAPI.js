@@ -24,7 +24,7 @@ export const userAPI = {
     return new Promise(function (resolve, reject) {
 
       let users = [];
-      const user = { email: email, password: password };
+      const user = { email: email, password: password, cities: [] };
 
       // Если в localStorage есть массив пользователей то массив сохраняется в переменную, иначе в переменную записывается пустой массив
       if (localStorage.getItem(USERS)) { users = JSON.parse(localStorage.getItem(USERS)); }
@@ -101,7 +101,7 @@ export const userAPI = {
         result.currentUser = currentUser;
         resolve(result);
       } else {
-        resolve(createResultObject(true, false, 'Текущий пользователь не найден'));
+        reject(createResultObject(true, false, 'Текущий пользователь не найден'));
       }
     });
   }

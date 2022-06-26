@@ -52,15 +52,16 @@ const mapDispatchToProps = (dispatch) => {
       e.preventDefault();
       dispatch(registerUserThunkCreator(email, password));
     },
+    resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
+      dispatch(changeFormValidityStateActionCreator(false));
+    },
     resetAuthResult: () => { // Сброс статуса регистрации (isRequestSuccessful)
       dispatch(resetAuthResultActionCreator());
     },
     clearAuthErrorText: () => { // Очистка текста ошибки при авторизации
       dispatch(clearAuthErrorTextActionCreator());
     },
-    resetValidationForm: () => { // Сброс валидации формы (Сброс кнопки отправки формы)
-      dispatch(changeFormValidityStateActionCreator(false));
-    }
+
   }
 }
 
@@ -85,9 +86,10 @@ const RegisterFormContainer = ({ ...props }) => {
     clearErrors();
     clearAuthErrorText();
     resetValidationForm();
+    resetAuthResult();
 
     return () => {
-      resetAuthResult();
+      // resetAuthResult();
     }
   }, [clearInput, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult]);
 
@@ -97,7 +99,6 @@ const RegisterFormContainer = ({ ...props }) => {
 
   useEffect(() => {
     if (isRequestSuccessful) { // При успешной регистрации происходит редирект на страницу авторизации
-      console.log(isRequestSuccessful);
       navigate('/signin');
     }
   }, [isRequestSuccessful, navigate]);
