@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch) => {
       if (checkCityAlreadyAdded(cityName, cardWeatherList)) {
         dispatch(updateSearchWeatherErrorActionCreator(true, false, 'Город уже добавлен'));
       } else {
-        dispatch(searchCityWeatherThunkCreator(cityName, currentUser));
+        dispatch(searchCityWeatherThunkCreator(cityName, currentUser, cardWeatherList));
       }
     },
     resetSearchErrorText: () => { // Сброс ошибки запроса

@@ -5,7 +5,8 @@ import {
   updateSearchWeatherErrorActionCreator,
   updateCurrentUserActionCreator,
   addNewCardCityWeatherActionCreator,
-  setUserLoginStatusActionCreator
+  setUserLoginStatusActionCreator,
+  updateActiveIndexActionCreator
 } from '../actionCreators/actionCreators';
 
 import {
@@ -23,7 +24,7 @@ const logoutUser = (dispatch) => {
   dispatch(setUserLoginStatusActionCreator(false));
 }
 
-const searchCityWeatherThunkCreator = (cityName, currentUser) => {
+const searchCityWeatherThunkCreator = (cityName, currentUser, cardWeatherList) => {
   return (dispatch) => {
     weatherAPI.getCurrentWeather(cityName)
       .then((currentCityWeather) => {
@@ -32,6 +33,7 @@ const searchCityWeatherThunkCreator = (cityName, currentUser) => {
           .then((result) => {
             dispatch(addNewCardCityWeatherActionCreator(currentCityWeather));
             dispatch(updateSearchWeatherErrorActionCreator(result.isError, result.isRequestSuccessful, result.message));
+            dispatch(updateActiveIndexActionCreator(cardWeatherList.length));
             // После добавления города необходимо обновить информацию в стейте для текущего пользователя
             userAPI.getCurrentUser()
               .then((result) => dispatch(updateCurrentUserActionCreator(result.currentUser)))
