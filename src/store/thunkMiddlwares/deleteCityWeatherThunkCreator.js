@@ -22,7 +22,9 @@ const deleteCityWeatherThunkCreator = (cityName, currentUser, activeIndex) => {
     userAPI.deleteCity(cityName, currentUser)
       .then((result) => {
         dispatch(deletCardCityWeatherActionCreator(cityName));
-        dispatch(updateActiveIndexActionCreator(activeIndex - 1));
+        if (activeIndex !== 0) {
+          dispatch(updateActiveIndexActionCreator(activeIndex - 1));
+        }
         dispatch(updateSearchWeatherErrorActionCreator(result.isError, result.isRequestSuccessful, result.message));
         // После удаления города необходимо обновить информацию в стейте для текущего пользователя
         userAPI.getCurrentUser()
