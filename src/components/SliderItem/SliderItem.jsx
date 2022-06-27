@@ -14,8 +14,15 @@ function SliderItem(props) {
     props.deleteSlide(props.cityName, props.currentUser, props.activeIndex);
   }
 
+  const handleSlideClick = (e) => {
+    // Исключение нажатия на кнопку удаления слайда
+    if (!e.target.classList.contains('slider-item__delete')) {
+      props.showWeatherHistory(props.cityName);
+    }
+  }
+
   return (
-    <div className='slider-item'>
+    <div className='slider-item' onClick={handleSlideClick}>
 
       <div className='slider-item__container'>
         <button className={buttonDeleteClassList} onClick={handleDeleteClick}></button>

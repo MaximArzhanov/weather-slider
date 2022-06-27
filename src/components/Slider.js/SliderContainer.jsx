@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Slider from './Slider';
 import { updateActiveIndexActionCreator } from '../../store/actionCreators/actionCreators';
 import deleteCityWeatherThunkCreator from '../../store/thunkMiddlwares/deleteCityWeatherThunkCreator';
+import setWeatherHistoryThunkCreator from '../../store/thunkMiddlwares/setWeatherHistoryThunkCreator';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteSlide: (cityName, currentUser, activeIndex) => {
       dispatch(deleteCityWeatherThunkCreator(cityName, currentUser, activeIndex));
+    },
+    showWeatherHistory: (cityName) => {
+      dispatch(setWeatherHistoryThunkCreator(cityName));
     }
   }
 }

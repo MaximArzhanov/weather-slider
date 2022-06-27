@@ -21,6 +21,7 @@ import {
   RESET_WEATHER_CARDS,
   SET_CURRENT_USER,
   SET_USER_LOGIN_STATUS,
+  SET_WEATHER_HISTORY,
   UPDATE_CURRENT_USER,
   UPDATE_SEARCH_WEATHER_ERROR,
   UPDATE_ACTIVE_INDEX
@@ -156,6 +157,13 @@ const deletCardCityWeatherActionCreator = (city) => ({
 });
 
 
+/* Действия для истории погоды в выбранном городе */
+const setWeatherHistoryActionCreator = (weatherHistory) => ({
+  type: SET_WEATHER_HISTORY,
+  weatherHistory: { ...weatherHistory }
+});
+
+
 /* Действия для слайдера */
 const updateActiveIndexActionCreator = (activeIndex) => ({
   type: UPDATE_ACTIVE_INDEX,
@@ -185,6 +193,7 @@ export {
   resetWeatherCardsActionCreator,
   setCurrentUserActionCreator,
   setUserLoginStatusActionCreator,
+  setWeatherHistoryActionCreator,
   updateCurrentUserActionCreator,
   updateSearchWeatherErrorActionCreator,
   updateActiveIndexActionCreator

@@ -23,13 +23,13 @@ export const weatherAPI = {
       .then((response) => { return response.data });
   },
 
-  getHistoryWeather(cityName, data) {
+  getHistoryWeather(cityName, date) {
     return instance.get('/history.json', {
       params: {
         key: API_KEY,
         q: cityName,
         lang: 'ru',
-        dt: data
+        dt: date
       }
     })
       .then((response) => { return response.data });
