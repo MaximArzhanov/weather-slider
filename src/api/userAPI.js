@@ -60,6 +60,7 @@ export const userAPI = {
 
           const result = createResultObject(false, true, USER_LOGINED_SUCCESS_MESSAGE);
           result.user = user;
+          delete result.user.password; // Из результата удаляется пароль
           resolve(result);
         } else { reject(createResultObject(true, false, WRONG_EMAIL_OR_PASSWORD_MESSAGE));  }
       } else {  reject(createResultObject(true, false, USER_DOES_NOT_EXIST_MESSAGE));  }
@@ -130,6 +131,7 @@ export const userAPI = {
       if (currentUser) {
         const result = createResultObject(false, true, CURRENT_USER_WAS_FOUND_MESSAGE);
         result.currentUser = currentUser;
+        delete result.currentUser.password; // Из результата удаляется пароль
         resolve(result);
       } else {
         reject(createResultObject(true, false, CURRENT_USER_WAS_NOT_FOUND_MESSAGE));
