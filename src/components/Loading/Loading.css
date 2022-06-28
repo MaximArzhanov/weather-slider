@@ -6,7 +6,7 @@
 .loading_color_blue {
   background: url(../../images/loader-blue.svg);
   background-position: center;
-  background-size: contain;
+  background-size: 200px 200px;
   background-repeat: no-repeat;
 }
 
