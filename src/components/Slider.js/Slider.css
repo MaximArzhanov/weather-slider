@@ -123,3 +123,10 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+
+@media screen and (max-width: 768px) {
+  .slider__arrow  {
+    display: none;
+  }
+}

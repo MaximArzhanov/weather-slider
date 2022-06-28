@@ -27,3 +27,10 @@
   cursor: pointer;
   background-size: 23px 23px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .button_type_icon {
+    width: 100%;
+  }
+}
