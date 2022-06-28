@@ -10,14 +10,14 @@ import setWeatherHistoryThunkCreator from '../../store/thunkMiddlwares/setWeathe
 
 const mapStateToProps = (state) => {
   return {
-    activeIndex: state.slider.activeIndex,
+    activeIndex: state.slider.activeIndex, // Активный слайд
     currentUser: state.currentUser.currentUser
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateIndex: (newIndex, children) => {
+    updateIndex: (newIndex, children) => { // Изменение активного слайда
       if (newIndex < 0) {
         newIndex = React.Children.count(children) - 1;
       } else if (newIndex >= React.Children.count(children)) {
@@ -25,10 +25,10 @@ const mapDispatchToProps = (dispatch) => {
       }
       dispatch(updateActiveIndexActionCreator(newIndex));
     },
-    deleteSlide: (cityName, currentUser, activeIndex) => {
+    deleteSlide: (cityName, currentUser, activeIndex) => {  // Удаление слайда
       dispatch(deleteCityWeatherThunkCreator(cityName, currentUser, activeIndex));
     },
-    showWeatherHistory: (cityName) => {
+    showWeatherHistory: (cityName) => {   // Открытие модального окна и отображение истории погоды
       dispatch(openPopupActionCreator());
       dispatch(setWeatherHistoryThunkCreator(cityName));
     }

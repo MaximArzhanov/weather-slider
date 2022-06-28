@@ -27,22 +27,11 @@ const getLastDate = (quantityOfDays) => {
 
 const setWeatherHistoryThunkCreator = (cityName) => {
   return (dispatch) => {
-
-
-    // var options = {
-    //   year: 'numeric',
-    //   month: 'long',
-    //   day: 'numeric'
-    // };
-
-    // var d = new Date(2022, 6, 26);
-    // console.log(d.toLocaleString("ru", options));
-
     let lastDateList = []; // Массив с датами для запроса к WeatherAPI
     for (let numberOfDay = 1; numberOfDay <= limitedQuantityOfDays; numberOfDay++) {
       lastDateList.push(getLastDate(numberOfDay)) // Формирование массива с датами для запроса к WeatherAPI
     }
-    // Запрос к WeatherAPI делается длля каждой даты
+    // Запрос к WeatherAPI делается для каждой даты
     Promise.all(lastDateList.map(date => weatherAPI.getHistoryWeather(cityName, date)))
       .then(weatherHistoryList => {
         dispatch(setWeatherHistoryActionCreator(weatherHistoryList));

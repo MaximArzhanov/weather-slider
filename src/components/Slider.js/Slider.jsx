@@ -33,9 +33,8 @@ function Slider(props) {
   return (
     <div className='slider'>
 
-
+      {/* Стрелка для перемещения по слайдам */}
       <button className='slider__arrow slider__arrow_type_left' onClick={handlePrevClick}></button>
-
 
       <div className="slider__container">
         <div
@@ -44,19 +43,17 @@ function Slider(props) {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}>
 
-          {React.Children.map(children, (child, index) => {
+          {React.Children.map(children, (child, index) => { // Добавление слайдов на страницу
             return React.cloneElement(child, props, ...children);
           })}
-        </div>
 
-        {/* <div className='indicators'>
-        <button className='indicators__button' onClick={handlePrevClick}>Prev</button>
-        <button className='indicators__button' onClick={handleNextClick}>Next</button>
-        </div> */}
+        </div>
       </div>
 
+      {/* Стрелка для перемещения по слайдам */}
       <button className='slider__arrow slider__arrow_type_right' onClick={handleNextClick}></button>
 
+      {/* Индикаторы под слайдером для переключения слайдов */}
       <div className='slider__pagination'>
         {React.Children.map(children, (child, index) => {
           return (
@@ -67,8 +64,6 @@ function Slider(props) {
           )
         })}
       </div>
-
-      {/* <button className='slider__delete'></button> */}
 
     </div>
   );

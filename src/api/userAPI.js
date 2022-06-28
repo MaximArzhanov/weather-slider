@@ -8,7 +8,11 @@ import {
   CURRENT_USER,
   USERS,
   NEW_CITY_ADDED_MESSAGE,
-  USER_ALREADY_ADDED_CITY_MESSAGE
+  USER_ALREADY_ADDED_CITY_MESSAGE,
+  CITY_WAS_NOT_ADDED_BY_USER_MESSAGE,
+  SLIDE_REMOVED_SUCCESS_MESSAGE,
+  CURRENT_USER_WAS_FOUND_MESSAGE,
+  CURRENT_USER_WAS_NOT_FOUND_MESSAGE
 } from "../utils/constants";
 
 /* Создаёт объект с результатами запроса */
@@ -101,7 +105,7 @@ export const userAPI = {
           const cities = [...user.cities];                // Копирование сохранённого списка городов
           // Проверка: если названия города нет в списке
           if (!cities.includes(cityName)) {
-            reject(createResultObject(true, false, 'Город не был добавлен пользователем'));
+            reject(createResultObject(true, false, CITY_WAS_NOT_ADDED_BY_USER_MESSAGE));
           }
           const newCities = cities.filter((city) => city !== cityName);
           user.cities = newCities;                        // Запись массива названий городов к текущему пользователю
@@ -115,7 +119,7 @@ export const userAPI = {
 
       // Запись обновлённого списка пользователей (Обновлён список городов у текущего пользователя) в localStorage
       localStorage.setItem(USERS, JSON.stringify(users));
-      resolve(createResultObject(false, true, 'Слайд успешно удалён'));
+      resolve(createResultObject(false, true, SLIDE_REMOVED_SUCCESS_MESSAGE));
     });
   },
 
@@ -124,11 +128,11 @@ export const userAPI = {
     return new Promise(function (resolve, reject) {
       const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
       if (currentUser) {
-        const result = createResultObject(false, true, 'Текущий пользователь найден');
+        const result = createResultObject(false, true, CURRENT_USER_WAS_FOUND_MESSAGE);
         result.currentUser = currentUser;
         resolve(result);
       } else {
-        reject(createResultObject(true, false, 'Текущий пользователь не найден'));
+        reject(createResultObject(true, false, CURRENT_USER_WAS_NOT_FOUND_MESSAGE));
       }
     });
   }

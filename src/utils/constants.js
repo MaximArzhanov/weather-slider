@@ -20,6 +20,10 @@ const NEW_CITY_ADDED_MESSAGE = 'Добавлен новый город';
 const USER_ALREADY_ADDED_CITY_MESSAGE = 'Пользователь уже добавил этот город';
 const CITY_WAS_NOT_FOUND_MESSAGE = 'Город не найден. Попробуйте ввести название на английском языке';
 const UNKNOWN_ERROR_MESSAGE = 'Неизвестная ошибка';
+const CITY_WAS_NOT_ADDED_BY_USER_MESSAGE = 'Город не был добавлен пользователем';
+const SLIDE_REMOVED_SUCCESS_MESSAGE = 'Слайд успешно удалён';
+const CURRENT_USER_WAS_NOT_FOUND_MESSAGE = 'Текущий пользователь не найден';
+const CURRENT_USER_WAS_FOUND_MESSAGE = 'Текущий пользователь найден';
 
 const IS_LOGINED = 'isLogined';
 const CURRENT_USER = 'currentUser';
@@ -50,5 +54,9 @@ export {
   USER_ALREADY_ADDED_CITY_MESSAGE,
   CITY_WAS_NOT_FOUND_MESSAGE,
   UNKNOWN_ERROR_MESSAGE,
-  CITY_WAS_NOT_FOUND_CODE
+  CITY_WAS_NOT_FOUND_CODE,
+  CITY_WAS_NOT_ADDED_BY_USER_MESSAGE,
+  SLIDE_REMOVED_SUCCESS_MESSAGE,
+  CURRENT_USER_WAS_FOUND_MESSAGE,
+  CURRENT_USER_WAS_NOT_FOUND_MESSAGE
 }
