@@ -43,6 +43,7 @@ function Slider(props) {
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}>
+
           {React.Children.map(children, (child, index) => {
             return React.cloneElement(child, props, ...children);
           })}

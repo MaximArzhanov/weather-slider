@@ -1,0 +1,9 @@
+.table {
+  margin: 0;
+  padding: 30px;
+  background: #2e3a6a;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}

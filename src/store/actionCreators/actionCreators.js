@@ -162,7 +162,7 @@ const deletCardCityWeatherActionCreator = (city) => ({
 /* Действия для истории погоды в выбранном городе */
 const setWeatherHistoryActionCreator = (weatherHistory) => ({
   type: SET_WEATHER_HISTORY,
-  weatherHistory: { ...weatherHistory }
+  weatherHistory: [ ...weatherHistory ]
 });
 
 

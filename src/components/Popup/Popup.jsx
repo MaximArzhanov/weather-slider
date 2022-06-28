@@ -1,5 +1,6 @@
 import React from 'react';
 import './Popup.css';
+import TableContainer from '../Table/TableContainer';
 
 function Popup(props) {
 
@@ -10,7 +11,8 @@ function Popup(props) {
   return (
     <div className='overlay overlay_opened' onClick={handleClick}>
       <div className='popup'>
-        123
+        <button className='popup__close' onClick={handleClick}></button>
+        <TableContainer />
       </div>
     </div>
   );

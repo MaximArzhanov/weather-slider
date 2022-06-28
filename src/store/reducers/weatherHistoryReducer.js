@@ -8,7 +8,7 @@ const weatherHistoryReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case SET_WEATHER_HISTORY: {
-      return { ...state, weatherHistory: action.weatherHistory }
+      return { ...state, weatherHistory: [ ...action.weatherHistory] }
     }
 
     default:
