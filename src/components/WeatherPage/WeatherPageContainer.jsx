@@ -5,7 +5,8 @@ import WeatherPage from './WeatherPage';
 const mapStateToProps = (state) => {
   return {
     cardWeatherList: state.weatherPage.weatherCards,
-    currentUser: state.currentUser.currentUser
+    currentUser: state.currentUser.currentUser,
+    isPopupOpen: state.popup.isPopupOpen
   }
 }
 

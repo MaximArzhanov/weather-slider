@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Slider from './Slider';
-import { updateActiveIndexActionCreator } from '../../store/actionCreators/actionCreators';
+import {
+  updateActiveIndexActionCreator,
+  openPopupActionCreator
+} from '../../store/actionCreators/actionCreators';
 import deleteCityWeatherThunkCreator from '../../store/thunkMiddlwares/deleteCityWeatherThunkCreator';
 import setWeatherHistoryThunkCreator from '../../store/thunkMiddlwares/setWeatherHistoryThunkCreator';
 
@@ -26,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(deleteCityWeatherThunkCreator(cityName, currentUser, activeIndex));
     },
     showWeatherHistory: (cityName) => {
+      dispatch(openPopupActionCreator());
       dispatch(setWeatherHistoryThunkCreator(cityName));
     }
   }

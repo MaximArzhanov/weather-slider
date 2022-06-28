@@ -5,6 +5,7 @@ import userLoginStatusReducer from './reducers/userLoginStatusReducer';
 import weatherPageReducer from './reducers/weatherPageReducer';
 import sliderReducer from './reducers/sliderReducer';
 import weatherHistoryReducer from './reducers/weatherHistoryReducer';
+import popupReducer from './reducers/popupReducer';
 import thunk from 'redux-thunk'
 
 let reducers = combineReducers({
@@ -13,7 +14,8 @@ let reducers = combineReducers({
     userloginStatus: userLoginStatusReducer,
     weatherPage: weatherPageReducer,
     slider: sliderReducer,
-    weatherHistory: weatherHistoryReducer
+    weatherHistory: weatherHistoryReducer,
+    popup: popupReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

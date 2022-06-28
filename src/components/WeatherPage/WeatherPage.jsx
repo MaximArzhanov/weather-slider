@@ -4,6 +4,7 @@ import HeaderContainer from '../Header/HeaderContainer';
 import SearchErrorContainer from '../SearchError/SearchErrorContainer';
 import SliderItem from '../SliderItem/SliderItem';
 import SliderContainer from '../Slider.js/SliderContainer';
+import PopupContainer from '../Popup/PopupContainer';
 
 function WeatherPage(props) {
 
@@ -24,6 +25,9 @@ function WeatherPage(props) {
             />);
         })}
       </SliderContainer>
+
+      { props.isPopupOpen ? <PopupContainer /> : undefined }
+
     </div>
   );
 }

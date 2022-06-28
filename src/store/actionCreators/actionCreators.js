@@ -11,9 +11,11 @@ import {
   CLEAR_SEARCH_ERROR_INPUTS,
   CLEAR_SEARCH_TEXT_INPUTS,
   CLEAR_TEXT_INPUTS,
+  CLOSE_POPUP,
   DELETE_CARD_CITY_WEATHER,
   INITIAL_CITY_WEATHER_CARDS,
   LOGIN_USER,
+  OPEN_POPUP,
   REGISTER_USER,
   RESET_AUTH_RESULT,
   RESET_CURRENT_USER,
@@ -170,6 +172,17 @@ const updateActiveIndexActionCreator = (activeIndex) => ({
   activeIndex: activeIndex
 })
 
+
+/* Действия для модального окна */
+const openPopupActionCreator = () => ({
+  type: OPEN_POPUP
+})
+
+const closePopupActionCreator = () => ({
+  type: CLOSE_POPUP
+})
+
+
 export {
   addNewCardCityWeatherActionCreator,
   changeErrorInputTextActionCreator,
@@ -183,9 +196,11 @@ export {
   clearSearchErrorInputsActionCreator,
   clearSearchTextInputsActionCreator,
   clearTextInputsActionCreator,
+  closePopupActionCreator,
   deletCardCityWeatherActionCreator,
   initialCityWeatherCardsActionCreator,
   loginUserActionCreator,
+  openPopupActionCreator,
   registerUserActionCreator,
   resetAuthResultActionCreator,
   resetCurrentUserActionCreator,

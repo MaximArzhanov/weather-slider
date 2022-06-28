@@ -1,0 +1,30 @@
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(180, 180, 180, .5);
+  display: none;
+  animation: smooth-appearance .3s 1 linear;
+}
+
+.overlay_opened {
+  display: flex;
+}
+
+.popup {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes smooth-appearance {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
