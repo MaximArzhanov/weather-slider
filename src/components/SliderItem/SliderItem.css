@@ -17,6 +17,12 @@
   background-color: #55608f;
 }
 
+.slider-item:hover .slider-item__delete  {
+  visibility: visible;
+  opacity: 1;
+  transition: all .2s linear;
+}
+
 .slider-item__container {
   margin: 0;
   padding: 0;
@@ -69,10 +75,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .slider-item__delete_hidden {
-  visibility: hidden;
+  background-image: none;
   pointer-events: none;
 }
 
