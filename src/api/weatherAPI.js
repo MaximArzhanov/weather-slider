@@ -4,7 +4,7 @@ const API_KEY = '11a4ada72f2e45f2bf065312222106';
 
 const instance = axios.create({
   withCredentials: false,
-  baseURL: 'http://api.weatherapi.com/v1',
+  baseURL: 'https://api.weatherapi.com/v1',
   headers: {
     'Content-type': 'application/json; charset=UTF-8',
   }
