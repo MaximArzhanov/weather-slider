@@ -9,11 +9,15 @@ import {
 import {
   setCurrentUserActionCreator,
   setUserLoginStatusActionCreator,
-  initialCityWeatherCardsActionCreator
+  initialCityWeatherCardsActionCreator,
+  updateLoadingActionCreator
 } from '../actionCreators/actionCreators';
 
 const initialCityWeatherCardsThunkCreator = () => {
   return (dispatch) => {
+
+    dispatch(updateLoadingActionCreator(true));
+
     userAPI.getCurrentUser()  // Отправляет запрос на получение данных текущего авторизованного пользователя
 
       .then((result) => {
@@ -23,11 +27,13 @@ const initialCityWeatherCardsThunkCreator = () => {
         Promise.all(result.currentUser.cities.map(cityName => weatherAPI.getCurrentWeather(cityName)))
           // Диспатчится весь массив с информацией о текущей погоде в городах
           .then(currentCityWeatherList => {
-            dispatch(initialCityWeatherCardsActionCreator(currentCityWeatherList))
+            dispatch(initialCityWeatherCardsActionCreator(currentCityWeatherList));
+            dispatch(updateLoadingActionCreator(false));
           })
           .catch((result) => {
             // TODO: сюда нужно будет дописать логику обработки ошибки при запросе текущей погоды в списке городов
             console.log(result);
+            dispatch(updateLoadingActionCreator(false));
           });
 
       })
@@ -36,6 +42,7 @@ const initialCityWeatherCardsThunkCreator = () => {
         localStorage.removeItem(IS_LOGINED);
         localStorage.removeItem(CURRENT_USER);
         dispatch(setUserLoginStatusActionCreator(false));
+        dispatch(updateLoadingActionCreator(false));
       });
 
   }

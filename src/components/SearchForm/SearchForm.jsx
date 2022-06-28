@@ -26,7 +26,12 @@ function Search(props) {
         <InputValidationError errorText={props.errorValidationSearchText} classList="input-valid-err_type_absolute" />
       </div>
 
-      <Button buttonText='' isFormValid={props.isFormValid} classList='button_type_icon' />
+      <Button
+        buttonText=''
+        isFormValid={props.isFormValid}
+        classList='button_type_icon'
+        isLoading={props.isLoading}
+      />
     </form>
   );
 }

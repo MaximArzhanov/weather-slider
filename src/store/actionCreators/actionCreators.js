@@ -26,7 +26,8 @@ import {
   SET_WEATHER_HISTORY,
   UPDATE_CURRENT_USER,
   UPDATE_SEARCH_WEATHER_ERROR,
-  UPDATE_ACTIVE_INDEX
+  UPDATE_ACTIVE_INDEX,
+  UPDATE_LOADING
 } from '../actions/actions';
 
 
@@ -182,6 +183,12 @@ const closePopupActionCreator = () => ({
   type: CLOSE_POPUP
 })
 
+/* Действия индикатора загрузки */
+const updateLoadingActionCreator = (status) => ({
+  type: UPDATE_LOADING,
+  status: status
+})
+
 
 export {
   addNewCardCityWeatherActionCreator,
@@ -211,5 +218,6 @@ export {
   setWeatherHistoryActionCreator,
   updateCurrentUserActionCreator,
   updateSearchWeatherErrorActionCreator,
-  updateActiveIndexActionCreator
+  updateActiveIndexActionCreator,
+  updateLoadingActionCreator
 }

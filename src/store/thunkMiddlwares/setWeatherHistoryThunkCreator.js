@@ -1,7 +1,8 @@
 import { weatherAPI } from '../../api/weatherAPI';
 
 import {
-  setWeatherHistoryActionCreator
+  setWeatherHistoryActionCreator,
+  updateLoadingActionCreator
 } from '../actionCreators/actionCreators';
 
 // Максимальное количество дней для запроса по WeatherAPI
@@ -27,6 +28,10 @@ const getLastDate = (quantityOfDays) => {
 
 const setWeatherHistoryThunkCreator = (cityName) => {
   return (dispatch) => {
+
+    setWeatherHistoryActionCreator([]);
+    dispatch(updateLoadingActionCreator(true));
+
     let lastDateList = []; // Массив с датами для запроса к WeatherAPI
     for (let numberOfDay = 1; numberOfDay <= limitedQuantityOfDays; numberOfDay++) {
       lastDateList.push(getLastDate(numberOfDay)) // Формирование массива с датами для запроса к WeatherAPI
@@ -35,9 +40,11 @@ const setWeatherHistoryThunkCreator = (cityName) => {
     Promise.all(lastDateList.map(date => weatherAPI.getHistoryWeather(cityName, date)))
       .then(weatherHistoryList => {
         dispatch(setWeatherHistoryActionCreator(weatherHistoryList));
+        dispatch(updateLoadingActionCreator(false));
       })
       .catch((result) => {
         console.log(result);
+        dispatch(updateLoadingActionCreator(false));
       });
   }
 }

@@ -25,7 +25,8 @@ const mapStateToProps = (state) => {
     isFormValid: state.weatherPage.search.isFormValid,
     placeholder: 'Название города',
     cardWeatherList: state.weatherPage.weatherCards,
-    currentUser: state.currentUser.currentUser
+    currentUser: state.currentUser.currentUser,
+    isLoading: state.loading.isLoading
     // searchResult: state.weatherPage.search.searchResult
   }
 }

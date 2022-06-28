@@ -7,6 +7,10 @@ function Button(props) {
     ? 'button'
     : 'button button_disabled';
 
+  classListButton = (props.isLoading)
+    ? 'button button_disabled'
+    : classListButton;
+
   classListButton = (props.classList === undefined)
    ? classListButton
    : classListButton + ' ' + props.classList;

@@ -5,7 +5,7 @@ import { closePopupActionCreator } from '../../store/actionCreators/actionCreato
 
 const mapStateToProps = (state) => {
   return {
-
+    isLoading: state.loading.isLoading
   }
 }
 

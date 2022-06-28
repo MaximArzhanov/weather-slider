@@ -6,7 +6,8 @@ import {
   updateCurrentUserActionCreator,
   addNewCardCityWeatherActionCreator,
   setUserLoginStatusActionCreator,
-  updateActiveIndexActionCreator
+  updateActiveIndexActionCreator,
+  updateLoadingActionCreator
 } from '../actionCreators/actionCreators';
 
 import {
@@ -26,6 +27,9 @@ const logoutUser = (dispatch) => {
 
 const searchCityWeatherThunkCreator = (cityName, currentUser, cardWeatherList) => {
   return (dispatch) => {
+
+    dispatch(updateLoadingActionCreator(true));
+
     weatherAPI.getCurrentWeather(cityName)
       .then((currentCityWeather) => {
         // Если запрос к weatherAPI прошёл успешно, то отправляется запрос на обновление списка городов для текущего пользователя
@@ -36,14 +40,19 @@ const searchCityWeatherThunkCreator = (cityName, currentUser, cardWeatherList) =
             dispatch(updateActiveIndexActionCreator(cardWeatherList.length));
             // После добавления города необходимо обновить информацию в стейте для текущего пользователя
             userAPI.getCurrentUser()
-              .then((result) => dispatch(updateCurrentUserActionCreator(result.currentUser)))
+              .then((result) => {
+                dispatch(updateCurrentUserActionCreator(result.currentUser))
+                dispatch(updateLoadingActionCreator(false));
+              })
               .catch((result) => {
                 logoutUser(dispatch);
                 console.log(result.message);
+                dispatch(updateLoadingActionCreator(false));
               });
           })
           .catch((result) => {
             dispatch(updateSearchWeatherErrorActionCreator(result));
+            dispatch(updateLoadingActionCreator(false));
           })
       })
 
@@ -54,7 +63,10 @@ const searchCityWeatherThunkCreator = (cityName, currentUser, cardWeatherList) =
             dispatch(updateSearchWeatherErrorActionCreator(true, false, CITY_WAS_NOT_FOUND_MESSAGE));
           }
         }
-        catch (error) { dispatch(updateSearchWeatherErrorActionCreator(true, false, UNKNOWN_ERROR_MESSAGE)); }
+        catch (error) {
+          dispatch(updateSearchWeatherErrorActionCreator(true, false, UNKNOWN_ERROR_MESSAGE));
+          dispatch(updateLoadingActionCreator(false));
+        }
       });
 
   }
