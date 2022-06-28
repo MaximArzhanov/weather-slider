@@ -27,11 +27,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const AppContainer = ({ ...props }) => {
 
-  const { setInitialStates } = props;
+  const { setInitialStates, isLogined } = props;
 
   useEffect(() => {
     setInitialStates();
-  }, [setInitialStates]);
+  }, [setInitialStates, isLogined]);
 
   return (
     <App { ...props } />

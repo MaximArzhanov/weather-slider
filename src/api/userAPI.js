@@ -28,7 +28,7 @@ export const userAPI = {
     return new Promise(function (resolve, reject) {
 
       let users = [];
-      const user = { email: email, password: password, cities: [] };
+      const user = { email: email, password: password, cities: ['Дубай', 'Сидней', 'Нью-Йорк', 'Мадрид', 'Токио'] };
 
       // Если в localStorage есть массив пользователей то массив сохраняется в переменную, иначе в переменную записывается пустой массив
       if (localStorage.getItem(USERS)) { users = JSON.parse(localStorage.getItem(USERS)); }

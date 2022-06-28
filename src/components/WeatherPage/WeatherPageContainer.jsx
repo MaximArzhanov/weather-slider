@@ -7,7 +7,9 @@ const mapStateToProps = (state) => {
     cardWeatherList: state.weatherPage.weatherCards,
     currentUser: state.currentUser.currentUser,
     isPopupOpen: state.popup.isPopupOpen,
-    isLoading: state.loading.isLoading
+    isLoading: state.loading.isLoading,
+    isLogined: state.userloginStatus.isUserLogined,
+    weatherCards: state.weatherPage.weatherCards
   }
 }
 
