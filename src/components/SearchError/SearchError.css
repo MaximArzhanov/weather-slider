@@ -1,6 +1,5 @@
 .search-error {
   margin: 0;
-  margin-top: 10px;
   padding: 10px;
   max-width: 200px;
   width: 100%;
@@ -12,8 +11,8 @@
   vertical-align: bottom;
   display: inline-block;
   position: absolute;
-  top: 100px;
-  left: calc(50% - 100px);
+  top: 110px;
+  left: calc(50% - 110px);
 }
 
 .search-error_state_error {
@@ -71,5 +70,12 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .search-error {
+    top: 140px;
   }
 }
