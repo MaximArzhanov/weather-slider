@@ -16,6 +16,8 @@
 .popup {
   margin: auto;
   padding: 0;
+  max-width: 650px;
+  width: 100%;
   position: relative;
   top: 0;
   left: 0;
@@ -50,5 +52,12 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .popup {
+    max-width: 90%;
   }
 }

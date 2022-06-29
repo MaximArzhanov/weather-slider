@@ -16,18 +16,18 @@ function WeatherPage(props) {
       {props.isLoading
         ? <Loading loadingClassList='loading loading_color_white loading_size_middle' />
         : <SliderContainer>
-          {props.cardWeatherList.map((index) => {
-            return (
-              <SliderItem
-                key={index.location.name}
-                icon={index.current.condition.icon}
-                temp={index.current.temp_c}
-                time={index.location.localtime}
-                text={index.current.condition.text}
-                cityName={index.location.name}
-              />);
-          })}
-        </SliderContainer>}
+            {props.cardWeatherList.map((index) => {
+              return (
+                <SliderItem
+                  key={index.location.name}
+                  icon={index.current.condition.icon}
+                  temp={index.current.temp_c}
+                  time={index.location.localtime}
+                  text={index.current.condition.text}
+                  cityName={index.location.name}
+                />);
+            })}
+          </SliderContainer>}
 
 
       { props.isPopupOpen ? <PopupContainer /> : undefined }

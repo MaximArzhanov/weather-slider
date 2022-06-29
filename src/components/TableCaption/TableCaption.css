@@ -1,13 +1,15 @@
 .table__caption {
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 140px);
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .table__caption-item {
   margin: 0;
+  width: 25%;
+  min-width: 130px;
   padding: 4px;
   box-sizing: border-box;
   font-size: 16px;
@@ -15,4 +17,11 @@
   display: flex;
   align-items: center;
   border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+
+@media screen and (max-width: 768px) {
+  .table__caption-item {
+    font-size: 14px;
+  }
 }

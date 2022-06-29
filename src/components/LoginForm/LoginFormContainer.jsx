@@ -83,8 +83,6 @@ const LoginFormContainer = ({ ...props }) => {
       clearAuthErrorText();
     }
 
-    // resetAuthResult();
-
     if (userloginStatus) {
       navigate('/')
     }; // Если вход в систему выполнен, то редирект на главную страницу
@@ -92,11 +90,17 @@ const LoginFormContainer = ({ ...props }) => {
     return () => { // При размонтировании компонента Login сбрасываются поля и ошибки
       clearField();
       clearErrors();
-      // resetAuthResult();
-      // clearAuthErrorText();
       resetValidationForm();
     }
-  }, [userloginStatus, clearField, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult, navigate]);
+  }, [userloginStatus,
+    clearField,
+    clearErrors,
+    clearAuthErrorText,
+    resetValidationForm,
+    resetAuthResult,
+    authResult.isRequestSuccessful,
+    navigate
+  ]);
 
   return (
     <LoginForm {...props} />

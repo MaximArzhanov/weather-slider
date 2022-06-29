@@ -14,9 +14,11 @@ function Table(props) {
   return (
     <div className='table'>
       <TableHeader cityName={cityName} />
-      <TableCaption />
-      {props.weatherHistory.map((item, index) => <TableRow key={index} weatherHistoryOnDate={item} />)}
-    </div>
+      <div className='table__container'>
+        <TableCaption />
+        {props.weatherHistory.map((item, index) => <TableRow key={index} weatherHistoryOnDate={item} />)}
+      </div>
+    </div >
   );
 }
 

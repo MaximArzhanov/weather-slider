@@ -1,9 +1,28 @@
 .table {
   margin: 0;
-  padding: 30px;
+  width: 100%;
+  padding: 30px 20px;
   background: #2e3a6a;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #fff;
+}
+
+.table__container {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media screen and (max-width: 768px) {
+  .table {
+    padding: 20px 10px;
+  }
 }

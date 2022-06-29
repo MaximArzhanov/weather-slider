@@ -6,7 +6,7 @@ import InputValidationError from '../InputValidationError/InputValidationError';
 import AuthError from '../AuthError/AuthError';
 import Button from '../Button/Button';
 import {
-  EMAIL_INPUT, PASSWORD_INPUT, EMAIL, EMAIL_TYPE, PASSWORD, PASSWORD_TYPE, LOGIN_BUTTON_TEXT
+  EMAIL_INPUT, PASSWORD_INPUT, EMAIL, PASSWORD, PASSWORD_TYPE, LOGIN_BUTTON_TEXT
 } from '../../utils/constants';
 
 function LoginForm(props) {
