@@ -32,7 +32,7 @@ const validateEmail = (value) => {
 
   const regExp = /\S+@\S+\.\S+/; // Регулярное выражение для проверки на соответствие формату email
 
-  let charList = value.match(/[^\d^@^.\sA-Z]/gi); // Регулярное выражение для проверки на содержание ненужных символов
+  let charList = value.match(/[^\d^@^.^_\sA-Z]/gi); // Регулярное выражение для проверки на содержание ненужных символов
   if (charList === null) {
     charList = [];
   } else {
