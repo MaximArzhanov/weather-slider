@@ -5,11 +5,6 @@ function SliderItem(props) {
 
   const { children } = props;
 
-  // Если остаётся один слайд, то его нельзя удалить
-  // const buttonDeleteClassList = React.Children.count(children) > 1
-  //   ? 'slider-item__delete'
-  //   : 'slider-item__delete slider-item__delete_hidden';
-
     const buttonDeleteClassList = React.Children.count(children) > 1
     ? 'slider-item__delete'
     : 'slider-item__delete slider-item__delete_hidden';
