@@ -38,5 +38,5 @@
 
 Работа над проектом завершена.
 
-[Ссылка на проект](maximarzhanov.github.io/weather-slider/)
+[Ссылка на проект](https://maximarzhanov.github.io/weather-slider/#/)
 
