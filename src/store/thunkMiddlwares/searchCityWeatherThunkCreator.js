@@ -65,6 +65,8 @@ const searchCityWeatherThunkCreator = (cityName, currentUser, cardWeatherList) =
         }
         catch (error) {
           dispatch(updateSearchWeatherErrorActionCreator(true, false, UNKNOWN_ERROR_MESSAGE));
+        }
+        finally {
           dispatch(updateLoadingActionCreator(false));
         }
       });
