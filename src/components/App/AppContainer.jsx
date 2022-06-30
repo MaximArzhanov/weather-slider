@@ -14,10 +14,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setInitialStates: () => {
+    setInitialStates: (isLogined) => {
       if (localStorage.getItem(IS_LOGINED)) { // Проверка на наличие текущего авторизованного пользователя
         dispatch(setUserLoginStatusActionCreator(true));
-        dispatch(initialCityWeatherCardsThunkCreator());
+        // Если флаг о том, что пользователь залогинен ещё не установлен в стейте
+        // то не нужно инициализировать слайды с текщей погодой.
+        if (isLogined) dispatch(initialCityWeatherCardsThunkCreator());
       } else { // Если пользователь не авторизован
         dispatch(setUserLoginStatusActionCreator(false));
       }
@@ -30,7 +32,7 @@ const AppContainer = ({ ...props }) => {
   const { setInitialStates, isLogined } = props;
 
   useEffect(() => {
-    setInitialStates();
+    setInitialStates(isLogined);
   }, [setInitialStates, isLogined]);
 
   return (
