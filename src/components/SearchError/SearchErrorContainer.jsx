@@ -22,7 +22,7 @@ const SearchErrorContainer = ({ ...props }) => {
   const { resetSearchErrorText } = props;
 
   useEffect(() => {
-    return () => { resetSearchErrorText() }
+    return () => resetSearchErrorText();
   }, [resetSearchErrorText]);
 
   return (

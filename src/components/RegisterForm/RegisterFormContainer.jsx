@@ -87,10 +87,6 @@ const RegisterFormContainer = ({ ...props }) => {
     clearAuthErrorText();
     resetValidationForm();
     resetAuthResult();
-
-    return () => {
-      // resetAuthResult();
-    }
   }, [clearInput, clearErrors, clearAuthErrorText, resetValidationForm, resetAuthResult]);
 
   useEffect(() => {

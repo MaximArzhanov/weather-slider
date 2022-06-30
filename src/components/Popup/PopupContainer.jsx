@@ -24,7 +24,7 @@ const PopupContainer = ({ ...props }) => {
 
   useEffect(() => {
     document.addEventListener('keydown', props.closePopup);
-    return () => { document.removeEventListener('keydown', props.closePopup); };
+    return () => document.removeEventListener('keydown', props.closePopup);
   })
 
   return (
