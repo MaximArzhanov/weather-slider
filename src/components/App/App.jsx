@@ -3,9 +3,9 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import WeatherPageContainer from '../WeatherPage/WeatherPageContainer';
 import AuthPage from '../AuthPage/AuthPage';
-import LoginFormContainer from '../LoginForm/LoginFormContainer';
-import RegisterFormContainer from '../RegisterForm/RegisterFormContainer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from '../LoginForm/LoginForm';
 
 function App(props) {
 
@@ -13,11 +13,11 @@ function App(props) {
     <div className="app">
       <Routes>
 
-        <Route exact path="/" element={<ProtectedRoute isLogined={props.isLogined} component={WeatherPageContainer}/>}/>
+        {/* <Route exact path="/" element={<ProtectedRoute isLogined={props.isLogined} component={WeatherPageContainer}/>}/> */}
 
-        <Route path="signin" element={<AuthPage> <LoginFormContainer /> </AuthPage>}/>
+        <Route path="signin" element={<AuthPage> <LoginForm /> </AuthPage>}/>
 
-        <Route path="signup" element={<AuthPage> <RegisterFormContainer /> </AuthPage>} />
+        <Route path="signup" element={<AuthPage> <RegisterForm /> </AuthPage>} />
 
       </Routes>
     </div>

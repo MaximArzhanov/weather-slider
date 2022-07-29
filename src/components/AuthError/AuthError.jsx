@@ -3,7 +3,7 @@ import './AuthError.css';
 
 function AuthError(props) {
 
-  const classList = props.authResult.isRequestSuccessful
+  const classList = !props.authResult.isError
     ? 'auth-error auth-error_type_successful'
     : 'auth-error';
 

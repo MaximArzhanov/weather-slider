@@ -6,16 +6,6 @@ const initialState = {
     isRequestSuccessful: false,
     message: ''
   },
-  registerResult: {
-    isError: false,
-    isRequestSuccessful: false,
-    message: ''
-  },
-  loginResult: {
-    isError: false,
-    isRequestSuccessful: false,
-    message: ''
-  },
   isFormValid: false
 };
 

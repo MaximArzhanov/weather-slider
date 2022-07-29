@@ -3,8 +3,8 @@ import './Input.css';
 
 function Input(props) {
 
-  const handleChangeTextInput = (e) => {
-    props.changeTextInput(e);
+  const handleChangeInputText = (e) => {
+    props.handleChangeInputText(e);
   }
 
   return (
@@ -14,7 +14,7 @@ function Input(props) {
         type={props.type}
         name={props.name}
         autoComplete="off"
-        onChange={handleChangeTextInput}
+        onChange={handleChangeInputText}
         value={props.value || ""}
         required
         minLength={props.minLength}

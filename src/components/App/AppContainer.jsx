@@ -7,33 +7,33 @@ import { setUserLoginStatusActionCreator } from '../../store/actionCreators/acti
 
 const mapStateToProps = (state) => {
   return {
-    isLogined: state.userloginStatus.isUserLogined,
-    weatherCards: state.weatherPage.weatherCards
+    // isLogined: state.userloginStatus.isUserLogined,
+    // weatherCards: state.weatherPage.weatherCards
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setInitialStates: (isLogined) => {
-      if (localStorage.getItem(IS_LOGINED)) { // Проверка на наличие текущего авторизованного пользователя
-        dispatch(setUserLoginStatusActionCreator(true));
-        // Если флаг о том, что пользователь залогинен ещё не установлен в стейте
-        // то не нужно инициализировать слайды с текщей погодой.
-        if (isLogined) dispatch(initialCityWeatherCardsThunkCreator());
-      } else { // Если пользователь не авторизован
-        dispatch(setUserLoginStatusActionCreator(false));
-      }
-    },
+    // setInitialStates: (isLogined) => {
+    //   if (localStorage.getItem(IS_LOGINED)) { // Проверка на наличие текущего авторизованного пользователя
+    //     dispatch(setUserLoginStatusActionCreator(true));
+    //     // Если флаг о том, что пользователь залогинен ещё не установлен в стейте
+    //     // то не нужно инициализировать слайды с текщей погодой.
+    //     if (isLogined) dispatch(initialCityWeatherCardsThunkCreator());
+    //   } else { // Если пользователь не авторизован
+    //     dispatch(setUserLoginStatusActionCreator(false));
+    //   }
+    // },
   }
 }
 
 const AppContainer = ({ ...props }) => {
 
-  const { setInitialStates, isLogined } = props;
+  // const { setInitialStates, isLogined } = props;
 
-  useEffect(() => {
-    setInitialStates(isLogined);
-  }, [setInitialStates, isLogined]);
+  // useEffect(() => {
+  //   setInitialStates(isLogined);
+  // }, [setInitialStates, isLogined]);
 
   return (
     <App { ...props } />

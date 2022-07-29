@@ -1,17 +1,14 @@
 import { userAPI } from '../../api/userAPI';
-import {
-  registerUserActionCreator
-} from '../actionCreators/actionCreators';
+import { registerUser } from '../slices/authSlice';
 
-const registerUserThunkCreator = (email, password) => {
+const registerUserThunkCreator = (email, password, redirertToSigninPage) => {
   return (dispatch) => {
     userAPI.registerUser(email, password)
-      .then((result) => {
-        dispatch(registerUserActionCreator(result));
+      .then(result => {
+        dispatch(registerUser( { result } ));
+        redirertToSigninPage();
       })
-      .catch((result) => {
-        dispatch(registerUserActionCreator(result));
-      })
+      .catch(result => dispatch(registerUser( { result } )));
   }
 }
 
